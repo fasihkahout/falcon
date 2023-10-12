@@ -28,6 +28,14 @@ Route::middleware([
 //Admin COntroller 
 Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
+Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
+Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
+Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');
+Route::post('/updatecars/{id}', [AdminController::class, 'updatecars'])->name('updatecars');
+Route::get('/deletecars/{id}', [AdminController::class, 'deletecars'])->name('deletecars');
 //Categories
-Route::get('/categories' , [AdminController::class , 'categories'])->name('categories');
-Route::get('/postcategories' , [AdminController::class , 'postcategories'])->name('postcategories');
+Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+Route::get('/postcategories', [AdminController::class, 'postcategories'])->name('postcategories');
+Route::get('/editcategories/{id}', [AdminController::class, 'editcategories'])->name('editcategories');
+Route::get('/updatecategories/{id}', [AdminController::class, 'updatecategories'])->name('updatecategories');
+Route::get('/deletecategories/{id}', [AdminController::class, 'deletecategories'])->name('deletecategories');

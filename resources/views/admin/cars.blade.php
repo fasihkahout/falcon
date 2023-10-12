@@ -2,42 +2,51 @@
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 @include('admin.navbar')
 
-<div class="container" style="display:flex;">
-  <div class="row mb-2">
-    <div class="mb-3">
-      <label for="cnic"> Category Name :</label>
-      <select class="form-control" name="category" >
-        @foreach ($categories as $category)
-          <option value="{{$category->car_categories}}">{{$category->car_categories}}</option>
-          @endforeach
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">Car image</label>
-      <input type="file" class="input_field" placeholder="" style="display: block;">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">Car Name</label>
-      <input type="text" class="input_field" placeholder="" style="display: block;">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">Car Model</label>
-      <input type="text" class="input_field" placeholder="" style="display: block;">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">Car Type</label>
-      <input type="text" class="input_field" placeholder="" style="display: block;">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">Seats</label>
-      <input type="text" class="input_field" placeholder="" style="display: block;">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label" style="display: block;">AC or Non AC</label>
-      <input type="text" class="input_field" placeholder="" style="display: block;">
-    </div>
-  </div>
-  
-</div>
-<button type="submit" class="btn btn-primary" style="margin-left:2%;">Submit</button>
-</main>
+     
+      <h1 class="card-title" style="position: relative;left: 5%; color:black;" >Cars</h1>
+      <div style="position: relative;left: 80%; bottom:2em">
+        <a href="{{url('addcars')}}"><button id="add-category-btn" class="btn btn-success">Add Cars</button></a>
+      </div>
+      <section id="">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="overflow-x:auto;">
+                                <table id="tables_id" class=" table">
+                                    <thead>
+                                        <tr>
+                                            <th>Car Image</th>
+                                            <th>Name</th>
+                                            <th>Model</th>
+                                            <th>Car Categories</th>
+                                            <th>Seats</th>
+                                           <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($cars as $car)
+                                    <tr>
+                                      <td><img src="{{ asset( $car->img) }}" alt="Car Image" style=" border-radius: 100% ;width: 50px;"></td>
+                                        <td>{{$car->name}}</td>
+                                        <td>{{$car->model}}</td>
+                                        <td>{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</td>
+                                        <td>{{$car->seats}}</td>
+                                        <td>
+                                         <a  class="btn btn-primary"  href="{{'editcars/'.$car->id}}" >Edit</a>
+                                        <a class="btn btn-primary" href="{{ route('deletecars', ['id' => $car->id]) }}" >Delete</a>
+                                             
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                   
+                                  <script >
+                                   $(document).ready( function () {
+                                    $('#tables_id').DataTable();
+                                });
+                                  </script>
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>

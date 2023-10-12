@@ -1,7 +1,12 @@
 @include('admin.sidebar')
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 @include('admin.navbar')
+ <div class="col-lg-11 grid-margin stretch-card">
+<div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Car Categories</h1>
 
+      
 <div class="container" style="display:flex;">
     <form action="{{route('postcategories')}}">
         <div class="row mb-2">
@@ -28,12 +33,15 @@
             <tr>
                 <td>{{ $category->car_categories }}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <a  class="btn btn-primary"  href="{{'editcategories/'.$category->id}}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('deletecategories', ['id' => $category->id]) }}">Delete</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+  </div>
+</div>
+</div>
 
 </main>

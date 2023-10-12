@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cars;
 
 class ViewController extends Controller
 {
@@ -27,7 +28,8 @@ class ViewController extends Controller
     }
 
     public function find(){
-        return view('find');
+        $cars = Cars::with('categories')->get();
+        return view('find', compact('cars'));
     }
 
     public function book(){
