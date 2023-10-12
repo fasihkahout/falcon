@@ -1,0 +1,15 @@
+
+@media (min-width: 993px){
+.nav-menu-inner:before {
+    background-color: #2a4696 !important;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 1% 100%);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+}
