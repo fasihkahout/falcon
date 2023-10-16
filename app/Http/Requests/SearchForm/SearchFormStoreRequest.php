@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Car;
+namespace App\Http\Requests\SearchForm;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CarStoreRequest extends FormRequest
+class SearchFormStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,17 +21,16 @@ class CarStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        // dd($this->all());
         return [
-            'name'=>'required',
-            'img'=>'required',
-            'model'=>'required',
-            'type'=>'required',
-            'seats'=>'required',
-            'ac'=>'required',
-            'first_mile_price'=>'required',
-            
-           
-            
+            'pickup_destination'=>'required',
+            'dropoff_destination'=>'required',
+            'flight_arrival_time'=>'required',
+            'pickup_date'=>'required',
+            'pickup_time'=>'required',
+            'luggage'=>'required',
+            'distance'=>'required',
             
         ];
     }

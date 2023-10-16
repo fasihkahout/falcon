@@ -40,3 +40,9 @@ Route::get('/postcategories', [AdminController::class, 'postcategories'])->name(
 Route::get('/editcategories/{id}', [AdminController::class, 'editcategories'])->name('editcategories');
 Route::get('/updatecategories/{id}', [AdminController::class, 'updatecategories'])->name('updatecategories');
 Route::get('/deletecategories/{id}', [AdminController::class, 'deletecategories'])->name('deletecategories');
+
+
+Route::post('searchbooking', [ViewController::class, 'searchBooking'])->name('searchBooking');
+
+
+

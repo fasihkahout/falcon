@@ -21,7 +21,7 @@ class Cars extends Model
         'description',
         'des',
         'first_mile_price',
-        'after_first_mile_price',
+        
     ];
 
     protected $table = 'cars';

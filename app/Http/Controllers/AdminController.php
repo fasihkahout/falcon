@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\SearchForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Triats\ImageuploadTriat;
 use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
+use App\Http\Requests\SearchForm\SearchFormStoreRequest;
 
 class AdminController extends Controller
 {
@@ -50,8 +52,9 @@ class AdminController extends Controller
         $car->description=$request->description;
         $car->des=$request->des;
         $car->ac=$request->ac;
-$car->first_mile_price=$request->first_mile_price;
-        $car->after_first_mile_price=$request->after_first_mile_price;
+        $car->first_mile_price=$request->first_mile_price;
+       
+        
         $car->save();
         return redirect()->route('cars')->with('success', 'Car updated successfully.');
     }
@@ -88,7 +91,8 @@ $car->first_mile_price=$request->first_mile_price;
         $car->description=$request->description;
         $car->des=$request->des;
         $car->first_mile_price=$request->first_mile_price;
-        $car->after_first_mile_price=$request->after_first_mile_price;
+       
+        
         $car->save();
         return redirect()->route('cars')->with('success', 'Car updated successfully.');
             
@@ -166,8 +170,12 @@ $car->first_mile_price=$request->first_mile_price;
     }
 
      public function googlemap(){
-        return view('admin.google_map');
+        $categories = Category::all();
+        $cars = Cars::with('categories')->get();
+        return view('admin.google_map',compact('categories','cars'));
     }
+
+     
 
 
 }

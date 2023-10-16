@@ -37,7 +37,12 @@
                             <div class="d-flex justify-content-center align-items-center">
                                 <!-- Title -->
                                 <div class="mb-2 mb-sm-0">
-                                    <h1 class="fs-3 mb-2">5 Cabs Available</h1>
+                                    @php
+                                    use App\Models\Cars; // Make sure to import your Car model
+
+                                    $carCount = Cars::count();
+                                    @endphp
+                                   <h1 class="fs-3 mb-2">{{ $carCount }} Cars Available</h1>
                                     <!-- Divider -->
                                     <ul class="nav nav-divider h6 mb-0">
                                         <li class="nav-item">One-way trip</li>
@@ -109,7 +114,7 @@
                         <li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
                     </ul>
                 </div>
-
+         @foreach($prices as $price)
                 <!-- Button -->
                 <div class="col-sm-6 col-md-4 col-xl-3 text-sm-end">
                     <!-- Discount -->
@@ -117,13 +122,14 @@
                     <!-- Price -->
                     <ul class="list-inline mb-1">
                         <li class="list-inline-item text-decoration-line-through me-1">$250</li>
-                        <li class="list-inline-item h5 mb-0">$210</li>
+                        <li class="list-inline-item h5 mb-0">{{price}}</li>
                     </ul>
                     <a href="#" class="btn btn-dark mb-0">Book Now</a>
                 </div>
             </div>
             <!-- Row END -->
         </div>
+        @endforeach
         <!-- Card body END -->
 
         <!-- Card footer START -->

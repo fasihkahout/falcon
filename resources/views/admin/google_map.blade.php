@@ -48,6 +48,32 @@
 <button type="button" class="btn btn-primary" onclick="calculateDistance()">Submit</button>
            
         </div>
+
+      <div class="form-wrap">
+    <label class="login-label d-flex flex-md-row justify-content-between" for="categories_id" style="color: black; font-weight: bold; font-size: 18px;">Car Category</label>
+    <select class="form-select1" name="categories_id" id="categories_id">
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->car_categories }}</option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-wrap">
+    <label class="login-label d-flex flex-md-row justify-content-between" for="cars_id" style="color: black; font-weight: bold; font-size: 18px;">Car Name</label>
+    <select class="form-select1" name="cars_id" id="cars_id">
+        <!-- Options will be dynamically populated based on the selected category -->
+    </select>
+</div>
+
+<div id="firstMilePriceDiv">
+    <!-- Display first mile price here -->
+</div>
+
+<div id="afterFirstMilePriceDiv">
+    <!-- Display after first mile price here -->
+</div>
+                
+                
     </div>
 
 </div>
@@ -61,6 +87,7 @@
  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
 
@@ -76,7 +103,7 @@
 
     function initialize() {
         var input = document.getElementById('autocomplete');
-        var autocomplete = new google.maps.places.Autocomplete(input);
+        var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'GB' } });
 
         autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
@@ -97,11 +124,11 @@
 </script>
 
 <script>
-    window.addEventListener('load', initialize);
+    window.addEventListener('load', initialize1);
 
-    function initialize() {
+    function initialize1() {
         var input = document.getElementById('autocomplete1');
-        var autocomplete = new google.maps.places.Autocomplete(input);
+        var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'GB' } });
 
         autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
@@ -113,6 +140,7 @@
         });
     }
 </script>
+
 
 <script>
     function calculateDistance() {
@@ -137,6 +165,41 @@
         });
     }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function () {
+    // Triggered when the category dropdown changes
+    $('#categories_id').change(function () {
+        var category_id = $(this).val(); // Get the selected category ID
+        $('#cars_id').empty(); // Clear the current options in the cars dropdown
+        $('#firstMilePriceDiv').empty(); // Clear previous first mile price
+        $('#afterFirstMilePriceDiv').empty(); // Clear previous after the first mile price
+
+        // Fetch and populate the cars dropdown based on the selected category
+        @foreach ($cars as $car)
+            if ({{ $car->categories_id }} == category_id) {
+                $('#cars_id').append('<option value="{{ $car->id }}" data-firstmile="{{ $car->first_mile_price }}" data-afterfirstmile="{{ $car->after_first_mile_price }}">{{ $car->name }}</option>');
+            }
+        @endforeach
+    });
+
+    // Triggered when a car is selected
+    $('#cars_id').change(function () {
+        var selectedCar = $('#cars_id option:selected');
+        var firstMilePrice = selectedCar.data('firstmile');
+        var afterFirstMilePrice = selectedCar.data('afterfirstmile');
+
+        // Display first mile price and after the first mile price in separate divs
+        $('#firstMilePriceDiv').text('First Mile Price: ' + firstMilePrice + ' p');
+        $('#afterFirstMilePriceDiv').text('After First Mile Price: ' + afterFirstMilePrice + ' p');
+    });
+});
+
+
+</script>
+
+
 
 
 

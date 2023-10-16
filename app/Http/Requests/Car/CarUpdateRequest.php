@@ -29,7 +29,8 @@ class CarUpdateRequest extends FormRequest
             'seats'=>'required',
             'ac'=>'required',
             'first_mile_price'=>'required',
-            'after_first_mile_price'=>'required',
+            
+            
         ];
     }
 }

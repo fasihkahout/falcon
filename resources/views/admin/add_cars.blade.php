@@ -76,11 +76,7 @@
                     <input class="signin-input" id="first_mile_price" type="text" placeholder="..." name="first_mile_price"  value="{{ old('first_mile_price') }}">
                     
                 </div>
-                 <div class="form-wrap">
-                  <label class="login-label d-flex flex-md-row justify-content-between" for="ac">After First Mile Price</label>
-                    <input class="signin-input" id="after_first_mile_price" type="text" placeholder="..." name="after_first_mile_price"  value="{{ old('after_first_mile_price') }}">
-                    
-                </div>
+                
 
                  <div class="form-wrap">
                   <button type="submit" class="btn btn-primary">Submit</button>

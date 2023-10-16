@@ -46,8 +46,8 @@
                         journey
                         everywhere.</p>
                     <!-- RD Mailform-->
-                    <form class="rd-form rd-mailform form-style-1 py-5 mb-5" style="margin: 0 auto;">
-
+                    <form class="rd-form rd-mailform form-style-1 py-5 mb-5" action="{{ route('searchBooking') }}" method="POST" novalidate enctype="multipart/form-data" style="margin: 0 auto;">
+                             @csrf
                         <div class="form-wrap-2 d-flex flex-md-row justify-content-center ">
                             <div class="form-button">
                                 <button
@@ -65,43 +65,78 @@
 
                         <div id="onewayform">
                             <div class="form-wrap ">
-                                <input class="form-input " id="form-location" type="text"
-                                    placeholder="enter pickup location" name="pickup-address"
+                                <input class="form-input " name="pickup_destination" id="pickup_destination" type="text"
+                                    placeholder="enter pickup location"
                                     >
                                 <label class="form-label d-flex flex-md-row justify-content-between "
                                     for="form-location">Pick-up</label>
                             </div>
+
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude" id="latitude" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Latitude</label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude" id="longitude" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Longitude</label>
+                            </div>
                             <div class="form-wrap mt-2">
-                                <input class="form-input " id="form-location" type="text"
-                                    placeholder="enter your drop-off" name="pickup-address"
+                                <input class="form-input " name="dropoff_destination" id="dropoff_destination" type="text"
+                                    placeholder="enter your drop-off" 
                                     >
                                 <label class="form-label d-flex flex-md-row justify-content-between "
                                     for="form-location">Drop Off</label>
                             </div>
 
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude1" id="latitude1" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Latitude</label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude1" id="longitude1" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Longitude</label>
+                            </div>
 
                             <div class="form-wrap mt-2">
-                                <input class="form-input " id="form-location" type="time" placeholder="12:00"
-                                    name="pickup-address" >
+    <input class="form-input" name="distance" id="distance" type="hidden" placeholder="enter your drop-off">
+    <label class="form-label d-flex flex-md-row justify-content-between" for="form-location">Distance</label>
+</div>
+
+
+                            <div class="form-wrap mt-2">
+                                <input class="form-input " id="flight_arrival_time" type="time" placeholder="12:00"
+                                    name="flight_arrival_time" onclick="calculateDistance()" >
                                 <label class="form-label d-flex flex-md-row justify-content-between "
                                     for="form-location">Flight Arrival Time</label>
                             </div>
                             <div class="form-wrap mt-2  mb-2 pt-0 w-40">
-                                <input class="form-input " id="form-location" type="" placeholder="Luggage"
-                                    name="pickup-address" >
+                                <input class="form-input " id="luggage" type="" placeholder="Luggage"
+                                    name="luggage" >
                                 <label class="form-label d-flex flex-md-column justify-content-center "
                                     for="form-location"><i class="fa-solid fa-suitcase-rolling"></i></label>
                             </div>
                             <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-5 " style="width: 91%;">
                                 <div class="form-wrap ">
-                                    <input class="form-input " id="form-location" type="date" placeholder="28-09-2023"
-                                        name="pickup-address" >
+                                    <input class="form-input " id="pickup_date" type="date" placeholder="28-09-2023"
+                                        name="pickup_date" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location">Pickup-date</label>
                                 </div>
                                 <div class="form-wrap mt-0 pt-0 ">
-                                    <input class="form-input " id="form-location" type="time" placeholder="12:00"
-                                        name="pickup-address" >
+                                    <input class="form-input " id="pickup_time" type="time" placeholder="12:00"
+                                        name="pickup_time" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location"><i class="fa-regular fa-clock"></i></label>
                                 </div>
@@ -165,133 +200,12 @@
 
                             <div class="form-wrap-2 d-flex justify-content-center">
                                 <div class="form-button">
-                                    <a href="find.html"
-                                        class="btn-sm button-block button-secondary button-winona">Search Booking</a>
-                                </div>
+    <button type="submit" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
+</div>
                             </div>
                         </div>
 
-                        <div id="roundwayform">
-                            <div class="form-wrap ">
-                                <input class="form-input " id="form-location" type="text"
-                                    placeholder="enter pickup location" name="pickup-address"
-                                    >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Pick-up </label>
-                            </div>
-                            <div class="form-wrap mt-2">
-                                <input class="form-input " id="form-location" type="text"
-                                    placeholder="enter your drop-off" name="pickup-address"
-                                    >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Drop Off</label>
-                            </div>
-
-
-                            <div class="form-wrap mt-2">
-                                <input class="form-input " id="form-location" type="time" placeholder="12:00"
-                                    name="pickup-address" >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Flight Arrival Time</label>
-                            </div>
-                            <div class="form-wrap mt-2  mb-2 pt-0 w-40">
-                                <input class="form-input " id="form-location" type="" placeholder="Luggage"
-                                    name="pickup-address" >
-                                <label class="form-label d-flex flex-md-column justify-content-center "
-                                    for="form-location"><i class="fa-solid fa-suitcase-rolling"></i></label>
-                            </div>
-                            <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-2 " style="width: 91%;">
-                                <div class="form-wrap ">
-                                    <input class="form-input " id="form-location" type="date" placeholder="28-09-2023"
-                                        name="pickup-address" >
-                                    <label class="form-label d-flex flex-md-row justify-content-between "
-                                        for="form-location">Pickup-date</label>
-                                </div>
-                                <div class="form-wrap mt-0 pt-0 ">
-                                    <input class="form-input " id="form-location" type="time" placeholder="12:00"
-                                        name="pickup-address" >
-                                    <label class="form-label d-flex flex-md-row justify-content-between "
-                                        for="form-location"><i class="fa-regular fa-clock"></i></label>
-                                </div>
-
-                            </div>
-                            <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-5 " style="width: 91%;">
-                                <div class="form-wrap ">
-                                    <input class="form-input " id="form-location" type="date" placeholder="28-09-2023"
-                                        name="pickup-address" >
-                                    <label class="form-label d-flex flex-md-row justify-content-between "
-                                        for="form-location">Return-date</label>
-                                </div>
-                                <div class="form-wrap mt-0 pt-0 ">
-                                    <input class="form-input " id="form-location" type="time" placeholder="12:00"
-                                        name="pickup-address" >
-                                    <label class="form-label d-flex flex-md-row justify-content-between "
-                                        for="form-location"><i class="fa-regular fa-clock"></i></label>
-                                </div>
-
-                            </div>
-
-                            <div class="form-wrap-2 d-flex flex-md-row justify-content-center mt-3">
-                                <div class="form-button me-2">
-                                    <button
-                                        class="btn-sm button-block button-secondary button-winona mb-3 me-2 ms-md-0 bttn"
-                                        type="submit">Add Return</button>
-                                </div>
-                                <div class="form-wrap-2">
-                                    <div class="dropdown">
-                                        <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-user"></i>  1
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                            Adults <span class=" agespan"> (16+ years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Childrens <span class=" agespan"> (2-15 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Infrants <span class=" agespan"> (0-2 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          
-                                        </ul>
-                                      </div> 
-
-                                </div>
-
-
-                            </div>
-
-
-
-
-                            <div class="form-wrap-2 d-flex justify-content-center">
-                                <div class="form-button">
-                                    <a href="find.html"
-                                        class="btn-sm button-block button-secondary button-winona">Search Booking</a>
-                                </div>
-                            </div>
-                        </div>
+                       
 
 
                     </form>
@@ -469,3 +383,86 @@
     </section>
 
 @include('layouts.footer')
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea").addClass("d-none");
+        $("#longtitudeArea").addClass("d-none");
+    });
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('pickup_destination');
+        var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude').val(place.geometry['location'].lat());
+            $('#longitude').val(place.geometry['location'].lng());
+
+            $("#latitudeArea").removeClass("d-none");
+            $("#longtitudeArea").removeClass("d-none");
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea1").addClass("d-none");
+        $("#longtitudeArea1").addClass("d-none");
+    });
+</script>
+
+<script>
+    window.addEventListener('load', initialize1);
+
+    function initialize1() {
+        var input = document.getElementById('dropoff_destination');
+        var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude1').val(place.geometry['location'].lat());
+            $('#longitude1').val(place.geometry['location'].lng());
+
+            $("#latitudeArea1").removeClass("d-none");
+            $("#longtitudeArea1").removeClass("d-none");
+        });
+    }
+</script>
+
+
+<script>
+    function calculateDistance() {
+        var originLat = $('#latitude').val();
+        var originLng = $('#longitude').val();
+        var destLat = $('#latitude1').val();
+        var destLng = $('#longitude1').val();
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [{ lat: parseFloat(originLat), lng: parseFloat(originLng) }],
+            destinations: [{ lat: parseFloat(destLat), lng: parseFloat(destLng) }],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.IMPERIAL, // Set to IMPERIAL for miles
+        }, function(response, status) {
+            if (status === 'OK') {
+                var distance = response.rows[0].elements[0].distance.text;
+                // Update the value of the hidden input field
+                $('#distance').val(distance);
+            } else {
+                console.error('Error calculating distance: ' + status);
+            }
+        });
+    }
+</script>
