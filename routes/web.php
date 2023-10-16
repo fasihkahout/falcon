@@ -27,6 +27,7 @@ Route::middleware([
 
 //Admin COntroller 
 Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
+Route::get('/google_map' , [AdminController::class , 'googlemap'])->name('google_map');
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
 Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');

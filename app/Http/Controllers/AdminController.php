@@ -165,5 +165,9 @@ $car->first_mile_price=$request->first_mile_price;
         return redirect()->back()->with('message', 'Car Category deleted successfully!');
     }
 
+     public function googlemap(){
+        return view('admin.google_map');
+    }
+
 
 }
