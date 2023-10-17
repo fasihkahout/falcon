@@ -31,4 +31,9 @@ class Cars extends Model
         return $this->belongsTo(Category::class, 'categories_id');
 
     }
+
+    public function searchForm()
+    {
+        return $this->hasOne(SearchForm::class);
+    }
 }

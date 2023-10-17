@@ -1,4 +1,6 @@
 @include('layouts.header')
+
+
     <div id="popup-search-box">
         <div class="box-inner-wrap d-flex align-items-center">
             <form id="form" action="#" method="get" role="search">
@@ -46,8 +48,8 @@
                                     <!-- Divider -->
                                     <ul class="nav nav-divider h6 mb-0">
                                         <li class="nav-item">One-way trip</li>
-                                        <li class="nav-item">152 kms</li>
-                                        <li class="nav-item">2 Adults</li>
+                                        <li class="nav-item">&nbsp;{{ $latestDistance }}</li>
+                                        <!-- <li class="nav-item">2 Adults</li> -->
                                     </ul>
                                 </div>
     
@@ -96,12 +98,12 @@
 
                 <!-- Card title and rating -->
                 <div class="col-sm-6 col-md-4 col-xl-6">
-                    <h4 class="card-title mb-2"><a href="book.html" class="stretched-link">{{$car->name}}</a></h4>
+                    <h4 class="card-title mb-2"><a href="#" class="stretched-link">{{$car->name}}</a></h4>
                     <!-- Nav divider -->
                     <ul class="nav nav-divider h6 fw-normal mb-2">
                         <li class="nav-item">{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</li>
-                        <li class="nav-item">{{$car->ac}}</li>
-                        <li class="nav-item">{{$car->seats}}</li>
+                        <li class="nav-item">&nbsp;{{$car->ac}}</li>
+                        <li class="nav-item">&nbsp;{{$car->seats}}</li>
                     </ul>
 
                     <!-- Rating Star -->
@@ -114,22 +116,24 @@
                         <li class="list-inline-item"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
                     </ul>
                 </div>
-         @foreach($prices as $price)
-                <!-- Button -->
-                <div class="col-sm-6 col-md-4 col-xl-3 text-sm-end">
-                    <!-- Discount -->
-                    <p class="text-danger mb-0">4% Off</p>
-                    <!-- Price -->
-                    <ul class="list-inline mb-1">
-                        <li class="list-inline-item text-decoration-line-through me-1">$250</li>
-                        <li class="list-inline-item h5 mb-0">{{price}}</li>
-                    </ul>
-                    <a href="#" class="btn btn-dark mb-0">Book Now</a>
-                </div>
-            </div>
-            <!-- Row END -->
+             
+     @foreach($carPrices as $carId => $price)
+    @if($car->id == $carId)
+        <!-- Button -->
+        <div class="col-sm-6 col-md-4 col-xl-3 text-sm-end">
+            <!-- Discount -->
+            <!-- <p class="text-danger mb-0">4% Off</p> -->
+            <!-- Price -->
+            <ul class="list-inline mb-1">
+                <!-- <li class="list-inline-item text-decoration-line-through me-1">$250</li> -->
+                <li class="list-inline-item h5 mb-0">{{ $price }}p</li>
+            </ul>
+            <a href="#" class="btn btn-dark mb-0">Book Now</a>
         </div>
-        @endforeach
+    @endif
+@endforeach
+
+
         <!-- Card body END -->
 
         <!-- Card footer START -->

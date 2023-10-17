@@ -35,10 +35,21 @@ class ViewController extends Controller
         return view('blog-classic');
     }
 
-    public function find($prices){
-        $cars = Cars::with('categories')->get();
-        return view('find', compact('cars','prices'));
-    }
+    public function find()
+{
+    // Assuming Cars is your Eloquent model and has a relationship with categories
+    $cars = Cars::with('categories')->get();
+
+    // Fetch all records from the SearchForm table and get the distance of the latest record
+    $searches = SearchForm::latest()->get();
+    $latestDistance = $searches->first()->distance;
+
+    // Calculate prices based on the latest distance
+    $carPrices = $this->calculatePrices();
+
+    return view('find', compact('cars', 'carPrices', 'searches', 'latestDistance'));
+}
+
 
     public function book(){
         return view('book');
@@ -66,26 +77,46 @@ class ViewController extends Controller
         return redirect()->route('find')->with('success', 'Booking Searched successfully.');
     }
 
-    public function price(){
-    $cars = Cars::pluck('first_mile_price');
-    $search = SearchForm::pluck('distance');
+public function calculatePrices()
+{
+    // Assuming Cars is your Eloquent model
 
-    // Assuming 'first_mile_price' is the column name in the Cars model
-    $firstMilePrice = $cars->first();
+    // Fetch id, categories_id, and first_mile_price columns for all cars
+    $cars = Cars::all(['id', 'categories_id', 'first_mile_price']);
 
-    // Assuming 'distance' is the column name in the SearchForm model
-    $distance = $search->first();
+    // Assuming SearchForm is a single record, adjust accordingly if it's multiple records
+    $search = SearchForm::latest()->first(['distance']);
 
-    // Calculate total cost
-    $totalCost = $firstMilePrice + ($distance * 1.59);
+    // Get the distance from the latest search form record
+    $distance = (float)str_replace(' mi', '', $search->distance);
 
-    // Assign the calculated price to $prices
-    $prices = $totalCost;
+    // Initialize an array to store individual costs for each car
+    $carPrices = [];
 
-    // Call the 'find' method and pass the calculated prices
-    return $this->find($prices);
-}
+    // Loop through each car
+    foreach ($cars as $car) {
+        // Determine the multiplier based on categories_id
+        switch ($car['categories_id']) {
+            case 6: // Basic
+                $multiplier = 1.59;
+                break;
+            case 7: // Salon
+                $multiplier = 1.79;
+                break;
+            case 8: // 6 Seater
+                $multiplier = 2.19;
+                break;
+            default:
+                // Handle other categories if needed
+                $multiplier = 1.59;
+        }
 
+        // Calculate cost for each car based on its own first mile price and multiplier
+        $carCost = $car['first_mile_price'] + ($distance * $multiplier);
+        $carPrices[$car['id']] = $carCost;
+    }
 
+    return $carPrices;
+  }
 
 }
