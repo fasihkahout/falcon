@@ -51,9 +51,17 @@ class ViewController extends Controller
 }
 
 
-    public function book(){
-        return view('book');
-    }
+   public function book($id){
+    $cars = Cars::with('categories')->where('id', $id)->get();
+    $searches = SearchForm::latest()->get();
+    $search = SearchForm::all();
+    $latestDistance = $searches->first()->distance;
+    $carPrices = $this->calculatePrices();
+
+    return view('book', compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
+}
+
+
 
     public function confirmbooking(){
         return view('confirmbooking');
@@ -71,6 +79,7 @@ class ViewController extends Controller
         $search->pickup_time=$request->pickup_time;
         $search->luggage=$request->luggage;
         $search->distance=$request->distance;
+        $search->adults=$request->adults;
         
         
         $search->save();

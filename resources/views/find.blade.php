@@ -98,7 +98,7 @@
 
                 <!-- Card title and rating -->
                 <div class="col-sm-6 col-md-4 col-xl-6">
-                    <h4 class="card-title mb-2"><a href="#" class="stretched-link">{{$car->name}}</a></h4>
+                    <h4 class="card-title mb-2"><a href="{{ route('book', ['car_id' => $car->id]) }}" class="stretched-link">{{$car->name}}</a></h4>
                     <!-- Nav divider -->
                     <ul class="nav nav-divider h6 fw-normal mb-2">
                         <li class="nav-item">{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</li>
@@ -128,10 +128,12 @@
                 <!-- <li class="list-inline-item text-decoration-line-through me-1">$250</li> -->
                 <li class="list-inline-item h5 mb-0">{{ $price }}p</li>
             </ul>
-            <a href="#" class="btn btn-dark mb-0">Book Now</a>
-        </div>
-    @endif
+        @endif
 @endforeach
+<a href="{{ route('book', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0">Book Now</a>
+</div>
+
+   
 
 
         <!-- Card body END -->

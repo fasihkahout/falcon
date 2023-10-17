@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row row-50 justify-content-lg-between">
                 <div class="col-sm-7 col-lg-3 col-xl-2 text-start"><a class="brand d-flex" href="index.html"><img
-                            class="brand-logo-dark" src="assets/img/logodark.png" alt="" width="111" height="33"
+                            class="brand-logo-dark" src="{{asset('assets/img/logodark.png')}}" alt="" width="111" height="33"
                             loading="lazy" ></a>
                     <p class="text-start"><span style="max-width: 250px;">We provide the best taxi services for you
                             all over the USA.</span></p><a
@@ -70,19 +70,19 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="https://kit.fontawesome.com/36298aea6d.js" crossorigin="anonymous"></script>
-<script src="assets/js/vendor/jquary-3.6.0.min.js"></script>
-<script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<script src="assets/js/vendor/jquery.ajaxchimp.min.js"></script>
+<script src="{{asset('assets/js/vendor/jquary-3.6.0.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery.ajaxchimp.min.js')}}"></script>
 
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="assets/js/vendor/swiper.min.js"></script>
-<script src="assets/js/vendor/jquery.datetimepicker.full.js"></script>
-<script src="assets/js/vendor/jquery.nice-select.min.js"></script>
-<script src="assets/js/vendor/venobox.min.js"></script>
-<script src="assets/js/vendor/smooth-scroll.js"></script>
-<script src="assets/js/vendor/wow.min.js"></script>
-<script src="assets/js/book-ride.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="{{asset('assets/js/vendor/popper.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/swiper.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery.datetimepicker.full.js')}}"></script>
+<script src="{{asset('assets/js/vendor/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/venobox.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/smooth-scroll.js')}}"></script>
+<script src="{{asset('assets/js/vendor/wow.min.js')}}"></script>
+<script src="{{asset('assets/js/book-ride.js')}}"></script>
+<script src="{{asset('assets/js/main.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>

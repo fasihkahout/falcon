@@ -1,10 +1,13 @@
 @include('layouts.header')
+
+
     <section class="pt-4 mt-lg-5">
         <div class="container position-relative">
             <!-- Title and button START -->
             <div class="row">
                 <div class="col-12">
                     <!-- Meta -->
+
                     <div class="d-flex justify-content-between align-items-lg-center">
                         <!-- Title -->
                         <ul class="nav nav-divider text-dark align-items-center mb-0">
@@ -37,7 +40,7 @@
     <section class="pt-0">
         <div class="container" data-sticky-container="">
             <div class="row g-4">
-    
+     @foreach($cars as $car)
                 <!-- Main content START -->
                 <div class="col-xl-8">
                     <div class="vstack gap-5">
@@ -50,7 +53,7 @@
                                     <!-- Image -->
                                     <div class="col-md-4">
                                         <div class="bg-light rounded-3 px-4 py-5">
-                                            <img src="assets/img/seadan.svg" alt="">
+                                            <img src="{{ asset( $car->img) }}" alt="Car Image">
                                         </div>
                                     </div>
     
@@ -59,14 +62,16 @@
                                         <!-- Title and rating -->
                                         <div class="d-sm-flex justify-content-sm-between">
                                             <!-- Card title -->
+                                            
                                             <div>
-                                                <h4 class="card-title text-dark fw-semibold mb-2">Camry, Accord</h4>
+                                                <h4 class="card-title text-dark fw-semibold mb-2">{{$car->name}}</h4>
                                                 <ul class="nav nav-divider h6 fw-normal mb-2">
-                                                    <li class="nav-item">SEDAN</li>
-                                                    <li class="nav-item">AC</li>
-                                                    <li class="nav-item">4 Seats</li>
+                                                    <li class="nav-item">{{$car->type}}</li>
+                                                    <li class="nav-item">&nbsp;{{$car->ac}}</li>
+                                                    <li class="nav-item">&nbsp;{{$car->seats}}</li>
                                                 </ul>
                                             </div>
+
                                             <!-- Rating Star -->
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item me-0"><i class="fa-solid fa-star text-warning"></i></li>
@@ -80,13 +85,13 @@
                                         <!-- List -->
                                         <ul class="list-group list-group-borderless mt-2 mb-0">
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>600Kms included. After that $15/Kms</span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $latestDistance }}</span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>2 luggage bags </span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $search->first()->luggage }} </span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>Diesel Car</span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $car->type }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -125,11 +130,9 @@
                             <!-- Card body -->
                             <div class="card-body pt-4 p-0">
                                 <!-- List -->
-                                <ul class="text-start ps-0 ms-0">
-                                    <li class="mb-2">Cab and driver details will be shared on your registered phone. (22 Jan 2021 at 6:55 pm) </li>
-                                    <li class="mb-2">Due to traffic or any other unavoidable reason, the pickup may be delayed for 30 minutes.</li>
-                                    <li>For nighttime driving (between 11:00 pm to 7:00 am) on any of the nights, there will be a night driver charge of $100.</li>
-                                </ul>
+                                <p class="card-text">
+                    {{$car->driver_cab_details}}
+                </p>
     
                                 <!-- Cab images -->
                                 <h5 class="mb-0 text-start text-dark fw-semibold mb-2">Cab Images</h5>
@@ -158,35 +161,23 @@
                                 <div class="row g-3">
                                     <!-- List -->
                                     <div class="col-sm-6">
-                                        <h5 class="text-start fw-semibold text-dark">Included in your price</h5>
-                                        <ul class="list-group text-start list-group-borderless mb-0">
-                                            <li class="list-group-item mb-0 pb-0"><i class="fa-solid fa-check text-success me-1"></i>
-                                                State tax
-                                            </li>
-                                            <li class="list-group-item mb-0 pb-0"><i class="fa-solid fa-check text-success me-1"></i>
-                                                Toll charge
-                                            </li>
-                                            <li class="list-group-item mb-0 pb-0"><i class="fa-solid fa-check text-success me-1"></i>
-                                                Driver Allowance
-                                            </li>
-                                            <li class="list-group-item mb-0 pb-0"><i class="fa-solid fa-check text-success me-1"></i>
-                                                Only one pickup and drop
-                                            </li>
-                                        </ul>
-                                    </div>
+            <h5 class="text-start fw-semibold text-dark">Included in your price</h5>
+            <ul class="list-group text-start list-group-borderless mb-0">
+                @foreach(explode("\n", $car->inclusion) as $item)
+                    <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>
+                @endforeach
+            </ul>
+        </div>
     
                                     <!-- List -->
                                     <div class="col-sm-6">
-                                        <h5 class="text-start fw-semibold text-dark">Extra charge</h5>
-                                        <ul class="list-group text-start list-group-borderless mb-0">
-                                            <li class="list-group-item mb-0 pb-0"><i class="bi bi-x-lg text-danger me-1"></i>
-                                                Fare beyond 600kms
-                                            </li>
-                                            <li class="list-group-item mb-0 pb-0"><i class="bi bi-x-lg text-danger me-1"></i>
-                                                Airport entry charge
-                                            </li>
-                                        </ul>
-                                    </div>
+            <h5 class="text-start fw-semibold text-dark">Extra Charge</h5>
+            <ul class="list-group text-start list-group-borderless mb-0">
+                @foreach(explode("\n", $car->exclusion) as $item)
+                    <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>
+                @endforeach
+            </ul>
+        </div>
                                 </div>
                                 <!-- Detail END -->
                             </div>
@@ -203,23 +194,9 @@
     
                             <!-- Card body START -->
                             <div class="card-body pt-4 p-0">
-                                <ul class="list-group text-start list-group-borderless mb-0">
-                                    <li class="list-group-item h6 fw-light d-flex mb-0">
-                                        <i class="bi bi-arrow-right me-2"></i>All passengers coming to the state by road must show a COVID negative report (RT-PCR) not more than 72 hours old or a valid vaccination certificate. (Travel period should commence after 14 days from the 2nd dose)
-                                    </li>
-                                    <li class="list-group-item h6 fw-light d-flex mb-0">
-                                        <i class="bi bi-arrow-right me-2"></i>Dependent on so extremely delivered by. Yet no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions.
-                                    </li>
-                                    <li class="list-group-item h6 fw-light d-flex mb-0">
-                                        <i class="bi bi-arrow-right me-2"></i>Whatever boy her exertion his extended. Ecstatic followed handsome drawings entirely Mrs one yet outweigh.
-                                    </li>
-                                    <li class="list-group-item h6 fw-light d-flex mb-0">
-                                        <i class="bi bi-arrow-right me-2"></i>Meant balls it if up doubt small purse. Required his you put the outlived answered position. A pleasure exertion if believed provided to. 
-                                    </li>
-                                    <li class="list-group-item h6 fw-light d-flex mb-0">
-                                        <i class="bi bi-arrow-right me-2"></i>All led out world this music while asked. Paid mind even sons does he door no. Attended overcame repeated it is perceived Marianne in.
-                                    </li>
-                                </ul>
+                               <p class="card-text">
+                    {{$car->safety_guidelines}}
+                </p>
                             </div>
                             <!-- Card body END -->
                         </div>
@@ -237,40 +214,52 @@
     
                             <!-- List -->
                             <ul class="list-group list-group-borderless mb-0">
+                                @foreach($carPrices as $carId => $price)
+                                 @if($car->id == $carId)
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span class="h6 fw-light mb-0">Base Price</span>
-                                    <span class="h6 fw-light mb-0">$260</span>
+                                    <span class="h6 fw-light mb-0">{{ $price }}P</span>
                                 </li>
+                                @endif
+@endforeach
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span class="h6 fw-light mb-0">State Tax</span>
-                                    <span class="h6 fw-light mb-0">$50</span>
+                                    <span class="h6 fw-light mb-0">50P</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span class="h6 fw-light mb-0">Night Charge</span>
-                                    <span class="h6 fw-light mb-0">$100</span>
+                                    <span class="h6 fw-light mb-0">100P</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span class="h6 fw-light mb-0">Convenience Fee</span>
-                                    <span class="h6 fw-light mb-0">$25</span>
+                                    <span class="h6 fw-light mb-0">25P</span>
                                 </li>
                                 <li class="list-group-item py-0"><hr class="my-0"></li> 
                                 <!-- Divider -->
+                                 @foreach($carPrices as $carId => $price)
+                                 @if($car->id == $carId)
                                 <li class="list-group-item d-flex justify-content-between pb-0">
                                     <span class="h5 fw-normal mb-0">Total</span>
-                                    <span class="h5 fw-normal mb-0">$435</span>
+                                    <span class="h5 fw-normal mb-0">{{ $price }}P</span>
                                 </li>
+                                @endif
+@endforeach
+                               
                             </ul>
     
                             <div class="d-grid mt-4 gap-2">
-                                <div class="form-check form-check-inline mb-0">
+                                <!-- <div class="form-check form-check-inline mb-0">
                                     <input class="form-check-input" type="radio" name="discountOptions" id="discount1" value="option1" checked="">
                                     <label class="form-check-label h6 fw-normal mb-0" for="discount1">Pay $220 now (Half Payment)</label>
-                                </div>
-    
+                                </div> -->
+    @foreach($carPrices as $carId => $price)
+                                 @if($car->id == $carId)
                                 <div class="form-check form-check-inline mb-0">
-                                    <input class="form-check-input" type="radio" name="discountOptions" id="discount2" value="option2">
-                                    <label class="form-check-label h6 fw-normal mb-0" for="discount2">Pay $435 now (Full payment)</label>
+                                    <input class="form-check-input" type="radio" name="discountOptions" id="discount2" value="option2" checked="">
+                                    <label class="form-check-label h6 fw-normal mb-0" for="discount2">Pay {{ $price }}P now (Full payment)</label>
                                 </div>
+                                @endif
+@endforeach
     
                                 <!-- Button -->
                                 <a href="confirmbooking.html" class="btn btn-dark mb-0 mt-2">Pay Now</a>
@@ -282,4 +271,5 @@
             </div>
         </div>
     </section>
+    @endforeach
 @include('layouts.footer')

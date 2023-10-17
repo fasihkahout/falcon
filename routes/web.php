@@ -11,7 +11,8 @@ Route::get('/blog-grid' , [ViewController::class , 'bloggrid'])->name('bloggrid'
 Route::get('/blog-details' , [ViewController::class , 'blogdetails'])->name('blogdetails');
 Route::get('/blog-classic' , [ViewController::class , 'blogclassic'])->name('blogclassic');
 Route::get('/find' , [ViewController::class , 'find'])->name('find');
-Route::get('/book' , [ViewController::class , 'book'])->name('book');
+Route::get('/book/{car_id}', [ViewController::class, 'book'])->name('book');
+
 Route::get('/confirmbooking' , [ViewController::class , 'confirmbooking'])->name('confirmbooking');
 
 

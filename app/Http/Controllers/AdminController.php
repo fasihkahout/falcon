@@ -53,6 +53,11 @@ class AdminController extends Controller
         $car->des=$request->des;
         $car->ac=$request->ac;
         $car->first_mile_price=$request->first_mile_price;
+         $car->driver_cab_details=$request->driver_cab_details;
+          $car->inclusion =$request->inclusion;
+        $car->exclusion =$request->exclusion;
+           $car->safety_guidelines=$request->safety_guidelines;
+
        
         
         $car->save();
@@ -91,6 +96,10 @@ class AdminController extends Controller
         $car->description=$request->description;
         $car->des=$request->des;
         $car->first_mile_price=$request->first_mile_price;
+        $car->driver_cab_details=$request->driver_cab_details;
+        $car->inclusion =$request->inclusion;
+        $car->exclusion =$request->exclusion;
+        $car->safety_guidelines=$request->safety_guidelines;
        
         
         $car->save();

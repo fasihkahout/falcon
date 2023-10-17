@@ -76,6 +76,26 @@
                     <input class="signin-input" id="first_mile_price" type="text" placeholder="..." name="first_mile_price"  value="{{ old('first_mile_price') }}">
                     
                 </div>
+                <div class="form-wrap">
+                  <label class="login-label d-flex flex-md-row justify-content-between" for="ac">Driver and Cab Details</label>
+                    <input class="signin-input" id="driver_cab_details" type="text" placeholder="..." name="driver_cab_details"  value="{{ old('driver_cab_details') }}">
+                    
+                </div>
+                <div class="form-wrap">
+                  <label class="login-label d-flex flex-md-row justify-content-between" for="ac">Inclusion</label>
+                    <input class="signin-input" id="inclusion" type="text" placeholder="..." name="inclusion"  value="{{ old('inclusion') }}">
+                    
+                </div>
+                <div class="form-wrap">
+                  <label class="login-label d-flex flex-md-row justify-content-between" for="ac">Exclusion</label>
+                    <input class="signin-input" id="exclusion" type="text" placeholder="..." name="exclusion"  value="{{ old('exclusion') }}">
+                    
+                </div>
+                <div class="form-wrap">
+                  <label class="login-label d-flex flex-md-row justify-content-between" for="ac">Safety and Guidelines</label>
+                    <input class="signin-input" id="safety_guidelines" type="text" placeholder="..." name="safety_guidelines"  value="{{ old('safety_guidelines') }}">
+                    
+                </div>
                 
 
                  <div class="form-wrap">

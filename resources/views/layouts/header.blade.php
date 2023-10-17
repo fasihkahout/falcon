@@ -7,25 +7,25 @@
     <meta name="description" content="FalconOnline Taxi Booking HTML5 Template">
     <meta name="author" content="DynamicLayers">
     <title>Falcon- Online Taxi Booking Service HTML5 Template</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/keyframe-animation.css">
-    <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/venobox.min.css">
-    <link rel="stylesheet" href="assets/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/elements.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/slider.css">
-    <link rel="stylesheet" href="assets/css/blog.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/newfooter.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nav.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/line-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/keyframe-animation.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/jquery.datetimepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/venobox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/elements.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slider.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/blog.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/newfooter.css')}}">
      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  -->
 
      <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -57,7 +57,7 @@
             <div class="container">
                 <div class="mid-header-wrap">
                     <div class="site-logo">
-                        <a href="index.html"><img src="assets/img/logodark.png" alt="Logo"></a>
+                        <a href="index.html"><img src="{{asset('assets/img/logodark.png')}}" alt="Logo"></a>
                     </div>
                     <ul class="header-info">
                         <li>
@@ -93,7 +93,7 @@
             <div class="container">
                 <div class="nav-menu-inner">
                     <div class="site-logo">
-                        <a href="index.html"><img src="assets/img/logologht.png" alt="Logo"></a>
+                        <a href="index.html"><img src="{{asset('assets/img/logologht.png')}}" alt="Logo"></a>
                     </div>
                     <div class="header-menu-wrap">
                         <ul class="nav-menu">
@@ -115,10 +115,10 @@
                     </div>
                     <div class="menu-right-item">
                         <div class="search-icon dl-search-icon" style="color: white;">
-                            <img src="assets/img/search.png" alt="">
+                            <img src="{{asset('assets/img/search.png')}}" alt="">
                         </div>
                         <div class="sidebox-icon dl-sidebox-icon">
-                            <img src="assets/img/MenuIcon.png" alt="">
+                            <img src="{{asset('assets/img/MenuIcon.png')}}" alt="">
                         </div>
                         <div class="btn-group " role="group" aria-label="...">
                             <button type="button" class="btn signup-inbtn">

@@ -160,7 +160,9 @@
                                           </a>
                                           <div class="d-flex flex-row justify-content-center">
                                             <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
+                                        <div class="fs-5 mx-4">
+            <input type="number" name="adults" value="1" />
+        </div>
                                         <div class="fs-4">+</div>
                                           </div>
                                         

@@ -21,6 +21,10 @@ class Cars extends Model
         'description',
         'des',
         'first_mile_price',
+        'driver_cab_details',
+        'inclusion',
+        'exclusion',
+        'safety_guidelines',
         
     ];
 
