@@ -262,7 +262,7 @@
 @endforeach
     
                                 <!-- Button -->
-                                <a href="confirmbooking.html" class="btn btn-dark mb-0 mt-2">Pay Now</a>
+                                <a href="{{ route('confirmbooking', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0 mt-2">Pay Now</a>
                             </div>
                         </div>
                     </div> 

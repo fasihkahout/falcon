@@ -1,5 +1,5 @@
 @include('layouts.header')
-
+ @foreach($cars as $car)
     <section class="pt-4 pt-md-5">
         <div class="container">
             <div class="row g-4">
@@ -19,30 +19,30 @@
                                     <!-- Image -->
                                     <div class="col-md-3">
                                         <div class="bg-light rounded-3 px-4 py-5 mb-3 mb-md-0">
-                                            <img src="assets/img/seadan.svg" alt="">
+                                            <img src="{{ asset( $car->img) }}" alt="Car Image">
                                         </div>
                                     </div>
     
                                     <!-- Card and address detail -->
                                     <div class="col-md-9">
                                         <!-- Title -->
-                                        <h5 class="card-title text-start fw-semibold text-dark mb-2">Camry, Accord</h5>
+                                        <h5 class="card-title text-start fw-semibold text-dark mb-2">{{$car->name}}</h5>
                                         <ul class="nav nav-divider h6 fw-normal mb-2">
-                                            <li class="nav-item">SEDAN</li>
-                                            <li class="nav-item">AC</li>
-                                            <li class="nav-item">2 Seats</li>
+                                            <li class="nav-item">{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</li>
+                                            <li class="nav-item">&nbsp;{{$car->ac}}</li>
+                                            <li class="nav-item">&nbsp;{{$car->seats}}</li>
                                         </ul>
     
                                         <!-- Pick up and drop address -->
                                         <div class="row">
                                             <div class="col-md-6 text-start">
                                                 <small>Pickup address</small>
-                                                <p class="h6 fw-light text-dark mb-md-0">8 Central Ave, Chelsea, Maine, United States</p>
+                                                <p class="h6 fw-light text-dark mb-md-0">{{ $search->first()->pickup_destination }}</p>
                                             </div>
     
                                             <div class="col-md-6 text-start">
                                                 <small>Drop address</small>
-                                                <p class="h6 fw-light text-dark mb-0">1846 S Oates St, Dothan, Alaska, United States</p>
+                                                <p class="h6 fw-light text-dark mb-0">{{ $search->first()->dropoff_destination }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                     <div class="col-md-6 text-start">
                                         <ul class="list-group list-group-borderless">
                                             <li class="list-group-item">Passengers:<span class="h6 fw-normal mb-0 ms-1 text-dark">1</span></li>
-                                            <li class="list-group-item">Luggages:<span class="h6 fw-normal mb-0 ms-1 text-dark">2</span></li>
+                                            <li class="list-group-item">Luggages:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->luggage }}</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -74,17 +74,20 @@
                                             <li class="list-group-item">Passenger Number:<span class="h6 mb-0 fw-normal ms-1">+222 555 666 85</span></li>
                                         </ul>
                                     </div>
-    
+     @foreach($carPrices as $carId => $price)
+                                 @if($car->id == $carId)
                                     <!-- Price -->
                                     <div class="col-sm-4 text-sm-end mt-3 mt-sm-auto">
                                         <h6 class="mb-1 fw-normal">Total Amount</h6>
-                                        <h2 class="mb-0 fw-bolder text-success">$458</h2>
+                                        <h2 class="mb-0 fw-bolder text-success">{{ $price }}P</h2>
                                     </div>
                                 </div>
                             </div>	
                             <!-- Card body END -->
                         </div>
                         <!-- Booking summary END -->
+                        @endif
+@endforeach
     
                         <!-- Payment START -->
                         <div class="card shadow">
@@ -106,39 +109,38 @@
                                 </div>
     
                                 <!-- Form START -->
-                                <form class="row g-3">
-                                    <!-- Card number -->
-                                    <div class="col-12">
-                                       
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control" maxlength="14" placeholder="XXXX XXXX XXXX XXXX">
-                                            <img src="assets/images/element/visa.svg" class="w-30px position-absolute top-50 end-0 translate-middle-y me-2 d-none d-sm-block" alt="">
-                                        </div>	
-                                    </div>
-                                    <!-- Expiration Date -->
-                                    <div class="col-md-6">
-                                       
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" maxlength="2" placeholder="Month">
-                                            <input type="text" class="form-control" maxlength="4" placeholder="Year">
-                                        </div>
-                                    </div>	
-                                    <!--Cvv code  -->
-                                    <div class="col-md-6">
-                                      
-                                        <input type="text" class="form-control" maxlength="3" placeholder="XXXX">
-                                    </div>
-                                    <!-- Card name -->
-                                    <div class="col-12">
-                                       
-                                        <input type="text" class="form-control" placeholder="Enter card holder name">
-                                    </div>
-    
-                                    <!-- Buttons -->
-                                    <div class="col-12 text-start">
+                                 <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                        @csrf
+                        <div class='form-row row'>
+                           <div class='col-xs-12 col-md-6 form-group required'>
+                              <label class='control-label'>Name on Card</label> 
+                              <input class='form-control' size='4' type='text'>
+                           </div>
+                           <div class='col-xs-12 col-md-6 form-group required'>
+                              <label class='control-label'>Card Number</label> 
+                              <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                           </div>                           
+                        </div>                        
+                        <div class='form-row row'>
+                           <div class='col-xs-12 col-md-4 form-group cvc required'>
+                              <label class='control-label'>CVC</label> 
+                              <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                           </div>
+                           <div class='col-xs-12 col-md-4 form-group expiration required'>
+                              <label class='control-label'>Expiration Month</label> 
+                              <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                           </div>
+                           <div class='col-xs-12 col-md-4 form-group expiration required'>
+                              <label class='control-label'>Expiration Year</label> 
+                              <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                           </div>
+                        </div>
+                        <div class='mt-2'>
+                         <div class="col-12 text-start">
                                         <button class="btn btn-primary mb-0">Pay Now</button>
                                     </div>
-                                </form>
+                                </div>
+                     </form>
                                 <!-- Form END -->
                             </div>
                         </div>
@@ -148,5 +150,53 @@
             </div>
         </div>
     </section>
-
+@endforeach
 @include('layouts.footer')
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+$(function() {
+  var $form = $(".require-validation");
+  $('form.require-validation').bind('submit', function(e) {
+    var $form = $(".require-validation"),
+    inputSelector = ['input[type=email]', 'input[type=password]', 'input[type=text]', 'input[type=file]', 'textarea'].join(', '),
+    $inputs = $form.find('.required').find(inputSelector),
+    $errorMessage = $form.find('div.error'),
+    valid = true;
+    $errorMessage.addClass('hide');
+    $('.has-error').removeClass('has-error');
+    $inputs.each(function(i, el) {
+        var $input = $(el);
+        if ($input.val() === '') {
+            $input.parent().addClass('has-error');
+            $errorMessage.removeClass('hide');
+            e.preventDefault();
+        }
+    });
+    if (!$form.data('cc-on-file')) {
+      e.preventDefault();
+      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+      Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+      }, stripeResponseHandler);
+    }
+  });
+
+  function stripeResponseHandler(status, response) {
+      if (response.error) {
+          $('.error')
+              .removeClass('hide')
+              .find('.alert')
+              .text(response.error.message);
+      } else {
+          /* token contains id, last4, and card type */
+          var token = response['id'];
+          $form.find('input[type=text]').empty();
+          $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+          $form.get(0).submit();
+      }
+  }
+});
+</script>

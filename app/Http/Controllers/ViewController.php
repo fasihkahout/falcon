@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\View;
 use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
+use Session;
+use Stripe;
 
 class ViewController extends Controller
 {
@@ -63,8 +65,13 @@ class ViewController extends Controller
 
 
 
-    public function confirmbooking(){
-        return view('confirmbooking');
+    public function confirmbooking($id){
+    $cars = Cars::with('categories')->where('id', $id)->get();
+    $searches = SearchForm::latest()->get();
+    $search = SearchForm::all();
+    $latestDistance = $searches->first()->distance;
+    $carPrices = $this->calculatePrices();
+        return view('confirmbooking',compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
     }
 
     public function searchBooking(SearchFormStoreRequest $request)
@@ -127,5 +134,20 @@ public function calculatePrices()
 
     return $carPrices;
   }
+
+  public function stripePost(Request $request)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => 100*100,
+                "currency" => "PEN",
+                "source" => $request->stripeToken,
+                "description" => "Payment",
+        ]);
+   
+        Session::flash('success', 'Payment Successfull!');
+           
+        return back();
+    }
 
 }

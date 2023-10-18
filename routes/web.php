@@ -13,7 +13,8 @@ Route::get('/blog-classic' , [ViewController::class , 'blogclassic'])->name('blo
 Route::get('/find' , [ViewController::class , 'find'])->name('find');
 Route::get('/book/{car_id}', [ViewController::class, 'book'])->name('book');
 
-Route::get('/confirmbooking' , [ViewController::class , 'confirmbooking'])->name('confirmbooking');
+Route::get('/confirmbooking/{car_id}' , [ViewController::class , 'confirmbooking'])->name('confirmbooking');
+Route::post('/stripePost', [ViewController::class, 'stripePost'])->name('stripe.post');
 
 
 Route::middleware([
@@ -30,6 +31,7 @@ Route::middleware([
 Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
 Route::get('/google_map' , [AdminController::class , 'googlemap'])->name('google_map');
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
+Route::get('/users' , [AdminController::class , 'users'])->name('users');
 Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
 Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');

@@ -13,6 +13,7 @@ use App\Triats\ImageuploadTriat;
 use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,11 @@ class AdminController extends Controller
     public function cars(){
         $cars = Cars::with('categories')->get();
         return view('admin.cars', compact('cars'));
+    }
+
+    public function users(){
+        $users = User::all();
+        return view('admin.user', compact('users'));
     }
 
     public function addcars(){
