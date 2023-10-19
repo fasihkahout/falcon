@@ -61,8 +61,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany(\Spatie\Permission\Models\Role::class);
-    }
+    
+
+    
 }
