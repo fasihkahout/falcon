@@ -147,7 +147,7 @@ public function calculatePrices()
    
         Session::flash('success', 'Payment Successfull!');
            
-        return back();
+        return redirect()->route('index')->with('success', 'Payment Successfull!.');
     }
 
 }
