@@ -3,7 +3,7 @@
 @include('admin.navbar')
 
      
-      <h1 class="card-title" style="position: relative;left: 5%; color:black;" >Users</h1>
+      <h1 class="card-title" style=" color:black;" >Users</h1>
      <!--  <div style="position: relative;left: 80%; bottom:2em">
         <a href="{{url('addcars')}}"><button id="add-category-btn" class="btn btn-success">Add Cars</button></a>
       </div> -->

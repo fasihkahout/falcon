@@ -21,8 +21,32 @@ class AdminController extends Controller
 
 
     public function dashboard(){
-        return view('admin.dashboard');
+        $userId = auth()->user()->id;
+        $bookings = SearchForm::where('users_id', $userId)->get();
+        return view('admin.dashboard',compact('bookings'));
     }
+
+   public function bookings() {
+    // Check if the user is logged in
+    if(auth()->check()) {
+        // If logged in, check if the user has the 'Admin' role
+        if (auth()->user()->hasRole('Admin')) {
+            // If admin, retrieve all bookings
+            $bookings = SearchForm::all();
+        } else {
+            // If user, retrieve only bookings associated with the user
+            $userId = auth()->user()->id;
+            $bookings = SearchForm::where('users_id', $userId)->get();
+        }
+
+        return view('admin.bookings', compact('bookings'));
+    } else {
+        // If not logged in, redirect to login page
+        return redirect()->route('login')->with('error', 'Please sign in first.');
+    }
+}
+
+
 
     public function cars(){
         $cars = Cars::with('categories')->get();

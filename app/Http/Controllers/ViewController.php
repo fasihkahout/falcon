@@ -49,6 +49,8 @@ class ViewController extends Controller
     // Calculate prices based on the latest distance
     $carPrices = $this->calculatePrices();
 
+
+
     return view('find', compact('cars', 'carPrices', 'searches', 'latestDistance'));
 }
 
@@ -75,23 +77,36 @@ class ViewController extends Controller
     }
 
     public function searchBooking(SearchFormStoreRequest $request)
-    {
-
-        $input = $request->all();
-        $search = new SearchForm;
-        $search->pickup_destination = $request->pickup_destination;
-        $search->dropoff_destination=$request->dropoff_destination;
-        $search->flight_arrival_time=$request->flight_arrival_time;
-        $search->pickup_date=$request->pickup_date;
-        $search->pickup_time=$request->pickup_time;
-        $search->luggage=$request->luggage;
-        $search->distance=$request->distance;
-        $search->adults=$request->adults;
-        
-        
-        $search->save();
-        return redirect()->route('find')->with('success', 'Booking Searched successfully.');
+{
+    // Check if the user is logged in
+    if(auth()->check()) {
+        // If logged in, get the user ID
+        $userId = auth()->user()->id;
+    } else {
+        // If not logged in, show a message or handle the case accordingly
+        return redirect()->route('register')->with('error', 'Please sign up first.');
     }
+
+    $input = $request->all();
+    $search = new SearchForm;
+    
+    // Associate the user ID with the search
+    $search->users_id = $userId;
+
+    $search->pickup_destination = $request->pickup_destination;
+    $search->dropoff_destination = $request->dropoff_destination;
+    $search->flight_arrival_time = $request->flight_arrival_time;
+    $search->pickup_date = $request->pickup_date;
+    $search->pickup_time = $request->pickup_time;
+    $search->luggage = $request->luggage;
+    $search->distance = $request->distance;
+    $search->adults = $request->adults;
+
+    $search->save();
+
+    return redirect()->route('find')->with('success', 'Booking Searched successfully.');
+}
+
 
 public function calculatePrices()
 {

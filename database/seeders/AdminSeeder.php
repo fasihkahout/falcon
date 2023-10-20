@@ -5,6 +5,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class AdminSeeder extends Seeder
 {
@@ -13,13 +14,15 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-         $user = User::create ([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
+        $user = User::create([
+            'name'              => 'Admin',
+            'email'             => 'admin@admin.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$Bqkj5MtmrdkUh9BKdzAae.fVmcxqyIh49W9aUVXgj1I2SEjEEBb9G', // password
-            
-        ]); 
-        $user->assignRole('admin');  
+            'password'          => '$2y$10$Bqkj5MtmrdkUh9BKdzAae.fVmcxqyIh49W9aUVXgj1I2SEjEEBb9G', // password
+        ]);
+
+        $adminRole = Role::where('name', 'Admin')->first();
+        $user->assignRole($adminRole);
     }
 }
+

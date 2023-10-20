@@ -32,6 +32,7 @@ Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboa
 Route::get('/google_map' , [AdminController::class , 'googlemap'])->name('google_map');
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
 Route::get('/users' , [AdminController::class , 'users'])->name('users');
+Route::get('/bookings' , [AdminController::class , 'bookings'])->name('bookings');
 Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
 Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');

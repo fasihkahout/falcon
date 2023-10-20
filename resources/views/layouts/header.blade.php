@@ -114,21 +114,28 @@
                         </ul>
                     </div>
                     <div class="menu-right-item">
-                        <div class="search-icon dl-search-icon" style="color: white;">
-                            <img src="{{asset('assets/img/search.png')}}" alt="">
-                        </div>
-                        <div class="sidebox-icon dl-sidebox-icon">
-                            <img src="{{asset('assets/img/MenuIcon.png')}}" alt="">
-                        </div>
-                        <div class="btn-group " role="group" aria-label="...">
-                            <button type="button" class="btn signup-inbtn">
-                                <a href="{{ url('register' )}}" class="signup-in ">Sign Up</a>
-                            </button>
-                            <button type="button" class="btn  signup-inbtn">
-                                <a href="{{ url('login' )}}" class="signup-in">Log In</a>
-                            </button>
-                        </div>
-                    </div>
+    <div class="search-icon dl-search-icon" style="color: white;">
+        <img src="{{asset('assets/img/search.png')}}" alt="">
+    </div>
+    <div class="sidebox-icon dl-sidebox-icon">
+        <img src="{{asset('assets/img/MenuIcon.png')}}" alt="">
+    </div>
+    <div class="btn-group " role="group" aria-label="...">
+
+        @if(auth()->check()) <!-- Check if the user is logged in -->
+            <span>Welcome, {{ auth()->user()->name }}</span>
+        @else
+            <button type="button" class="btn signup-inbtn">
+                <a href="{{ url('register' )}}" class="signup-in">Sign Up</a>
+            </button>
+            <button type="button" class="btn  signup-inbtn">
+                <a href="{{ url('login' )}}" class="signup-in">Log In</a>
+            </button>
+        @endif
+
+    </div>
+</div>
+
                     <div class="mobile-menu-icon">
                         <div class="burger-menu">
                             <div class="line-menu line-half first-line"></div>
