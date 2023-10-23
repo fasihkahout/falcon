@@ -47,6 +47,7 @@ Route::get('/deletecategories/{id}', [AdminController::class, 'deletecategories'
 
 
 Route::post('searchbooking', [ViewController::class, 'searchBooking'])->name('searchBooking');
+Route::post('searchbookings', [ViewController::class, 'searchbookings'])->name('searchbookings');
 
 
 

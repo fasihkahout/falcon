@@ -207,14 +207,173 @@
                             </div>
                         </div>
 
+                    </form>
+
+                    <form class="rd-form rd-mailform form-style-1 py-5 mb-5" action="{{ route('searchbookings') }}"  method="POST" novalidate enctype="multipart/form-data" >
+                             @csrf
+
                        
+                        <div id="roundwayform">
+                            <div class="form-wrap ">
+                                <input class="form-input " name="pickup_destination" id="pickup_destination1" type="text"
+                                    placeholder="enter pickup location"
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Pick-up</label>
+                            </div>
+
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude2" id="latitude2" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Latitude</label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude2" id="longitude2" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Longitude</label>
+                            </div>
+                            <div class="form-wrap mt-2">
+                                <input class="form-input " name="dropoff_destination" id="dropoff_destination1" type="text"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Drop Off</label>
+                            </div>
+
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude3" id="latitude3" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location"></label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude3" id="longitude3" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location"></label>
+                            </div>
+
+                            <div class="form-wrap mt-2">
+                            <input class="form-input" name="distance" id="distance1" type="hidden" placeholder="enter your drop-off">
+                            <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
+                        </div>
+
+
+                           
+                            <div class="form-wrap mt-2  mb-2 pt-0 w-40">
+                                <input class="form-input " id="form-location" type="" placeholder="Luggage"
+                                    name="luggage" onclick="calculateDistance1()">
+                                <label class="form-label d-flex flex-md-column justify-content-center "
+                                    for="form-location"><i class="fa-solid fa-suitcase-rolling"></i></label>
+                            </div>
+                            
+                                <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-0 " style="width: 91%;">
+                                <div class="form-wrap ">
+                                    <input class="form-input " id="pickup_date" type="date" placeholder="28-09-2023"
+                                        name="pickup_date" >
+                                    <label class="form-label d-flex flex-md-row justify-content-between "
+                                        for="form-location">Pickup-date</label>
+                                </div>
+                                <div class="form-wrap mt-0 pt-0 ">
+                                    <input class="form-input " id="pickup_time" type="time" placeholder="12:00"
+                                        name="pickup_time" >
+                                    <label class="form-label d-flex flex-md-row justify-content-between "
+                                        for="form-location"><i class="fa-regular fa-clock"></i></label>
+                                </div>
+
+                            </div>
+                            <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-5 " style="width: 91%;">
+                                <div class="form-wrap ">
+                                    <input class="form-input " id="return_date" type="date" placeholder="28-09-2023"
+                                        name="return_date" >
+                                    <label class="form-label d-flex flex-md-row justify-content-between "
+                                        for="form-location">Return-date</label>
+                                </div>
+                                <div class="form-wrap mt-0 pt-0 ">
+                                    <input class="form-input " id="return_time" type="time" placeholder="12:00"
+                                        name="return_time" >
+                                    <label class="form-label d-flex flex-md-row justify-content-between "
+                                        for="form-location"><i class="fa-regular fa-clock"></i></label>
+                                </div>
+
+                            </div>
+
+                            <div class="form-wrap-2 d-flex flex-md-row justify-content-center mt-3">
+                                <div class="form-button me-2">
+                                    <button
+                                        class="btn-sm button-block button-secondary button-winona mb-3 me-2 ms-md-0 bttn"
+                                        type="submit">Add Return</button>
+                                </div>
+                                <div class="form-wrap-2">
+                                    <div class="dropdown">
+                                        <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-user"></i>  1
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                          <li class="mb-3"><a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                            Adults <span class=" agespan"> (16+ years) :</span>
+                                          </a>
+                                          <div class="d-flex flex-row justify-content-center">
+                                            <div class="fs-4">-</div>
+                                        <div class="fs-5 mx-4">
+            <input type="number" name="adults" value="1" />
+        </div>
+                                        <div class="fs-4">+</div>
+                                          </div>
+                                        
+                                        </li>
+                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
+                                            Childrens <span class=" agespan"> (2-15 years) :</span>
+                                          </a>
+                                          <div class="d-flex flex-row justify-content-center">
+                                            <div class="fs-4">-</div>
+                                        <div class="fs-5 mx-4">1</div>
+                                        <div class="fs-4">+</div>
+                                          </div>
+                                        
+                                        </li>
+                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
+                                            Infrants <span class=" agespan"> (0-2 years) :</span>
+                                          </a>
+                                          <div class="d-flex flex-row justify-content-center">
+                                            <div class="fs-4">-</div>
+                                        <div class="fs-5 mx-4">1</div>
+                                        <div class="fs-4">+</div>
+                                          </div>
+                                        
+                                        </li>
+                                          
+                                        </ul>
+                                      </div> 
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+                            <div class="form-wrap-2 d-flex justify-content-center">
+                                <div class="form-button">
+                                    
+                                        <button type="submit" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </form>
                 </div>
             </div>
             <div class="col-md-6 px-4 px-md-0">
-                <img src="assets/img/idnex-1-747x597.png" alt="" style="padding-top: 20%;">
+                <img src="{{asset('assets/img/idnex-1-747x597.png')}}" alt="" style="padding-top: 20%;">
             </div>
 
         </div>
@@ -227,11 +386,11 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="about-img">
-                        <img class="about-img1 wow fade-in-left" data-wow-delay="200ms" src="assets/img/about-1.png"
+                        <img class="about-img1 wow fade-in-left" data-wow-delay="200ms" src="{{asset('assets/img/about-1.png')}}"
                             alt="img">
-                        <img class="about-img2 wow fade-in-bottom" data-wow-delay="400ms" src="assets/img/about-2.png"
+                        <img class="about-img2 wow fade-in-bottom" data-wow-delay="400ms" src="{{asset('assets/img/about-2.png')}}"
                             alt="img">
-                        <figure class="round-text"><img src="assets/img/experience-text-round.png" alt="img"></figure>
+                        <figure class="round-text"><img src="{{asset('assets/img/experience-text-round.png')}}" alt="img"></figure>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -246,10 +405,10 @@
 
                     <ul class="about-info wow fade-in-right" data-wow-delay="400ms">
                         <li>
-                            <img class="owner-thumb" src="assets/img/comment-1.png" alt="thumb">
+                            <img class="owner-thumb" src="{{asset('assets/img/comment-1.png')}}" alt="thumb">
                             <div class="owner">
                                 <h4>Founder - CEO</h4>
-                                <img class="signature" src="assets/img/signature.png" alt="signature">
+                                <img class="signature" src="{{asset('assets/img/signature.png')}}" alt="signature">
                             </div>
                         </li>
                         <li>
@@ -401,6 +560,25 @@
 </script>
 
 <script>
+    $(document).ready(function () {
+        $("#latitudeArea1").addClass("d-none");
+        $("#longtitudeArea1").addClass("d-none");
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea2").addClass("d-none");
+        $("#longtitudeArea2").addClass("d-none");
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea3").addClass("d-none");
+        $("#longtitudeArea3").addClass("d-none");
+    });
+</script>
+
+<script>
     window.addEventListener('load', initialize);
 
     function initialize() {
@@ -418,12 +596,7 @@
     }
 </script>
 
-<script>
-    $(document).ready(function () {
-        $("#latitudeArea1").addClass("d-none");
-        $("#longtitudeArea1").addClass("d-none");
-    });
-</script>
+
 
 <script>
     window.addEventListener('load', initialize1);
@@ -439,6 +612,44 @@
 
             $("#latitudeArea1").removeClass("d-none");
             $("#longtitudeArea1").removeClass("d-none");
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input1 = document.getElementById('pickup_destination1');
+        var autocomplete1 = new google.maps.places.Autocomplete(input1, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete1.addListener('place_changed', function () {
+            var place = autocomplete1.getPlace();
+            $('#latitude2').val(place.geometry['location'].lat());
+            $('#longitude2').val(place.geometry['location'].lng());
+
+            $("#latitudeArea2").removeClass("d-none");
+            $("#longtitudeArea2").removeClass("d-none");
+        });
+    }
+</script>
+
+
+
+<script>
+    window.addEventListener('load', initialize1);
+
+    function initialize1() {
+        var input1 = document.getElementById('dropoff_destination1');
+        var autocomplete = new google.maps.places.Autocomplete(input1, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude3').val(place.geometry['location'].lat());
+            $('#longitude3').val(place.geometry['location'].lng());
+
+            $("#latitudeArea3").removeClass("d-none");
+            $("#longtitudeArea3").removeClass("d-none");
         });
     }
 </script>
@@ -462,6 +673,34 @@
                 var distance = response.rows[0].elements[0].distance.text;
                 // Update the value of the hidden input field
                 $('#distance').val(distance);
+            } else {
+                console.error('Error calculating distance: ' + status);
+            }
+        });
+    }
+</script>
+
+<script>
+    function calculateDistance1() {
+        var originLat = $('#latitude2').val();
+        var originLng = $('#longitude2').val();
+        var destLat = $('#latitude3').val();
+        var destLng = $('#longitude3').val();
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [{ lat: parseFloat(originLat), lng: parseFloat(originLng) }],
+            destinations: [{ lat: parseFloat(destLat), lng: parseFloat(destLng) }],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.IMPERIAL, // Set to IMPERIAL for miles
+        }, function(response, status) {
+            if (status === 'OK') {
+                var distance1 = response.rows[0].elements[0].distance.value; // Get distance in meters
+                var distanceInMiles = distance1 * 0.000621371; // Convert meters to miles
+                var multipliedDistance = distanceInMiles * 2; // Multiply by 2
+
+                // Update the value of the hidden input field
+                $('#distance1').val(multipliedDistance.toFixed(2)); // Set to 2 decimal places
             } else {
                 console.error('Error calculating distance: ' + status);
             }

@@ -91,7 +91,9 @@ class ViewController extends Controller
     $search->dropoff_destination = $request->dropoff_destination;
     $search->flight_arrival_time = $request->flight_arrival_time;
     $search->pickup_date = $request->pickup_date;
+    
     $search->pickup_time = $request->pickup_time;
+    
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
     $search->adults = $request->adults;
@@ -100,6 +102,34 @@ class ViewController extends Controller
 
     return redirect()->route('find')->with('success', 'Booking Searched successfully.');
 }
+
+ public function searchbookings(SearchFormStoreRequest $request)
+{
+    // Retrieve the user ID of the logged-in user
+    $userId = auth()->id();
+
+    $input = $request->all();
+    $search = new SearchForm;
+    
+    // Associate the user ID with the search
+    $search->users_id = $userId;
+
+    $search->pickup_destination = $request->pickup_destination;
+    $search->dropoff_destination = $request->dropoff_destination;
+   
+    $search->pickup_date = $request->pickup_date;
+    $search->return_date = $request->pickup_date;
+    $search->pickup_time = $request->pickup_time;
+    $search->return_time = $request->return_time;
+    $search->luggage = $request->luggage;
+    $search->distance = $request->distance;
+    $search->adults = $request->adults;
+
+    $search->save();
+
+    return redirect()->route('find')->with('success', 'Booking Searched successfully.');
+}
+
 
 
 

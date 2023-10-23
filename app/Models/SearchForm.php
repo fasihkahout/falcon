@@ -22,6 +22,8 @@ class SearchForm extends Model
         'childrens',
         'infants',
         'distance',
+        'return_date',
+        'return_time',
     ];
 
     protected $table = 'search_form';

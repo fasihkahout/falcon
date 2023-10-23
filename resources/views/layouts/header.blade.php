@@ -98,7 +98,7 @@
                     <div class="header-menu-wrap">
                         <ul class="nav-menu">
                             <li class="active dropdown_menu">
-                                <a href="index.html">Home</a>
+                                <a href="{{ route('index') }}">Home</a>
                             </li>
                             <li class="dropdown_menu">
                                 <a href="{{url('airports')}}">Airports</a>

@@ -24,13 +24,11 @@ class SearchFormUpdateRequest extends FormRequest
         return [
            'pickup_destination'=>'required',
             'dropoff_destination'=>'required',
-            'flight_arrival_time'=>'required',
+            
             'pickup_date'=>'required',
             'pickup_time'=>'required',
             'luggage'=>'required',
-            'adults'=>'required',
-            'childrens'=>'required',
-            'infants'=>'required',
+           
         ];
     }
 }
