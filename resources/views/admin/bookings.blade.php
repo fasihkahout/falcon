@@ -42,21 +42,21 @@
                                                 N/A
                                             @endif
                                         </td>
-                                                                                <td>
+                                        <td>
                                             @if($booking->pickup_time)
                                                 {{ $booking->pickup_time }}
                                             @else
                                                 N/A
                                             @endif
                                         </td>
-                                                                                <td>
+                                        <td>
                                             @if($booking->return_date)
                                                 {{ $booking->return_date }}
                                             @else
                                                 N/A
                                             @endif
                                         </td>
-                                                                                <td>
+                                        <td>
                                             @if($booking->return_time)
                                                 {{ $booking->return_time }}
                                             @else
