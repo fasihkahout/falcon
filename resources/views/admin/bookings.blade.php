@@ -21,6 +21,8 @@
                                             <th>Flight Arrival Time</th>
                                             <th>Pick-up Date</th>
                                             <th>Pick-up Time</th>
+                                            <th>Return Date</th>
+                                            <th>Return Time</th>
                                            <th>Luggage</th>
                                            <th>Distance</th>
                                         </tr>
@@ -31,8 +33,34 @@
                                         <td>{{$booking->pickup_destination}}</td>
                                         <td>{{$booking->dropoff_destination}}</td>
                                         <td>{{$booking->flight_arrival_time}}</td>
-                                        <td>{{$booking->pickup_date}}</td>
-                                        <td>{{$booking->pickup_time}}</td>
+                                        <td>
+                                            @if($booking->pickup_date)
+                                                {{ $booking->pickup_date }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                                                                <td>
+                                            @if($booking->pickup_time)
+                                                {{ $booking->pickup_time }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                                                                <td>
+                                            @if($booking->return_date)
+                                                {{ $booking->return_date }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                                                                <td>
+                                            @if($booking->return_time)
+                                                {{ $booking->return_time }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
                                         <td>{{$booking->luggage}}</td>
                                         <td>{{$booking->distance}}</td>
                                     </tr>
