@@ -78,14 +78,8 @@ class ViewController extends Controller
 
     public function searchBooking(SearchFormStoreRequest $request)
 {
-    // Check if the user is logged in
-    if(auth()->check()) {
-        // If logged in, get the user ID
-        $userId = auth()->user()->id;
-    } else {
-        // If not logged in, show a message or handle the case accordingly
-        return redirect()->route('register')->with('error', 'Please sign up first.');
-    }
+    // Retrieve the user ID of the logged-in user
+    $userId = auth()->id();
 
     $input = $request->all();
     $search = new SearchForm;
@@ -106,6 +100,7 @@ class ViewController extends Controller
 
     return redirect()->route('find')->with('success', 'Booking Searched successfully.');
 }
+
 
 
 public function calculatePrices()
@@ -151,18 +146,26 @@ public function calculatePrices()
   }
 
   public function stripePost(Request $request)
-    {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
-                "amount" => 100*100,
-                "currency" => "PEN",
-                "source" => $request->stripeToken,
-                "description" => "Payment",
-        ]);
-   
-        Session::flash('success', 'Payment Successfull!');
-           
-        return redirect()->route('index')->with('success', 'Payment Successfull!.');
+{
+    // Check if the user is logged in
+    if (!auth()->check()) {
+        // User is not logged in, redirect to the login page
+        return redirect()->route('login')->with('error', 'Please log in to complete the payment.');
     }
+
+    // User is logged in, proceed with the payment
+    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    Stripe\Charge::create([
+        "amount" => 100 * 100,
+        "currency" => "PEN",
+        "source" => $request->stripeToken,
+        "description" => "Payment",
+    ]);
+
+    Session::flash('success', 'Payment Successful!');
+
+    return redirect()->route('index')->with('success', 'Payment Successful!');
+}
+
 
 }

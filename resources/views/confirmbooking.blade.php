@@ -69,9 +69,10 @@
                                     <!-- List -->
                                     <div class="col-sm-8 text-start">
                                         <ul class="list-group list-group-borderless mb-0">
-                                            <li class="list-group-item">Passenger Name:<span class="h6 mb-0 fw-normal ms-1">Billy Vasquez</span></li>
-                                            <li class="list-group-item">Passenger Email:<span class="h6 mb-0 fw-normal ms-1">example@gmail.com</span></li>
-                                            <li class="list-group-item">Passenger Number:<span class="h6 mb-0 fw-normal ms-1">+222 555 666 85</span></li>
+                                            @if(auth()->check())
+                                            <li class="list-group-item">Passenger Name:<span class="h6 mb-0 fw-normal ms-1">{{ auth()->user()->name }}</span></li>
+                                            <li class="list-group-item">Passenger Email:<span class="h6 mb-0 fw-normal ms-1">{{ auth()->user()->email }}</span></li>
+                                             @endif
                                         </ul>
                                     </div>
      @foreach($carPrices as $carId => $price)

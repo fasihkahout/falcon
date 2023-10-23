@@ -123,7 +123,8 @@
     <div class="btn-group " role="group" aria-label="...">
 
         @if(auth()->check()) <!-- Check if the user is logged in -->
-            <span>Welcome, {{ auth()->user()->name }}</span>
+           <span>Welcome, <a href="{{ route('dashboard') }}" style="color:white;">{{ auth()->user()->name }}</a></span>
+
         @else
             <button type="button" class="btn signup-inbtn">
                 <a href="{{ url('register' )}}" class="signup-in">Sign Up</a>
