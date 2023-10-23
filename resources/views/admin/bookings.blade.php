@@ -16,6 +16,7 @@
                                 <table id="tables_id" class=" table">
                                     <thead>
                                         <tr>
+                                            <th>Passenger Name</th>
                                             <th>Pick-up Destination</th>
                                             <th>Drop-off Destination</th>
                                             <th>Flight Arrival Time</th>
@@ -30,6 +31,7 @@
                                     <tbody>
                                         @foreach($bookings as $booking)
                                     <tr>
+                                        <td>{{isset($booking->users->name)?$booking->users->name:'N/A'}}</td>
                                         <td>{{$booking->pickup_destination}}</td>
                                         <td>{{$booking->dropoff_destination}}</td>
                                         <td>{{$booking->flight_arrival_time}}</td>

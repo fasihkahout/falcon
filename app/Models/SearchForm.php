@@ -27,4 +27,10 @@ class SearchForm extends Model
     ];
 
     protected $table = 'search_form';
+
+     public function users()
+     {
+        return $this->belongsTo(User::class,'users_id','id');
+
+    }
 }
