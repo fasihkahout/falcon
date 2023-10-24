@@ -17,6 +17,7 @@
                                     <thead>
                                         <tr>
                                             <th>Passenger Name</th>
+                                            <th>Car Name</th>
                                             <th>Pick-up Destination</th>
                                             <th>Drop-off Destination</th>
                                             <th>Flight Arrival Time</th>
@@ -26,15 +27,23 @@
                                             <th>Return Time</th>
                                            <th>Luggage</th>
                                            <th>Distance</th>
+                                           <th>Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($bookings as $booking)
                                     <tr>
                                         <td>{{isset($booking->users->name)?$booking->users->name:'N/A'}}</td>
+                                        <td>{{isset($booking->cars->name)?$booking->cars->name:'N/A'}}</td>
                                         <td>{{$booking->pickup_destination}}</td>
                                         <td>{{$booking->dropoff_destination}}</td>
-                                        <td>{{$booking->flight_arrival_time}}</td>
+                                        <td>
+                                            @if($booking->flight_arrival_time)
+                                                {{ $booking->flight_arrival_time }}
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($booking->pickup_date)
                                                 {{ $booking->pickup_date }}
@@ -65,6 +74,7 @@
                                         </td>
                                         <td>{{$booking->luggage}}</td>
                                         <td>{{$booking->distance}}</td>
+                                        <td>{{$booking->car_price}} P</td>
                                     </tr>
                                     @endforeach
                                    

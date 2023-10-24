@@ -49,8 +49,8 @@
     
                                     <div class="col-md-6 text-start">
                                         <ul class="list-group list-group-borderless">
-                                            <li class="list-group-item">Journey Date:<span class="h6 fw-normal mb-0 ms-1 text-dark">25 Nov 2022</span></li>
-                                            <li class="list-group-item">Distance:<span class="h6 fw-normal mb-0 ms-1 text-dark">230 km</span></li>
+                                            <li class="list-group-item">Journey Date:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->pickup_date }}</span></li>
+                                            <li class="list-group-item">Distance:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->distance }}</span></li>
                                         </ul>
                                     </div>
             
@@ -117,6 +117,8 @@
                               <label class='control-label'>Name on Card</label> 
                               <input class='form-control' size='4' type='text'>
                            </div>
+                           <input type="hidden" name="car_id" value="{{ $car->id }}">
+    <input type="hidden" name="car_price" value="{{ $price }}">
                            <div class='col-xs-12 col-md-6 form-group required'>
                               <label class='control-label'>Card Number</label> 
                               <input autocomplete='off' class='form-control card-number' size='20' type='text'>

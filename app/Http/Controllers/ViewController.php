@@ -175,7 +175,7 @@ public function calculatePrices()
     return $carPrices;
   }
 
-  public function stripePost(Request $request)
+ public function stripePost(Request $request)
 {
     // Check if the user is logged in
     if (!auth()->check()) {
@@ -183,10 +183,33 @@ public function calculatePrices()
         return redirect()->route('login')->with('error', 'Please log in to complete the payment.');
     }
 
+    // Retrieve the user ID of the logged-in user
+    $userId = auth()->id();
+
+    // Retrieve the car price from the request
+    $carPrice = $request->input('car_price');
+
+    // Convert the car price to pence (assuming the currency is in pence)
+    $amountInPence = round($carPrice * 100); // Convert to pence and round properly
+
+    // Assuming you have logic to determine the car ID here
+    $carId = $request->input('car_id'); // Adjust this based on your implementation
+
+    // Find the existing SearchForm record for the user
+    $searchForm = SearchForm::where('users_id', $userId)->latest()->first();
+
+    // Update the existing record with the car price
+    $searchForm->car_price = $carPrice;
+    $searchForm->car_id = $carId;
+
+    // Save the changes
+    $searchForm->save();
+
     // User is logged in, proceed with the payment
-    Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    Stripe\Charge::create([
-        "amount" => 100 * 100,
+    \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    \Stripe\Charge::create([
+        "amount" => $amountInPence,
         "currency" => "PEN",
         "source" => $request->stripeToken,
         "description" => "Payment",

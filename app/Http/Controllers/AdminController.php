@@ -32,12 +32,12 @@ class AdminController extends Controller
         // If logged in, check if the user has the 'Admin' role
         if (auth()->user()->hasRole('Admin')) {
             // If admin, retrieve all bookings
-            $bookings = SearchForm::with('users')->whereNotNull('users_id')
+            $bookings = SearchForm::with('users','cars')->whereNotNull('users_id')
     ->get();
         } else {
             // If user, retrieve only bookings associated with the user
             $userId = auth()->user()->id;
-            $bookings = SearchForm::with('users')->where('users_id', $userId)->get();
+            $bookings = SearchForm::with('users','cars')->where('users_id', $userId)->get();
         }
 
         return view('admin.bookings', compact('bookings'));

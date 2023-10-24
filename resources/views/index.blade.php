@@ -46,8 +46,9 @@
                         journey
                         everywhere.</p>
                     <!-- RD Mailform-->
-                    <form class="rd-form rd-mailform form-style-1 py-5 mb-5" action="{{ route('searchBooking') }}" method="POST" novalidate enctype="multipart/form-data" style="margin: 0 auto;">
-                             @csrf
+                   
+                        <div class="rd-form rd-mailform form-style-1 py-4 mb-5" >
+
                         <div class="form-wrap-2 d-flex flex-md-row justify-content-center ">
                             <div class="form-button">
                                 <button
@@ -61,7 +62,8 @@
                             </div>
                         </div>
 
-
+ <form class="rd-form rd-mailform form-style-1" action="{{ route('searchBooking') }}" method="POST" novalidate enctype="multipart/form-data" >
+                             @csrf
 
                         <div id="onewayform">
                             <div class="form-wrap ">
@@ -209,7 +211,7 @@
 
                     </form>
 
-                    <form class="rd-form rd-mailform form-style-1 py-5 mb-5" action="{{ route('searchbookings') }}"  method="POST" novalidate enctype="multipart/form-data" >
+                    <form class="rd-form rd-mailform form-style-1 " action="{{ route('searchbookings') }}"  method="POST" novalidate enctype="multipart/form-data" >
                              @csrf
 
                        
@@ -260,7 +262,7 @@
                             </div>
 
                             <div class="form-wrap mt-2">
-                            <input class="form-input" name="distance" id="distance1" type="hidden" placeholder="enter your drop-off">
+                            <input class="form-input" name="distance" id="distance1" type="hidden" placeholder="">
                             <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
                         </div>
 
@@ -372,6 +374,7 @@
                     </form>
                 </div>
             </div>
+        </div>
             <div class="col-md-6 px-4 px-md-0">
                 <img src="{{asset('assets/img/idnex-1-747x597.png')}}" alt="" style="padding-top: 20%;">
             </div>
@@ -701,6 +704,9 @@
 
                 // Update the value of the hidden input field
                 $('#distance1').val(multipliedDistance.toFixed(2)); // Set to 2 decimal places
+
+                // Update the displayed distance
+                $('#distance1Display').text(multipliedDistance.toFixed(2));
             } else {
                 console.error('Error calculating distance: ' + status);
             }
