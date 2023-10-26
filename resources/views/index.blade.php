@@ -17,7 +17,7 @@
     <div id="popup-sidebox" class="popup-sidebox">
         <div class="sidebox-content">
             <div class="site-logo">
-                <a href="index.html"><img src="assets/img/logologht.png" alt="logo"></a>
+                <a href="index.html"><img src="{{asset('assets/img/logologht.png')}}" alt="logo"></a>
             </div>
             <p>Everything your taxi business needs is already here! Ridek, a theme made for taxi service companies.</p>
             <ul class="sidebox-list">
@@ -443,7 +443,7 @@
                                             hard to find, but the app has always been a bit difficult to use especially
                                             how it works or doesnt with large font phone settings.</p>
                                         <div class="testi-author">
-                                            <div class="author-thumb"><img src="assets/img/comment-1.png" alt="author">
+                                            <div class="author-thumb"><img src="{{asset('assets/img/comment-1.png')}}" alt="author">
                                             </div>
                                             <div class="author-info">
                                                 <h3>Eredrik Johanson <span>Financial .INC</span></h3>
@@ -458,7 +458,7 @@
                                             hard to find, but the app has always been a bit difficult to use especially
                                             how it works or doesnt with large font phone settings.</p>
                                         <div class="testi-author">
-                                            <div class="author-thumb"><img src="assets/img/comment-1.png" alt="author">
+                                            <div class="author-thumb"><img src="{{asset('assets/img/comment-1.png')}}" alt="author">
                                             </div>
                                             <div class="author-info">
                                                 <h3>Eredrik Johanson <span>Financial .INC</span></h3>
@@ -473,7 +473,7 @@
                                             hard to find, but the app has always been a bit difficult to use especially
                                             how it works or doesnt with large font phone settings.</p>
                                         <div class="testi-author">
-                                            <div class="author-thumb"><img src="assets/img/comment-1.png" alt="author">
+                                            <div class="author-thumb"><img src="{{asset('assets/img/comment-1.png')}}" alt="author">
                                             </div>
                                             <div class="author-info">
                                                 <h3>Eredrik Johanson <span>Financial .INC</span></h3>

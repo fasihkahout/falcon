@@ -4,7 +4,7 @@
     <div class="container1">
         <div class="signin-content">
             <div class="signin-image">
-                <figure><img src="assets/img/car-1.png" alt="sing up image"></figure>
+                <figure><img src="{{asset('assets/img/car-1.png')}}" alt="sing up image"></figure>
                 <a class="signup-image-link">Create an account</a>
             </div>
 

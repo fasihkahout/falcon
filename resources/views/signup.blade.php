@@ -10,25 +10,25 @@
     <link rel="stylesheet" href="screens/signup/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="assets/css/signinlogin.css">
-    <link rel="stylesheet" href="assets/css/form.css">
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/keyframe-animation.css">
-    <link rel="stylesheet" href="assets/css/jquery.datetimepicker.min.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/venobox.min.css">
-    <link rel="stylesheet" href="assets/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/elements.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/slider.css">
-    <link rel="stylesheet" href="assets/css/blog.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/newfooter.css">
+    <link rel="stylesheet" href="{{asset('assets/css/signinlogin.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/form.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nav.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/line-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/keyframe-animation.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/jquery.datetimepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/venobox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/elements.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/header.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slider.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/blog.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/newfooter.css')}}">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="mid-header-wrap">
                     <div class="site-logo">
-                        <a href="index.html"><img src="assets/img/logodark.png" alt="Logo"></a>
+                        <a href="index.html"><img src="{{asset('assets/img/logodark.png')}}" alt="Logo"></a>
                     </div>
                     <ul class="header-info">
                         <li>
@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="nav-menu-inner">
                     <div class="site-logo">
-                        <a href="index.html"><img src="assets/img/logologht.png" alt="Logo"></a>
+                        <a href="index.html"><img src="'{{asset('assets/img/logologht.png')}}" alt="Logo"></a>
                     </div>
                     <div class="header-menu-wrap">
                         <ul class="nav-menu">
@@ -100,10 +100,10 @@
                     </div>
                     <div class="menu-right-item">
                         <div class="search-icon dl-search-icon" style="color: white;">
-                            <img src="assets/img/search.png" alt="">
+                            <img src="{{asset('assets/img/search.png')}}" alt="">
                         </div>
                         <div class="sidebox-icon dl-sidebox-icon">
-                            <img src="assets/img/MenuIcon.png" alt="">
+                            <img src="{{asset('assets/img/MenuIcon.png')}}" alt="">
                         </div>
                         <div class="btn-group " role="group" aria-label="...">
                             <button type="button" class="btn signup-inbtn">
@@ -142,7 +142,7 @@
     <div id="popup-sidebox" class="popup-sidebox">
         <div class="sidebox-content">
             <div class="site-logo">
-                <a href="index.html"><img src="assets/img/logodark.png" alt="logo" /></a>
+                <a href="index.html"><img src="{{asset('assets/img/logodark.png')}}" alt="logo" /></a>
             </div>
             <p>Everything your taxi business needs is already here! Falcon, a theme made for taxi service companies.</p>
             <ul class="sidebox-list">
@@ -194,7 +194,7 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="assets/img/car-1.png" alt="sing up image"></figure>
+                        <figure><img src="{{asset('assets/img/car-1.png')}}" alt="sing up image"></figure>
                         <a href="login.html" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                 <div class="container">
                     <div class="row row-50 justify-content-lg-between">
                         <div class="col-sm-7 col-lg-3 col-xl-2 text-start"><a class="brand d-flex" href="index.html"><img
-                                    class="brand-logo-dark" src="assets/img/logodark.png" alt="" width="111" height="33"
+                                    class="brand-logo-dark" src="{{asset('assets/img/logodark.png')}}" alt="" width="111" height="33"
                                     loading="lazy" ></a>
                             <p class="text-start"><span style="max-width: 250px;">We provide the best taxi services for you
                                     all over the USA.</span></p><a
@@ -266,7 +266,7 @@
         </footer>
 
         <!-- JS -->
-        <script src="assets/js/vendor/jquary-3.6.0.min.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="{{asset('assets/js/vendor/jquary-3.6.0.min.js')}}"></script>
+        <script src="{{asset('assets/js/main.js')}}"></script>
         <script src="https://kit.fontawesome.com/36298aea6d.js" crossorigin="anonymous"></script>
 </body></html>
