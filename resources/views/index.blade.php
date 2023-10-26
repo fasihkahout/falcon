@@ -204,7 +204,7 @@
 
                             <div class="form-wrap-2 d-flex justify-content-center">
                                 <div class="form-button">
-    <button type="submit" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
+    <button type="submit" name="one_way" value= "One Way" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
 </div>
                             </div>
                         </div>
@@ -365,7 +365,7 @@
                             <div class="form-wrap-2 d-flex justify-content-center">
                                 <div class="form-button">
                                     
-                                        <button type="submit" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
+                                        <button type="submit" name="one_way" value= "Two Way" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
                                 </div>
                             </div>
                         </div>

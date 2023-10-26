@@ -12,7 +12,9 @@
                         <!-- Title -->
                         <ul class="nav nav-divider text-dark align-items-center mb-0">
                             <li class="nav-item fw-semibold h4">Chicago - San Antonio</li>
-                            <li class="nav-item h5 fw-light">Outstation- Oneway</li>
+                             @foreach($searches as $search)
+                            <li class="nav-item h5 fw-light">Outstation- {{ $search->one_way }}</li>
+                             @endforeach
                             <li class="nav-item h5 fw-light">22 Jan 2022 - 07.25 PM</li>
                         </ul>
     

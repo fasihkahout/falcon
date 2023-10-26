@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 //View Controller 
@@ -31,12 +32,14 @@ Route::middleware([
 Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
 Route::get('/google_map' , [AdminController::class , 'googlemap'])->name('google_map');
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
+Route::get('/profile' , [ProfileController::class , 'profile'])->name('profile');
 Route::get('/users' , [AdminController::class , 'users'])->name('users');
 Route::get('/bookings' , [AdminController::class , 'bookings'])->name('bookings');
 Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
 Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');
 Route::post('/updatecars/{id}', [AdminController::class, 'updatecars'])->name('updatecars');
+Route::post('/updateProfile/{id}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/deletecars/{id}', [AdminController::class, 'deletecars'])->name('deletecars');
 //Categories
 Route::get('/categories', [AdminController::class, 'categories'])->name('categories');

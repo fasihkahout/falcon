@@ -100,6 +100,7 @@
             <span class="nav-link-text ms-1">Users</span>
           </a>
         </li>
+         @endif
        <!--  <li class="nav-item">
           <a class="nav-link text-white " href="../pages/rtl.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -116,9 +117,9 @@
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li> -->
-        
+        @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('User'))
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/profile.html">
+          <a class="nav-link text-white " href="{{ route('profile') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>

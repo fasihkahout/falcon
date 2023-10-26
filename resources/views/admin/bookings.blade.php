@@ -18,6 +18,7 @@
                                         <tr>
                                             <th>Passenger Name</th>
                                             <th>Car Name</th>
+                                            <th>Trip Type</th>
                                             <th>Pick-up Destination</th>
                                             <th>Drop-off Destination</th>
                                             <th>Flight Arrival Time</th>
@@ -35,6 +36,7 @@
                                     <tr>
                                         <td>{{isset($booking->users->name)?$booking->users->name:'N/A'}}</td>
                                         <td>{{isset($booking->cars->name)?$booking->cars->name:'N/A'}}</td>
+                                        <td>{{$booking->one_way}} Trip</td>
                                         <td>{{$booking->pickup_destination}}</td>
                                         <td>{{$booking->dropoff_destination}}</td>
                                         <td>

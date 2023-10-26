@@ -21,10 +21,18 @@ class AdminController extends Controller
 
 
     public function dashboard(){
+    // Check if there is an authenticated user
+    if(auth()->user()){
         $userId = auth()->user()->id;
         $bookings = SearchForm::where('users_id', $userId)->get();
-        return view('admin.dashboard',compact('bookings'));
+        return view('admin.dashboard', compact('bookings'));
+    } else {
+        // Handle the case where there is no authenticated user (redirect, show an error, etc.)
+        // For example, you might want to redirect the user to the login page:
+        return redirect()->route('login');
     }
+}
+
 
    public function bookings() {
     // Check if the user is logged in

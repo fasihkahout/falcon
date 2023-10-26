@@ -47,7 +47,9 @@
                                    <h1 class="fs-3 mb-2">{{ $carCount }} Cars Available</h1>
                                     <!-- Divider -->
                                     <ul class="nav nav-divider h6 mb-0">
-                                        <li class="nav-item">One-way trip</li>
+                                        @foreach($searches as $search)
+                                        <li class="nav-item">{{ $search->one_way }}</li>
+                                        @endforeach
                                         <li class="nav-item">&nbsp;{{ $latestDistance }}</li>
                                         <!-- <li class="nav-item">2 Adults</li> -->
                                     </ul>

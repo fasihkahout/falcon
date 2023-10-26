@@ -93,6 +93,7 @@ class ViewController extends Controller
     $search->pickup_date = $request->pickup_date;
     
     $search->pickup_time = $request->pickup_time;
+    $search->one_way = $request->one_way;
     
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
@@ -124,6 +125,7 @@ class ViewController extends Controller
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
     $search->adults = $request->adults;
+    $search->one_way = $request->one_way;
 
     $search->save();
 
