@@ -32,6 +32,7 @@ class SearchFormStoreRequest extends FormRequest
             'luggage'=>'required',
             
             
+            
         ];
     }
 }

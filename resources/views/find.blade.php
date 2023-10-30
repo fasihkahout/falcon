@@ -38,7 +38,7 @@
                         <div class="col-12">
                             <div class="d-flex justify-content-center align-items-center">
                                 <!-- Title -->
-                                <div class="mb-2 mb-sm-0">
+                                <div class="mb-2 mb-sm-0 mt-25">
                                     @php
                                     use App\Models\Cars; // Make sure to import your Car model
 
@@ -47,9 +47,9 @@
                                    <h1 class="fs-3 mb-2">{{ $carCount }} Cars Available</h1>
                                     <!-- Divider -->
                                     <ul class="nav nav-divider h6 mb-0">
-                                        @foreach($searches as $search)
-                                        <li class="nav-item">{{ $search->one_way }}</li>
-                                        @endforeach
+                                        
+                                        <li class="nav-item">{{ $trip }}</li>
+                                       
                                         <li class="nav-item">&nbsp;{{ $latestDistance }}</li>
                                         <!-- <li class="nav-item">2 Adults</li> -->
                                     </ul>

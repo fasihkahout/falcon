@@ -28,6 +28,7 @@ class SearchFormUpdateRequest extends FormRequest
             'pickup_date'=>'required',
             'pickup_time'=>'required',
             'luggage'=>'required',
+            
            
         ];
     }

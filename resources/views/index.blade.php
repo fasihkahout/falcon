@@ -101,42 +101,37 @@
                                     placeholder="enter your drop-off" 
                                     >
                                 <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Latitude</label>
+                                    for="form-location"></label>
                             </div>
                              <div class="form-wrap mt-2">
                                 <input class="form-input " name="longitude1" id="longitude1" type="hidden"
                                     placeholder="enter your drop-off" 
                                     >
                                 <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Longitude</label>
+                                    for="form-location"></label>
                             </div>
 
                             <div class="form-wrap mt-2">
     <input class="form-input" name="distance" id="distance" type="hidden" placeholder="enter your drop-off">
-    <label class="form-label d-flex flex-md-row justify-content-between" for="form-location">Distance</label>
+    <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
 </div>
 
 
-                            <div class="form-wrap mt-2">
-                                <input class="form-input " id="flight_arrival_time" type="time" placeholder="12:00"
-                                    name="flight_arrival_time" onclick="calculateDistance()" >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Flight Arrival Time</label>
-                            </div>
+                            
                             <div class="form-wrap mt-2  mb-2 pt-0 w-40">
                                 <input class="form-input " id="luggage" type="" placeholder="Luggage"
                                     name="luggage" >
                                 <label class="form-label d-flex flex-md-column justify-content-center "
                                     for="form-location"><i class="fa-solid fa-suitcase-rolling"></i></label>
                             </div>
-                            <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-5 " style="width: 91%;">
-                                <div class="form-wrap ">
+                            <div class="d-flex flex-row  m-auto mt-0 mb-5 " style="width: 90%;">
+                                <div class="form-wrap  " style="width: 90%;">
                                     <input class="form-input " id="pickup_date" type="date" placeholder="28-09-2023"
-                                        name="pickup_date" >
+                                        name="pickup_date" onclick="calculateDistance()" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location">Pickup-date</label>
                                 </div>
-                                <div class="form-wrap mt-0 pt-0 ">
+                                <div class="form-wrap mt-0 pt-0 " style="width: 90%;">
                                     <input class="form-input " id="pickup_time" type="time" placeholder="12:00"
                                         name="pickup_time" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
@@ -149,49 +144,49 @@
                                 <div class="form-button me-2">
                                     <button
                                         class="btn-sm button-block button-secondary button-winona mb-3 me-2 ms-md-0 bttn"
-                                        type="submit">Add Return</button>
+                                        type="button" id="returnway_btn">Add Return</button>
                                 </div>
                                 <div class="form-wrap-2">
-                                    <div class="dropdown">
-                                        <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-user"></i>  1
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                            Adults <span class=" agespan"> (16+ years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">
-            <input type="number" name="adults" value="1" />
-        </div>
-                                        <div class="fs-4">+</div>
+                                         <div class="dropdown">
+                                            <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              <i class="fa-solid fa-user"></i>
+                                              <span class="counter">1</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                  Adults <span class="agespan"> (16+ years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="adults" type="number" value="1">
+
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                    Childrens <span class=" agespan"> (2-15 years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="childrens" type="number" value="1">
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                    Infrants <span class=" agespan"> (0-2 years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="infants" type="number" value="1">
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              
+                                            </ul>
                                           </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Childrens <span class=" agespan"> (2-15 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Infrants <span class=" agespan"> (0-2 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          
-                                        </ul>
-                                      </div> 
 
                                 </div>
 
@@ -270,19 +265,19 @@
                            
                             <div class="form-wrap mt-2  mb-2 pt-0 w-40">
                                 <input class="form-input " id="form-location" type="" placeholder="Luggage"
-                                    name="luggage" onclick="calculateDistance1()">
+                                    name="luggage" >
                                 <label class="form-label d-flex flex-md-column justify-content-center "
                                     for="form-location"><i class="fa-solid fa-suitcase-rolling"></i></label>
                             </div>
                             
-                                <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-0 " style="width: 91%;">
-                                <div class="form-wrap ">
+                                <div class="d-flex flex-row  m-auto mt-0 mb-2 " style="width: 90%;">
+                                <div class="form-wrap " style="width: 90%;">
                                     <input class="form-input " id="pickup_date" type="date" placeholder="28-09-2023"
-                                        name="pickup_date" >
+                                        name="pickup_date" onclick="calculateDistance1()">
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location">Pickup-date</label>
                                 </div>
-                                <div class="form-wrap mt-0 pt-0 ">
+                                <div class="form-wrap mt-0 pt-0 " style="width: 90%;">
                                     <input class="form-input " id="pickup_time" type="time" placeholder="12:00"
                                         name="pickup_time" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
@@ -290,14 +285,14 @@
                                 </div>
 
                             </div>
-                            <div class="d-flex flex-row justify-content-center m-auto mt-0 mb-5 " style="width: 91%;">
-                                <div class="form-wrap ">
+                            <div class="d-flex flex-row  m-auto mt-0 mb-5 " style="width: 90%;">
+                                <div class="form-wrap " style="width: 90%;">
                                     <input class="form-input " id="return_date" type="date" placeholder="28-09-2023"
                                         name="return_date" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location">Return-date</label>
                                 </div>
-                                <div class="form-wrap mt-0 pt-0 ">
+                                <div class="form-wrap mt-0 pt-0 " style="width: 90%;">
                                     <input class="form-input " id="return_time" type="time" placeholder="12:00"
                                         name="return_time" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
@@ -308,51 +303,48 @@
 
                             <div class="form-wrap-2 d-flex flex-md-row justify-content-center mt-3">
                                 <div class="form-button me-2">
-                                    <button
-                                        class="btn-sm button-block button-secondary button-winona mb-3 me-2 ms-md-0 bttn"
-                                        type="submit">Add Return</button>
+                                    <button type="submit" name="one_way" value= "Two Way" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
                                 </div>
                                 <div class="form-wrap-2">
                                     <div class="dropdown">
-                                        <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-user"></i>  1
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                            Adults <span class=" agespan"> (16+ years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">
-            <input type="number" name="adults" value="1" />
-        </div>
-                                        <div class="fs-4">+</div>
+                                            <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                              <i class="fa-solid fa-user"></i>
+                                              <span class="counter">1</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                  Adults <span class="agespan"> (16+ years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="adults" type="text" value="1">
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                    Childrens <span class=" agespan"> (2-15 years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="childrens" type="text" value="1">
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              <li class="mb-3">
+                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                                                    Infrants <span class=" agespan"> (0-2 years) :</span>
+                                                </a>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                  <div class="fs-4 decrement">-</div>
+                                                  <input class="count fs-5 mx-4" name="infants" type="text" value="1">
+                                                  <div class="fs-4 increment">+</div>
+                                                </div>
+                                              </li>
+                                              
+                                            </ul>
                                           </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Childrens <span class=" agespan"> (2-15 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          <li class="mb-3"><a class="dropdown-item fw-bold" href="#" style="font-size: .8rem;">
-                                            Infrants <span class=" agespan"> (0-2 years) :</span>
-                                          </a>
-                                          <div class="d-flex flex-row justify-content-center">
-                                            <div class="fs-4">-</div>
-                                        <div class="fs-5 mx-4">1</div>
-                                        <div class="fs-4">+</div>
-                                          </div>
-                                        
-                                        </li>
-                                          
-                                        </ul>
-                                      </div> 
 
                                 </div>
 
@@ -362,12 +354,7 @@
 
 
 
-                            <div class="form-wrap-2 d-flex justify-content-center">
-                                <div class="form-button">
-                                    
-                                        <button type="submit" name="one_way" value= "Two Way" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
-                                </div>
-                            </div>
+                            
                         </div>
 
 
@@ -713,3 +700,36 @@
         });
     }
 </script>
+
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const incrementButtons = document.querySelectorAll(".increment");
+  const decrementButtons = document.querySelectorAll(".decrement");
+
+  incrementButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const inputField = button.parentElement.querySelector(".count");
+      let value = parseInt(inputField.value) || 0;
+      value++;
+      inputField.value = value;
+      inputField.setAttribute("value", value); // Corrected line
+    });
+  });
+
+  decrementButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const inputField = button.parentElement.querySelector(".count");
+      let value = parseInt(inputField.value) || 0;
+      if (value > 0) {
+        value--;
+        inputField.value = value;
+        inputField.setAttribute("value", value); // Corrected line
+      }
+    });
+  });
+});
+    </script>

@@ -45,13 +45,14 @@ class ViewController extends Controller
     // Fetch all records from the SearchForm table and get the distance of the latest record
     $searches = SearchForm::latest()->get();
     $latestDistance = $searches->first()->distance;
+    $trip = $searches->first()->one_way;
 
     // Calculate prices based on the latest distance
     $carPrices = $this->calculatePrices();
 
 
 
-    return view('find', compact('cars', 'carPrices', 'searches', 'latestDistance'));
+    return view('find', compact('cars', 'carPrices', 'searches', 'latestDistance','trip'));
 }
 
 
@@ -98,6 +99,9 @@ class ViewController extends Controller
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
     $search->adults = $request->adults;
+    $search->childrens = $request->childrens;
+    $search->infants = $request->infants;
+
 
     $search->save();
 
@@ -126,6 +130,8 @@ class ViewController extends Controller
     $search->distance = $request->distance;
     $search->adults = $request->adults;
     $search->one_way = $request->one_way;
+    $search->childrens = $request->childrens;
+    $search->infants = $request->infants;
 
     $search->save();
 
