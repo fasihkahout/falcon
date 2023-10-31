@@ -37,27 +37,27 @@
                                         <div class="row">
                                             <div class="col-md-6 text-start">
                                                 <small>Pickup address</small>
-                                                <p class="h6 fw-light text-dark mb-md-0">{{ $search->first()->pickup_destination }}</p>
+                                                <p class="h6 fw-light text-dark mb-md-0">{{ $searches->first()->pickup_destination }}</p>
                                             </div>
     
                                             <div class="col-md-6 text-start">
                                                 <small>Drop address</small>
-                                                <p class="h6 fw-light text-dark mb-0">{{ $search->first()->dropoff_destination }}</p>
+                                                <p class="h6 fw-light text-dark mb-0">{{ $searches->first()->dropoff_destination }}</p>
                                             </div>
                                         </div>
                                     </div>
     
                                     <div class="col-md-6 text-start">
                                         <ul class="list-group list-group-borderless">
-                                            <li class="list-group-item">Journey Date:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->pickup_date }}</span></li>
-                                            <li class="list-group-item">Distance:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->distance }}</span></li>
+                                            <li class="list-group-item">Journey Date:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $searches->first()->pickup_date }}</span></li>
+                                            <li class="list-group-item">Distance:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $latestDistance }}</span></li>
                                         </ul>
                                     </div>
             
                                     <div class="col-md-6 text-start">
                                         <ul class="list-group list-group-borderless">
-                                            <li class="list-group-item">Passengers:<span class="h6 fw-normal mb-0 ms-1 text-dark">1</span></li>
-                                            <li class="list-group-item">Luggages:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $search->first()->luggage }}</span></li>
+                                            <li class="list-group-item">Passengers:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $searches->first()->passengers }}</span></li>
+                                            <li class="list-group-item">Luggages:<span class="h6 fw-normal mb-0 ms-1 text-dark">{{ $searches->first()->luggage }}</span></li>
                                         </ul>
                                     </div>
                                 </div>

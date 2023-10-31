@@ -90,7 +90,7 @@
                                                 <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $latestDistance }}</span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $search->first()->luggage }} </span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $searches->first()->luggage }} </span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
                                                 <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $car->type }}</span>

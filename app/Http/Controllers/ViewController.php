@@ -98,9 +98,8 @@ class ViewController extends Controller
     
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
-    $search->adults = $request->adults;
-    $search->childrens = $request->childrens;
-    $search->infants = $request->infants;
+    $search->passengers = $request->passengers;
+
 
 
     $search->save();
@@ -128,10 +127,9 @@ class ViewController extends Controller
     $search->return_time = $request->return_time;
     $search->luggage = $request->luggage;
     $search->distance = $request->distance;
-    $search->adults = $request->adults;
+   $search->passengers = $request->passengers;
     $search->one_way = $request->one_way;
-    $search->childrens = $request->childrens;
-    $search->infants = $request->infants;
+    
 
     $search->save();
 

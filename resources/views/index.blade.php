@@ -148,45 +148,48 @@
                                 </div>
                                 <div class="form-wrap-2">
                                          <div class="dropdown">
-                                            <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                              <i class="fa-solid fa-user"></i>
-                                              <span class="counter">1</span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                  Adults <span class="agespan"> (16+ years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="adults" type="number" value="1">
+    <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-user"></i>
+        <span class="counter">1</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Adults <span class="agespan"> (16+ years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement">-</div>
+                <input class="count fs-5 mx-4" name="adults" type="text" value="1">
+                <div class="fs-4 increment">+</div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Childrens <span class=" agespan"> (2-15 years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement">-</div>
+                <input class="count fs-5 mx-4" name="childrens" type="text" value="1">
+                <div class="fs-4 increment">+</div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Infants <span class=" agespan"> (0-2 years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement">-</div>
+                <input class="count fs-5 mx-4" name="infants" type="text" value="1">
+                <div class="fs-4 increment">+</div>
+            </div>
+        </li>
+    </ul>
+</div>
 
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                    Childrens <span class=" agespan"> (2-15 years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="childrens" type="number" value="1">
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                    Infrants <span class=" agespan"> (0-2 years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="infants" type="number" value="1">
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              
-                                            </ul>
-                                          </div>
+<div class="form-wrap mt-2">
+    <input class="form-input" name="passengers" id="passengers" type="hidden" placeholder="">
+    <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
+</div>
 
                                 </div>
 
@@ -303,48 +306,53 @@
 
                             <div class="form-wrap-2 d-flex flex-md-row justify-content-center mt-3">
                                 <div class="form-button me-2">
-                                    <button type="submit" name="one_way" value= "Two Way" class="btn-sm button-block button-secondary button-winona" >Search Booking</button>
+                                    <button type="submit" name="one_way" value= "Two Way" class="btn-sm button-block button-secondary button-winona mb-3 me-2 ms-md-0 bttn" >Search Booking</button>
                                 </div>
                                 <div class="form-wrap-2">
-                                    <div class="dropdown">
-                                            <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                              <i class="fa-solid fa-user"></i>
-                                              <span class="counter">1</span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                  Adults <span class="agespan"> (16+ years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="adults" type="text" value="1">
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                    Childrens <span class=" agespan"> (2-15 years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="childrens" type="text" value="1">
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              <li class="mb-3">
-                                                <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
-                                                    Infrants <span class=" agespan"> (0-2 years) :</span>
-                                                </a>
-                                                <div class="d-flex flex-row justify-content-center">
-                                                  <div class="fs-4 decrement">-</div>
-                                                  <input class="count fs-5 mx-4" name="infants" type="text" value="1">
-                                                  <div class="fs-4 increment">+</div>
-                                                </div>
-                                              </li>
-                                              
-                                            </ul>
-                                          </div>
+                                   <div class="dropdown">
+    <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-user"></i>
+        <span class="counter">1</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Adults <span class="agespan"> (16+ years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement1">-</div>
+                <input class="count fs-5 mx-4" name="adults1" type="text" value="1">
+                <div class="fs-4 increment1">+</div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Childrens <span class=" agespan"> (2-15 years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement1">-</div>
+                <input class="count fs-5 mx-4" name="childrens1" type="text" value="1">
+                <div class="fs-4 increment1">+</div>
+            </div>
+        </li>
+        <li class="mb-3">
+            <a class="dropdown-item fw-bold" style="font-size: .8rem;" href="#">
+                Infants <span class=" agespan"> (0-2 years) :</span>
+            </a>
+            <div class="d-flex flex-row justify-content-center">
+                <div class="fs-4 decrement1">-</div>
+                <input class="count fs-5 mx-4" name="infants1" type="text" value="1">
+                <div class="fs-4 increment1">+</div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="form-wrap mt-2">
+    <input class="form-input" name="passengers" id="passengers1" type="hidden" placeholder="">
+    <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
+</div>
+
 
                                 </div>
 
@@ -700,36 +708,108 @@
         });
     }
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const incrementButtons = document.querySelectorAll(".increment");
+        const decrementButtons = document.querySelectorAll(".decrement");
+        const adultsInput = document.querySelector('input[name="adults"]');
+        const childrensInput = document.querySelector('input[name="childrens"]');
+        const infantsInput = document.querySelector('input[name="infants"]');
+        const sumDisplay = document.getElementById("passengers");
 
-  <script>
-   document.addEventListener("DOMContentLoaded", function () {
-  const incrementButtons = document.querySelectorAll(".increment");
-  const decrementButtons = document.querySelectorAll(".decrement");
+        function updateSum() {
+            const adults = parseInt(adultsInput.value) || 0;
+            const childrens = parseInt(childrensInput.value) || 0;
+            const infants = parseInt(infantsInput.value) || 0;
 
-  incrementButtons.forEach((button) => {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      const inputField = button.parentElement.querySelector(".count");
-      let value = parseInt(inputField.value) || 0;
-      value++;
-      inputField.value = value;
-      inputField.setAttribute("value", value); // Corrected line
+            const total = adults + childrens + infants;
+            sumDisplay.value = total;
+            // If you want to display the sum as text, you can use sumDisplay.textContent = total;
+        }
+
+        incrementButtons.forEach((button) => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                const inputField = button.parentElement.querySelector(".count");
+                let value = parseInt(inputField.value) || 0;
+                value++;
+                inputField.value = value;
+                inputField.setAttribute("value", value);
+                updateSum();
+            });
+        });
+
+        decrementButtons.forEach((button) => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                const inputField = button.parentElement.querySelector(".count");
+                let value = parseInt(inputField.value) || 0;
+                if (value > 0) {
+                    value--;
+                    inputField.value = value;
+                    inputField.setAttribute("value", value);
+                    updateSum();
+                }
+            });
+        });
+
+        adultsInput.addEventListener("input", updateSum);
+        childrensInput.addEventListener("input", updateSum);
+        infantsInput.addEventListener("input", updateSum);
     });
-  });
+</script>
 
-  decrementButtons.forEach((button) => {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      const inputField = button.parentElement.querySelector(".count");
-      let value = parseInt(inputField.value) || 0;
-      if (value > 0) {
-        value--;
-        inputField.value = value;
-        inputField.setAttribute("value", value); // Corrected line
-      }
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const incrementButtons1 = document.querySelectorAll(".increment1");
+    const decrementButtons1 = document.querySelectorAll(".decrement1");
+    const adultsInput1 = document.querySelector('input[name="adults1"]');
+    const childrensInput1 = document.querySelector('input[name="childrens1"]');
+    const infantsInput1 = document.querySelector('input[name="infants1"]');
+    const sumDisplay1 = document.getElementById("passengers1");
+
+    function updateSum1() {
+        const adults1 = parseInt(adultsInput1.value) || 0;
+        const childrens1 = parseInt(childrensInput1.value) || 0;
+        const infants1 = parseInt(infantsInput1.value) || 0;
+
+        const total = adults1 + childrens1 + infants1;
+        sumDisplay1.value = total;
+    }
+
+    incrementButtons1.forEach((button) => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const inputField = button.parentElement.querySelector(".count");
+            let value = parseInt(inputField.value) || 0;
+            value++;
+            inputField.value = value;
+            inputField.setAttribute("value", value);
+            updateSum1();
+        });
     });
-  });
+
+    decrementButtons1.forEach((button) => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const inputField = button.parentElement.querySelector(".count");
+            let value = parseInt(inputField.value) || 0;
+            if (value > 0) {
+                value--;
+                inputField.value = value;
+                inputField.setAttribute("value", value);
+                updateSum1();
+            }
+        });
+    });
+
+    adultsInput1.addEventListener("input", updateSum1);
+    childrensInput1.addEventListener("input", updateSum1);
+    infantsInput1.addEventListener("input", updateSum1);
 });
-    </script>
+
+</script>
