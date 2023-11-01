@@ -107,6 +107,9 @@
                         <li class="nav-item">&nbsp;{{$car->ac}}</li>
                         <li class="nav-item">&nbsp;{{$car->seats}}</li>
                     </ul>
+                    <ul class="nav nav-divider h6 fw-normal mb-2">
+                        <li class="nav-item">Luggage: {{ $searches->first()->luggage }}</li>
+                    </ul>
 
                     <!-- Rating Star -->
                     <ul class="list-inline mb-0">
@@ -141,28 +144,28 @@
         <!-- Card body END -->
 
         <!-- Card footer START -->
-       <div class="card">
-    <div class="card-body">
-        <div class="row">
+<!--       <div class="card">-->
+<!--    <div class="card-body">-->
+<!--        <div class="row">-->
             <!-- Car Description -->
 
-            <div class="col-md-6">
-                <h4>Description</h4>
-                <p class="card-text">
-                    {{$car->description}}
-                </p>
-            </div>
+<!--            <div class="col-md-6">-->
+<!--                <h4>Description</h4>-->
+<!--                <p class="card-text">-->
+<!--                    {{$car->description}}-->
+<!--                </p>-->
+<!--            </div>-->
 
             <!-- Car Info -->
-            <div class="col-md-6">
-                <h4>FAQ'S</h4>
-                <p class="card-text">
-                    {{$car->des}}
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+<!--            <div class="col-md-6">-->
+<!--                <h4>FAQ'S</h4>-->
+<!--                <p class="card-text">-->
+<!--                    {{$car->des}}-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
         <!-- card footer END -->
     </div>

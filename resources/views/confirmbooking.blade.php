@@ -83,7 +83,7 @@
                                         <h2 class="mb-0 fw-bolder text-success">{{ $price }}P</h2>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>  
                             <!-- Card body END -->
                         </div>
                         <!-- Booking summary END -->
@@ -103,9 +103,9 @@
                                 <div class="d-sm-flex align-items-center mb-3">
                                     <h6 class="mb-2 mb-sm-0 text-dark fw-semibold">We Accept:</h6>
                                     <ul class="list-inline my-0 ms-sm-3">
-                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/visa.svg" class="h-30px" alt=""></a></li>
-                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/mastercard.svg" class="h-30px" alt=""></a></li>
-                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/expresscard.svg" class="h-30px" alt=""></a></li>
+                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/visa.svg" class="h-30px" alt="" style="width:100px;"></a></li>
+                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/mastercard.svg" class="h-30px" alt="" style="width:100px;"></a></li>
+                                        <li class="list-inline-item"> <a href="#"><img src="https://booking.webestica.com/assets/images/element/expresscard.svg" class="h-30px" alt="" style="width:100px;"></a></li>
                                     </ul>
                                 </div>
     
