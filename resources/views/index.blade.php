@@ -150,7 +150,7 @@
                                          <div class="dropdown">
     <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-user"></i>
-        <span class="counter">1</span>
+        <span class="counter" id="counter">1</span>
     </a>
     <ul class="dropdown-menu">
         <li class="mb-3">
@@ -312,7 +312,7 @@
                                    <div class="dropdown">
     <a class="btn-sm button-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-user"></i>
-        <span class="counter">1</span>
+        <span class="counter" id="counter1">1</span>
     </a>
     <ul class="dropdown-menu">
         <li class="mb-3">
@@ -709,22 +709,95 @@
     }
 </script>
 <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const incrementButtons = document.querySelectorAll(".increment");
+    const decrementButtons = document.querySelectorAll(".decrement");
+    const adultsInput = document.querySelector('input[name="adults"]');
+    const childrensInput = document.querySelector('input[name="childrens"]');
+    const infantsInput = document.querySelector('input[name="infants"]');
+    const counterElement = document.getElementById("counter");
+    const passengersInput = document.getElementById("passengers");
+
+    let adultsCount = 1;
+    let childrensCount = 1;
+    let infantsCount = 1;
+
+    function updateCounter() {
+        const total = adultsCount + childrensCount + infantsCount;
+        counterElement.textContent = total;
+        passengersInput.value = total; // Update the "passengers" input field
+    }
+
+    incrementButtons.forEach((button) => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const inputField = button.parentElement.querySelector(".count");
+            let value = parseInt(inputField.value) || 0;
+            value++;
+            inputField.value = value;
+            inputField.setAttribute("value", value);
+
+            if (inputField.name === "adults") {
+                adultsCount = value;
+            } else if (inputField.name === "childrens") {
+                childrensCount = value;
+            } else if (inputField.name === "infants") {
+                infantsCount = value;
+            }
+
+            updateCounter();
+        });
+    });
+
+    decrementButtons.forEach((button) => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const inputField = button.parentElement.querySelector(".count");
+            let value = parseInt(inputField.value) || 0;
+            if (value > 0) {
+                value--;
+                inputField.value = value;
+                inputField.setAttribute("value", value);
+
+                if (inputField.name === "adults") {
+                    adultsCount = value;
+                } else if (inputField.name === "childrens") {
+                    childrensCount = value;
+                } else if (inputField.name === "infants") {
+                    infantsCount = value;
+                }
+
+                updateCounter();
+            }
+        });
+    });
+
+    adultsInput.addEventListener("input", updateCounter);
+    childrensInput.addEventListener("input", updateCounter);
+    infantsInput.addEventListener("input", updateCounter);
+});
+</script>
+
+<script>
     document.addEventListener("DOMContentLoaded", function () {
-        const incrementButtons = document.querySelectorAll(".increment");
-        const decrementButtons = document.querySelectorAll(".decrement");
-        const adultsInput = document.querySelector('input[name="adults"]');
-        const childrensInput = document.querySelector('input[name="childrens"]');
-        const infantsInput = document.querySelector('input[name="infants"]');
-        const sumDisplay = document.getElementById("passengers");
+        const incrementButtons = document.querySelectorAll(".increment1");
+        const decrementButtons = document.querySelectorAll(".decrement1");
+        const adultsInput = document.querySelector('input[name="adults1"]');
+        const childrensInput = document.querySelector('input[name="childrens1"]');
+        const infantsInput = document.querySelector('input[name="infants1"]');
+        const counterElement = document.getElementById("counter1");
+        const passengersInput = document.getElementById("passengers1");
 
-        function updateSum() {
-            const adults = parseInt(adultsInput.value) || 0;
-            const childrens = parseInt(childrensInput.value) || 0;
-            const infants = parseInt(infantsInput.value) || 0;
+        let adultsCount = 1;
+        let childrensCount = 1;
+        let infantsCount = 1;
 
-            const total = adults + childrens + infants;
-            sumDisplay.value = total;
-            // If you want to display the sum as text, you can use sumDisplay.textContent = total;
+        function updateCounter() {
+            const total = adultsCount + childrensCount + infantsCount;
+            counterElement.textContent = total;
+            passengersInput.value = total; // Update the "passengers" input field
         }
 
         incrementButtons.forEach((button) => {
@@ -736,7 +809,16 @@
                 value++;
                 inputField.value = value;
                 inputField.setAttribute("value", value);
-                updateSum();
+
+                if (inputField.name === "adults1") {
+                    adultsCount = value;
+                } else if (inputField.name === "childrens1") {
+                    childrensCount = value;
+                } else if (inputField.name === "infants1") {
+                    infantsCount = value;
+                }
+
+                updateCounter();
             });
         });
 
@@ -750,66 +832,23 @@
                     value--;
                     inputField.value = value;
                     inputField.setAttribute("value", value);
-                    updateSum();
+
+                    if (inputField.name === "adults1") {
+                        adultsCount = value;
+                    } else if (inputField.name === "childrens1") {
+                        childrensCount = value;
+                    } else if (inputField.name === "infants1") {
+                        infantsCount = value;
+                    }
+
+                    updateCounter();
                 }
             });
         });
 
-        adultsInput.addEventListener("input", updateSum);
-        childrensInput.addEventListener("input", updateSum);
-        infantsInput.addEventListener("input", updateSum);
+        adultsInput.addEventListener("input", updateCounter);
+        childrensInput.addEventListener("input", updateCounter);
+        infantsInput.addEventListener("input", updateCounter);
     });
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const incrementButtons1 = document.querySelectorAll(".increment1");
-    const decrementButtons1 = document.querySelectorAll(".decrement1");
-    const adultsInput1 = document.querySelector('input[name="adults1"]');
-    const childrensInput1 = document.querySelector('input[name="childrens1"]');
-    const infantsInput1 = document.querySelector('input[name="infants1"]');
-    const sumDisplay1 = document.getElementById("passengers1");
-
-    function updateSum1() {
-        const adults1 = parseInt(adultsInput1.value) || 0;
-        const childrens1 = parseInt(childrensInput1.value) || 0;
-        const infants1 = parseInt(infantsInput1.value) || 0;
-
-        const total = adults1 + childrens1 + infants1;
-        sumDisplay1.value = total;
-    }
-
-    incrementButtons1.forEach((button) => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const inputField = button.parentElement.querySelector(".count");
-            let value = parseInt(inputField.value) || 0;
-            value++;
-            inputField.value = value;
-            inputField.setAttribute("value", value);
-            updateSum1();
-        });
-    });
-
-    decrementButtons1.forEach((button) => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const inputField = button.parentElement.querySelector(".count");
-            let value = parseInt(inputField.value) || 0;
-            if (value > 0) {
-                value--;
-                inputField.value = value;
-                inputField.setAttribute("value", value);
-                updateSum1();
-            }
-        });
-    });
-
-    adultsInput1.addEventListener("input", updateSum1);
-    childrensInput1.addEventListener("input", updateSum1);
-    infantsInput1.addEventListener("input", updateSum1);
-});
-
-</script>
