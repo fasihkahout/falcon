@@ -1,4 +1,15 @@
 @include('layouts.header')
+@if (session('success'))
+    <div class="alert alert-success mt-25">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger mt-25">
+        {{ session('error') }}
+    </div>
+@endif
 
     <div id="popup-search-box">
         <div class="box-inner-wrap d-flex align-items-center">

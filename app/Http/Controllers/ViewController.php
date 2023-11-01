@@ -181,7 +181,7 @@ public function calculatePrices()
     return $carPrices;
   }
 
- public function stripePost(Request $request)
+public function stripePost(Request $request)
 {
     // Check if the user is logged in
     if (!auth()->check()) {
@@ -214,17 +214,24 @@ public function calculatePrices()
     // User is logged in, proceed with the payment
     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    \Stripe\Charge::create([
-        "amount" => $amountInPence,
-        "currency" => "PEN",
-        "source" => $request->stripeToken,
-        "description" => "Payment",
-    ]);
+    try {
+        \Stripe\Charge::create([
+            "amount" => $amountInPence,
+            "currency" => "PEN",
+            "source" => $request->stripeToken,
+            "description" => "Payment",
+        ]);
 
-    Session::flash('success', 'Payment Successful!');
+        // Payment successful, set success flash message
+        \Session::flash('success', 'Payment Successful!');
+    } catch (\Exception $e) {
+        // Payment failed, set error flash message
+        \Session::flash('error', 'Payment failed: ' . $e->getMessage());
+    }
 
-    return redirect()->route('index')->with('success', 'Payment Successful!');
+    return redirect()->route('index');
 }
+
 
 
 }
