@@ -41,8 +41,8 @@ Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editca
 Route::post('/updatecars/{id}', [AdminController::class, 'updatecars'])->name('updatecars');
 Route::get('/addusers', [AdminController::class, 'addusers'])->name('addusers');
 Route::post('/postusers', [AdminController::class, 'postusers'])->name('postusers');
-Route::get('/editusers/{id}', [AdminController::class, 'editcars'])->name('editusers');
-Route::post('/updateusers/{id}', [AdminController::class, 'updatecars'])->name('updateusers');
+Route::get('/editusers/{id}', [AdminController::class, 'editusers'])->name('editusers');
+Route::post('/updateusers/{id}', [AdminController::class, 'updateusers'])->name('updateusers');
 Route::post('/updateProfile/{id}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/deletecars/{id}', [AdminController::class, 'deletecars'])->name('deletecars');
 Route::get('/deleteusers/{id}', [AdminController::class, 'deleteusers'])->name('deleteusers');

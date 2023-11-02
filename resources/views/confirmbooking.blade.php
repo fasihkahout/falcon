@@ -45,6 +45,17 @@
                                                 <p class="h6 fw-light text-dark mb-0">{{ $searches->first()->dropoff_destination }}</p>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6 text-start">
+                                                <small>Return Pickup address</small>
+                                                <p class="h6 fw-light text-dark mb-md-0">{{ $searches->first()->return_pickup_destination ?? 'Not available' }}</p>
+                                            </div>
+    
+                                            <div class="col-md-6 text-start">
+                                                <small>Return Drop address</small>
+                                                <p class="h6 fw-light text-dark mb-0">{{ $searches->first()->return_dropoff_destination ?? 'Not available' }}</p>
+                                            </div>
+                                        </div>
                                     </div>
     
                                     <div class="col-md-6 text-start">

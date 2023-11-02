@@ -28,7 +28,15 @@ class AdminController extends Controller
     if(auth()->user()){
         $userId = auth()->user()->id;
         $bookings = SearchForm::where('users_id', $userId)->get();
-        return view('admin.dashboard', compact('bookings'));
+        $query  = SearchForm::with('users','cars')->whereNotNull('users_id')->orderBy('id','DESC');
+        $totalbookings=$query->count();
+        $query =  User::role('User');
+        $totalusers=$query->count();
+        $query =  Cars::with('categories');
+        $totalcars=$query->count();
+        $query = Category::all();
+        $totalcategories=$query->count();
+        return view('admin.dashboard', compact('bookings','totalbookings','totalusers','totalcars','totalcategories'));
     } else {
         // Handle the case where there is no authenticated user (redirect, show an error, etc.)
         // For example, you might want to redirect the user to the login page:

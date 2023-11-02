@@ -21,7 +21,6 @@
                                             <th>Trip Type</th>
                                             <th>Pick-up Destination</th>
                                             <th>Drop-off Destination</th>
-                                            <th>Flight Arrival Time</th>
                                             <th>Pick-up Date</th>
                                             <th>Pick-up Time</th>
                                             <th>Return Date</th>
@@ -39,13 +38,6 @@
                                         <td>{{$booking->one_way}} Trip</td>
                                         <td>{{$booking->pickup_destination}}</td>
                                         <td>{{$booking->dropoff_destination}}</td>
-                                        <td>
-                                            @if($booking->flight_arrival_time)
-                                                {{ $booking->flight_arrival_time }}
-                                            @else
-                                                N/A
-                                            @endif
-                                        </td>
                                         <td>
                                             @if($booking->pickup_date)
                                                 {{ $booking->pickup_date }}
