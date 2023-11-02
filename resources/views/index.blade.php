@@ -170,7 +170,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement">-</div>
-                <input class="count fs-5 mx-4" name="adults" type="text" value="1">
+                <input class="count fs-5 mx-4" name="adults" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment">+</div>
             </div>
         </li>
@@ -180,7 +180,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement">-</div>
-                <input class="count fs-5 mx-4" name="childrens" type="text" value="1">
+                <input class="count fs-5 mx-4" name="childrens" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment">+</div>
             </div>
         </li>
@@ -190,7 +190,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement">-</div>
-                <input class="count fs-5 mx-4" name="infants" type="text" value="1">
+                <input class="count fs-5 mx-4" name="infants" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment">+</div>
             </div>
         </li>
@@ -387,7 +387,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement1">-</div>
-                <input class="count fs-5 mx-4" name="adults1" type="text" value="1">
+                <input class="count fs-5 mx-4" name="adults1" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment1">+</div>
             </div>
         </li>
@@ -397,7 +397,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement1">-</div>
-                <input class="count fs-5 mx-4" name="childrens1" type="text" value="1">
+                <input class="count fs-5 mx-4" name="childrens1" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment1">+</div>
             </div>
         </li>
@@ -407,7 +407,7 @@
             </a>
             <div class="d-flex flex-row justify-content-center">
                 <div class="fs-4 decrement1">-</div>
-                <input class="count fs-5 mx-4" name="infants1" type="text" value="1">
+                <input class="count fs-5 mx-4" name="infants1" type="text" value="1" style="width: 10%;">
                 <div class="fs-4 increment1">+</div>
             </div>
         </li>
