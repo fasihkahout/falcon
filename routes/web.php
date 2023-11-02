@@ -39,8 +39,13 @@ Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
 Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');
 Route::post('/updatecars/{id}', [AdminController::class, 'updatecars'])->name('updatecars');
+Route::get('/addusers', [AdminController::class, 'addusers'])->name('addusers');
+Route::post('/postusers', [AdminController::class, 'postusers'])->name('postusers');
+Route::get('/editusers/{id}', [AdminController::class, 'editcars'])->name('editusers');
+Route::post('/updateusers/{id}', [AdminController::class, 'updatecars'])->name('updateusers');
 Route::post('/updateProfile/{id}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/deletecars/{id}', [AdminController::class, 'deletecars'])->name('deletecars');
+Route::get('/deleteusers/{id}', [AdminController::class, 'deleteusers'])->name('deleteusers');
 //Categories
 Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
 Route::get('/postcategories', [AdminController::class, 'postcategories'])->name('postcategories');

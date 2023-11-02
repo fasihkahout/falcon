@@ -90,7 +90,6 @@ class ViewController extends Controller
 
     $search->pickup_destination = $request->pickup_destination;
     $search->dropoff_destination = $request->dropoff_destination;
-    $search->flight_arrival_time = $request->flight_arrival_time;
     $search->pickup_date = $request->pickup_date;
     
     $search->pickup_time = $request->pickup_time;
@@ -120,7 +119,8 @@ class ViewController extends Controller
 
     $search->pickup_destination = $request->pickup_destination;
     $search->dropoff_destination = $request->dropoff_destination;
-   
+    $search->return_pickup_destination = $request->return_pickup_destination;
+    $search->return_dropoff_destination = $request->return_dropoff_destination;
     $search->pickup_date = $request->pickup_date;
     $search->return_date = $request->pickup_date;
     $search->pickup_time = $request->pickup_time;
@@ -142,9 +142,7 @@ class ViewController extends Controller
 public function calculatePrices()
 {
     // Assuming Cars is your Eloquent model
-
-    // Fetch id, categories_id, and first_mile_price columns for all cars
-    $cars = Cars::all(['id', 'categories_id', 'first_mile_price']);
+    $cars = Cars::all(['id', 'categories_id', 'first_mile_price', 'after_first_mile_price']);
 
     // Assuming SearchForm is a single record, adjust accordingly if it's multiple records
     $search = SearchForm::latest()->first(['distance']);
@@ -155,31 +153,15 @@ public function calculatePrices()
     // Initialize an array to store individual costs for each car
     $carPrices = [];
 
-    // Loop through each car
+    // Calculate cost for each car based on its own first mile price and multiplier
     foreach ($cars as $car) {
-        // Determine the multiplier based on categories_id
-        switch ($car['categories_id']) {
-            case 6: // Basic
-                $multiplier = 1.59;
-                break;
-            case 7: // Salon
-                $multiplier = 1.79;
-                break;
-            case 8: // 6 Seater
-                $multiplier = 2.19;
-                break;
-            default:
-                // Handle other categories if needed
-                $multiplier = 1.59;
-        }
-
-        // Calculate cost for each car based on its own first mile price and multiplier
-        $carCost = $car['first_mile_price'] + ($distance * $multiplier);
+        $carCost = $car['first_mile_price'] + ($distance * $car['after_first_mile_price']);
         $carPrices[$car['id']] = $carCost;
     }
 
     return $carPrices;
-  }
+}
+
 
 public function stripePost(Request $request)
 {

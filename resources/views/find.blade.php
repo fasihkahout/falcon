@@ -108,7 +108,7 @@
                         <li class="nav-item">&nbsp;{{$car->seats}}</li>
                     </ul>
                     <ul class="nav nav-divider h6 fw-normal mb-2">
-                        <li class="nav-item">Luggage: {{ $searches->first()->luggage }}</li>
+                        <li class="nav-item">Bagging Capacity : {{isset($car->categories->bag_capacities)?$car->categories->bag_capacities:'N/A'}}</li>
                     </ul>
 
                     <!-- Rating Star -->

@@ -15,6 +15,12 @@
             <input type="text" name="car_categories" class="input_field" value="{{$category->car_categories}}" placeholder="" style="display: block;">
             </div>
         </div>
+        <div class="row mb-2">
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" style="display: block;">Bag Capacity</label>
+            <input type="text" name="bag_capacities" class="input_field" value="{{$category->bag_capacities}}" placeholder="" style="display: block;">
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

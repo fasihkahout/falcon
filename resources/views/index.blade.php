@@ -271,7 +271,62 @@
                             </div>
 
                             <div class="form-wrap mt-2">
-                            <input class="form-input" name="distance" id="distance1" type="hidden" placeholder="">
+                            <input class="form-input" id="distance1" type="hidden" placeholder="">
+                            <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
+                        </div>
+
+                                                    <div class="form-wrap ">
+                                <input class="form-input " name="return_pickup_destination" id="pickup_destination2" type="text"
+                                    placeholder="enter pickup location"
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Return Pick-up</label>
+                            </div>
+
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude4" id="latitude4" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Latitude</label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude4" id="longitude4" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Longitude</label>
+                            </div>
+                            <div class="form-wrap mt-2">
+                                <input class="form-input " name="return_dropoff_destination" id="dropoff_destination2" type="text"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location">Return Drop Off</label>
+                            </div>
+
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="latitude5" id="latitude5" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location"></label>
+                            </div>
+                             <div class="form-wrap mt-2">
+                                <input class="form-input " name="longitude5" id="longitude5" type="hidden"
+                                    placeholder="enter your drop-off" 
+                                    >
+                                <label class="form-label d-flex flex-md-row justify-content-between "
+                                    for="form-location"></label>
+                            </div>
+
+                            <div class="form-wrap mt-2">
+                            <input class="form-input"  id="distance2" type="hidden" placeholder="">
+                            <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
+                        </div>
+
+                        <div class="form-wrap mt-2">
+                            <input class="form-input" name="distance" id="totalDistance" type="hidden" placeholder="">
                             <label class="form-label d-flex flex-md-row justify-content-between" for="form-location"></label>
                         </div>
 
@@ -293,7 +348,7 @@
                                 </div>
                                 <div class="form-wrap mt-0 pt-0 " style="width: 90%;">
                                     <input class="form-input " id="pickup_time" type="time" placeholder="12:00"
-                                        name="pickup_time" >
+                                        name="pickup_time" onclick="calculateDistance2()" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location"><i class="fa-regular fa-clock"></i></label>
                                 </div>
@@ -302,7 +357,7 @@
                             <div class="d-flex flex-row  m-auto mt-0 mb-5 " style="width: 90%;">
                                 <div class="form-wrap " style="width: 90%;">
                                     <input class="form-input " id="return_date" type="date" placeholder="28-09-2023"
-                                        name="return_date" >
+                                        name="return_date" onclick="updateTotalDistance()" >
                                     <label class="form-label d-flex flex-md-row justify-content-between "
                                         for="form-location">Return-date</label>
                                 </div>
@@ -586,6 +641,18 @@
         $("#longtitudeArea3").addClass("d-none");
     });
 </script>
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea4").addClass("d-none");
+        $("#longtitudeArea4").addClass("d-none");
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#latitudeArea5").addClass("d-none");
+        $("#longtitudeArea5").addClass("d-none");
+    });
+</script>
 
 <script>
     window.addEventListener('load', initialize);
@@ -663,6 +730,42 @@
     }
 </script>
 
+<script>
+    window.addEventListener('load', initialize1);
+
+    function initialize1() {
+        var input1 = document.getElementById('pickup_destination2');
+        var autocomplete = new google.maps.places.Autocomplete(input1, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude4').val(place.geometry['location'].lat());
+            $('#longitude4').val(place.geometry['location'].lng());
+
+            $("#latitudeArea4").removeClass("d-none");
+            $("#longtitudeArea4").removeClass("d-none");
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize1);
+
+    function initialize1() {
+        var input1 = document.getElementById('dropoff_destination2');
+        var autocomplete = new google.maps.places.Autocomplete(input1, { componentRestrictions: { country: 'GB' } });
+
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            $('#latitude5').val(place.geometry['location'].lat());
+            $('#longitude5').val(place.geometry['location'].lng());
+
+            $("#latitudeArea5").removeClass("d-none");
+            $("#longtitudeArea5").removeClass("d-none");
+        });
+    }
+</script>
+
 
 <script>
     function calculateDistance() {
@@ -704,21 +807,56 @@
             unitSystem: google.maps.UnitSystem.IMPERIAL, // Set to IMPERIAL for miles
         }, function(response, status) {
             if (status === 'OK') {
-                var distance1 = response.rows[0].elements[0].distance.value; // Get distance in meters
-                var distanceInMiles = distance1 * 0.000621371; // Convert meters to miles
-                var multipliedDistance = distanceInMiles * 2; // Multiply by 2
-
+                var distance = response.rows[0].elements[0].distance.text;
                 // Update the value of the hidden input field
-                $('#distance1').val(multipliedDistance.toFixed(2)); // Set to 2 decimal places
-
-                // Update the displayed distance
-                $('#distance1Display').text(multipliedDistance.toFixed(2));
+                $('#distance1').val(distance);
             } else {
                 console.error('Error calculating distance: ' + status);
             }
         });
     }
 </script>
+
+<script>
+    function calculateDistance2() {
+        var originLat = $('#latitude4').val();
+        var originLng = $('#longitude4').val();
+        var destLat = $('#latitude5').val();
+        var destLng = $('#longitude5').val();
+
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [{ lat: parseFloat(originLat), lng: parseFloat(originLng) }],
+            destinations: [{ lat: parseFloat(destLat), lng: parseFloat(destLng) }],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.IMPERIAL, // Set to IMPERIAL for miles
+        }, function(response, status) {
+            if (status === 'OK') {
+                var distance = response.rows[0].elements[0].distance.text;
+                // Update the value of the hidden input field
+                $('#distance2').val(distance);
+            } else {
+                console.error('Error calculating distance: ' + status);
+            }
+        });
+    }
+</script>
+
+<script>
+    function updateTotalDistance() {
+        // Get the values of distance1 and distance2 in miles
+        var distance1 = parseFloat($('#distance1').val()) || 0;
+        var distance2 = parseFloat($('#distance2').val()) || 0;
+
+        // Calculate the total distance in miles
+        var totalDistance = distance1 + distance2;
+
+        // Update the value of the hidden input field for total distance in miles
+        $('#totalDistance').val(totalDistance + ' mi');
+    }
+</script>
+
+
 <script>
       document.addEventListener("DOMContentLoaded", function () {
     const incrementButtons = document.querySelectorAll(".increment");

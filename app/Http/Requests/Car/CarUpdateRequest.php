@@ -25,7 +25,6 @@ class CarUpdateRequest extends FormRequest
              'name'=>'required',
             
             'model'=>'required',
-            'type'=>'required',
             'seats'=>'required',
             'ac'=>'required',
             'first_mile_price'=>'required',

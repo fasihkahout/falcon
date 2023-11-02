@@ -13,7 +13,10 @@ use App\Triats\ImageuploadTriat;
 use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
+use App\Http\Requests\User\UserStoreRequest;
+use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\User;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -40,12 +43,12 @@ class AdminController extends Controller
         // If logged in, check if the user has the 'Admin' role
         if (auth()->user()->hasRole('Admin')) {
             // If admin, retrieve all bookings
-            $bookings = SearchForm::with('users','cars')->whereNotNull('users_id')
+            $bookings = SearchForm::with('users','cars')->whereNotNull('users_id')->orderBy('id','DESC')
     ->get();
         } else {
             // If user, retrieve only bookings associated with the user
             $userId = auth()->user()->id;
-            $bookings = SearchForm::with('users','cars')->where('users_id', $userId)->get();
+            $bookings = SearchForm::with('users','cars')->where('users_id', $userId)->orderBy('id','DESC')->get();
         }
 
         return view('admin.bookings', compact('bookings'));
@@ -72,6 +75,28 @@ class AdminController extends Controller
         return view('admin.add_cars', compact('categories'));
     }
 
+     public function addusers(){
+       
+        return view('admin.add_user');
+    }
+
+     public function postusers(UserStorerequest $request)
+    {
+
+        $input = $request->all();
+        $user = new User;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        if ($request->has('password'))
+         {
+        $user->password=Hash::make($request->password);
+     }
+     
+        $user->save();
+        $user=$user->assignRole('User');
+        return redirect()->route('users')->with('success', 'User Added successfully.');
+    }
+
     public function postcars(CarStoreRequest $request)
     {
 
@@ -86,21 +111,15 @@ class AdminController extends Controller
         $car->name=$request->name;
         $car->img=$img;
         $car->model=$request->model;
-        $car->type=$request->type;
         $car->seats=$request->seats;
-        $car->description=$request->description;
-        $car->des=$request->des;
         $car->ac=$request->ac;
         $car->first_mile_price=$request->first_mile_price;
-         $car->driver_cab_details=$request->driver_cab_details;
-          $car->inclusion =$request->inclusion;
-        $car->exclusion =$request->exclusion;
-           $car->safety_guidelines=$request->safety_guidelines;
+        $car->after_first_mile_price=$request->after_first_mile_price;
 
        
         
         $car->save();
-        return redirect()->route('cars')->with('success', 'Car updated successfully.');
+        return redirect()->route('cars')->with('success', 'Car Added successfully.');
     }
 
     public function editcars($id)
@@ -116,6 +135,18 @@ class AdminController extends Controller
         return view('admin.edit_cars', compact('car','categories'));
     }
 
+    public function editusers($id)
+    {
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->route('users')->with('error', 'User not found.');
+        }
+
+        return view('admin.edit_user', compact('user'));
+    }
+
      public function updatecars(CarUpdateRequest $request, $id)
     {
         $car = Cars::find($id);
@@ -129,24 +160,44 @@ class AdminController extends Controller
        $car->categories_id = $request->categories_id;
         $car->name=$request->name;
         $car->model=$request->model;
-        $car->type=$request->type;
         $car->seats=$request->seats;
         $car->ac=$request->ac;
-        $car->description=$request->description;
-        $car->des=$request->des;
         $car->first_mile_price=$request->first_mile_price;
-        $car->driver_cab_details=$request->driver_cab_details;
-        $car->inclusion =$request->inclusion;
-        $car->exclusion =$request->exclusion;
-        $car->safety_guidelines=$request->safety_guidelines;
-       
-        
+        $car->after_first_mile_price=$request->after_first_mile_price;
+
         $car->save();
         return redirect()->route('cars')->with('success', 'Car updated successfully.');
             
     }
 
+    public function updateusers(UserUpdateRequest $request, $id)
+    {
+        $user = User::find($id);
+      $user->name=$request->name;
+        $user->email=$request->email;
+        if ($request->has('password'))
+         {
+        $user->password=Hash::make($request->password);
+     }
+        $user->save();
+        return redirect()->route('users')->with('success', 'User updated successfully.');
+            
+    }
+
     
+public function deleteusers($id)
+    {
+        $user = User::find($id);
+        
+        if (!$user) {
+            return redirect()->route('users')->with('error', 'User not found.');
+        }
+
+        $user->delete();
+
+        return redirect()->route('users')->with('success', 'User deleted successfully!');
+    }
+
 
     public function deletecars($id)
     {
@@ -173,6 +224,7 @@ class AdminController extends Controller
     {
         $category = new Category;
         $category->car_categories = $request->input('car_categories');
+        $category->bag_capacities = $request->input('bag_capacities');
 
         $category->save();
         return redirect()->back();
@@ -198,6 +250,7 @@ class AdminController extends Controller
         }
 
         $category->car_categories = $request->input('car_categories');
+        $category->bag_capacities = $request->input('bag_capacities');
 
         $category->save();
 

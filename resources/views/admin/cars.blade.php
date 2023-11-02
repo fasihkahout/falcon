@@ -18,6 +18,7 @@
                                             <th>Name</th>
                                             <th>Model</th>
                                             <th>Car Categories</th>
+                                            <th>Bag Capacity</th>
                                             <th>Seats</th>
                                            <th>Action</th>
                                         </tr>
@@ -29,6 +30,7 @@
                                         <td>{{$car->name}}</td>
                                         <td>{{$car->model}}</td>
                                         <td>{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</td>
+                                        <td>{{isset($car->categories->bag_capacities)?$car->categories->bag_capacities:'N/A'}}</td>
                                         <td>{{$car->seats}}</td>
                                         <td>
                                          <a  class="btn btn-primary"  href="{{'editcars/'.$car->id}}" >Edit</a>

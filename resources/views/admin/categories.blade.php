@@ -15,6 +15,12 @@
             <input type="text" name="car_categories" class="input_field" placeholder="" style="display: block;">
             </div>
         </div>
+        <div class="row mb-2">
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" style="display: block;">Bag Capacity</label>
+            <input type="text" name="bag_capacities" class="input_field" placeholder="" style="display: block;">
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
@@ -25,6 +31,7 @@
     <thead>
         <tr>
             <th>Category Name</th>
+            <th>Bag Capacity</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -32,6 +39,7 @@
         @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->car_categories }}</td>
+                <td>{{ $category->bag_capacities }}</td>
                 <td>
                     <a  class="btn btn-primary"  href="{{'editcategories/'.$category->id}}">Edit</a>
                     <a class="btn btn-primary" href="{{ route('deletecategories', ['id' => $category->id]) }}">Delete</a>

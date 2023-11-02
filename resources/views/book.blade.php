@@ -10,20 +10,12 @@
 
                     <div class="d-flex justify-content-between align-items-lg-center">
                         <!-- Title -->
-                        <ul class="nav nav-divider text-dark align-items-center mb-0">
-                            <li class="nav-item fw-semibold h4">Chicago - San Antonio</li>
-                             @foreach($searches as $search)
-                            <li class="nav-item h5 fw-light">Outstation- {{ $search->one_way }}</li>
-                             @endforeach
-                            <li class="nav-item h5 fw-light">22 Jan 2022 - 07.25 PM</li>
-                        </ul>
+                        
     
                         <!-- Buttons -->
                         <div class="ms-3">
                             <!-- Share button -->
-                            <a href="#" class="btn btn-sm btn-light px-2 mb-0" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-fw fa-share-alt"></i>
-                            </a>
+                            
                             <!-- dropdown button -->
                             <ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
                                 <li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
@@ -68,7 +60,7 @@
                                             <div>
                                                 <h4 class="card-title text-dark fw-semibold mb-2">{{$car->name}}</h4>
                                                 <ul class="nav nav-divider h6 fw-normal mb-2">
-                                                    <li class="nav-item">{{$car->type}}</li>
+                                                    <li class="nav-item">{{$car->model}}</li>
                                                     <li class="nav-item">&nbsp;{{$car->ac}}</li>
                                                     <li class="nav-item">&nbsp;{{$car->seats}}</li>
                                                 </ul>
@@ -87,34 +79,34 @@
                                         <!-- List -->
                                         <ul class="list-group list-group-borderless mt-2 mb-0">
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $latestDistance }}</span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>Distance : {{ $latestDistance }}</span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $searches->first()->luggage }} </span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>Passenger Luggage : {{ $searches->first()->luggage }} </span>
                                             </li>
                                             <li class="list-group-item d-flex pb-0 mb-0">
-                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>{{ $car->type }}</span>
+                                                <span class="h6 fw-normal mb-0"><i class="fa fa-check me-2"></i>Car Model : {{ $car->model }}</span>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>	
+                            </div>  
                             <!-- Card body END -->
     
                             <!-- Card footer -->
-                            <div class="card-footer p-0 pt-4">
-                                <div class="hstack gap-3 flex-wrap">
+                            <!--<div class="card-footer p-0 pt-4">-->
+                            <!--    <div class="hstack gap-3 flex-wrap">-->
                                     <!-- Item -->
-                                    <h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">
-                                        Free Cancellation, till 1 hour of Pick up
-                                    </h6>
+                            <!--        <h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">-->
+                            <!--            Free Cancellation, till 1 hour of Pick up-->
+                            <!--        </h6>-->
                 
                                     <!-- Item -->
-                                    <h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">
-                                        Free waiting up to 45 minutes
-                                    </h6>
-                                </div>
-                            </div>
+                            <!--        <h6 class="bg-success bg-opacity-10 text-success fw-light rounded-2 d-inline-block mb-0 py-2 px-4">-->
+                            <!--            Free waiting up to 45 minutes-->
+                            <!--        </h6>-->
+                            <!--    </div>-->
+                            <!--</div>-->
                         </div>
                         <!-- Main cab list END -->
     
@@ -122,86 +114,86 @@
                         <!-- Trip Details END -->
     
                         <!-- Driver and cab detail START -->
-                        <div class="card bg-transparent">
+                <!--        <div class="card bg-transparent">-->
     
                             <!-- Card header -->
-                            <div class="card-header border-bottom bg-transparent px-0 pt-0">
-                                <h4 class="mb-0 text-start text-dark fw-semibold">Driver and Cab details</h4>
-                            </div>
+                <!--            <div class="card-header border-bottom bg-transparent px-0 pt-0">-->
+                <!--                <h4 class="mb-0 text-start text-dark fw-semibold">Driver and Cab details</h4>-->
+                <!--            </div>-->
     
                             <!-- Card body -->
-                            <div class="card-body pt-4 p-0">
+                <!--            <div class="card-body pt-4 p-0">-->
                                 <!-- List -->
-                                <p class="card-text">
-                    {{$car->driver_cab_details}}
-                </p>
+                <!--                <p class="card-text">-->
+                <!--    {{$car->driver_cab_details}}-->
+                <!--</p>-->
     
                                 <!-- Cab images -->
-                                <h5 class="mb-0 text-start text-dark fw-semibold mb-2">Cab Images</h5>
+                <!--                <h5 class="mb-0 text-start text-dark fw-semibold mb-2">Cab Images</h5>-->
     
                                 <!-- Alert box -->
-                                <div class="alert alert-warning text-start fs-6" role="alert">
-                                    All pictures shown are for illustration purposes only. The actual product may vary due to product enhancement.
-                                </div>
+                <!--                <div class="alert alert-warning text-start fs-6" role="alert">-->
+                <!--                    All pictures shown are for illustration purposes only. The actual product may vary due to product enhancement.-->
+                <!--                </div>-->
     
                               
-                            </div>	
+                <!--            </div>  -->
     
-                        </div>
+                <!--        </div>-->
                         <!-- Driver and cab detail END -->
                         
                         <!-- Inclusion & Exclusion START -->
-                        <div class="card bg-transparent">
+        <!--                <div class="card bg-transparent">-->
                             <!-- Card header -->
-                            <div class="card-header border-bottom bg-transparent px-0 pt-0">
-                                <h4 class="mb-0 text-start text-dark fw-semibold ">Inclusion &amp; Exclusion</h4>
-                            </div>
+        <!--                    <div class="card-header border-bottom bg-transparent px-0 pt-0">-->
+        <!--                        <h4 class="mb-0 text-start text-dark fw-semibold ">Inclusion &amp; Exclusion</h4>-->
+        <!--                    </div>-->
     
                             <!-- Card body START -->
-                            <div class="card-body pt-4 p-0">
+        <!--                    <div class="card-body pt-4 p-0">-->
                                 <!-- Detail START -->
-                                <div class="row g-3">
+        <!--                        <div class="row g-3">-->
                                     <!-- List -->
-                                    <div class="col-sm-6">
-            <h5 class="text-start fw-semibold text-dark">Included in your price</h5>
-            <ul class="list-group text-start list-group-borderless mb-0">
-                @foreach(explode("\n", $car->inclusion) as $item)
-                    <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>
-                @endforeach
-            </ul>
-        </div>
+        <!--                            <div class="col-sm-6">-->
+        <!--    <h5 class="text-start fw-semibold text-dark">Included in your price</h5>-->
+        <!--    <ul class="list-group text-start list-group-borderless mb-0">-->
+        <!--        @foreach(explode("\n", $car->inclusion) as $item)-->
+        <!--            <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>-->
+        <!--        @endforeach-->
+        <!--    </ul>-->
+        <!--</div>-->
     
                                     <!-- List -->
-                                    <div class="col-sm-6">
-            <h5 class="text-start fw-semibold text-dark">Extra Charge</h5>
-            <ul class="list-group text-start list-group-borderless mb-0">
-                @foreach(explode("\n", $car->exclusion) as $item)
-                    <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>
-                @endforeach
-            </ul>
-        </div>
-                                </div>
+        <!--                            <div class="col-sm-6">-->
+        <!--    <h5 class="text-start fw-semibold text-dark">Extra Charge</h5>-->
+        <!--    <ul class="list-group text-start list-group-borderless mb-0">-->
+        <!--        @foreach(explode("\n", $car->exclusion) as $item)-->
+        <!--            <li class="list-group-item mb-0 pb-0"><i class="fa fa-check text-success me-1"></i>{{ $item }}</li>-->
+        <!--        @endforeach-->
+        <!--    </ul>-->
+        <!--</div>-->
+        <!--                        </div>-->
                                 <!-- Detail END -->
-                            </div>
+        <!--                    </div>-->
                             <!-- Card body END -->
-                        </div>
+        <!--                </div>-->
                         <!-- Inclusion & Exclusion END -->
     
                         <!-- Safety Guidelines START -->
-                        <div class="card bg-transparent">
+                <!--        <div class="card bg-transparent">-->
                             <!-- Card header -->
-                            <div class="card-header border-bottom bg-transparent px-0 pt-0">
-                                <h4 class="mb-0 text-start fw-semibold text-dark">Safety Guidelines</h4>
-                            </div>
+                <!--            <div class="card-header border-bottom bg-transparent px-0 pt-0">-->
+                <!--                <h4 class="mb-0 text-start fw-semibold text-dark">Safety Guidelines</h4>-->
+                <!--            </div>-->
     
                             <!-- Card body START -->
-                            <div class="card-body pt-4 p-0">
-                               <p class="card-text">
-                    {{$car->safety_guidelines}}
-                </p>
-                            </div>
+                <!--            <div class="card-body pt-4 p-0">-->
+                <!--               <p class="card-text">-->
+                <!--    {{$car->safety_guidelines}}-->
+                <!--</p>-->
+                <!--            </div>-->
                             <!-- Card body END -->
-                        </div>
+                <!--        </div>-->
                         <!-- Safety Guidelines END -->
                     </div>
                 </div>

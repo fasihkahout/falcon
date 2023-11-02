@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Car;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CarStoreRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +23,7 @@ class CarStoreRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'img'=>'required',
-            'model'=>'required',
-            'seats'=>'required',
-            'ac'=>'required',
-            'first_mile_price'=>'required',
-            
-           
-            
-            
+             'email'=>'required',
         ];
     }
 }
