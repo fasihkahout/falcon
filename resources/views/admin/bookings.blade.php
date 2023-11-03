@@ -9,6 +9,19 @@
         <a href="{{route('index')}}"><button id="add-category-btn" class="btn btn-success">Create Bookings</button></a>
       </div>
       @endif
+      <div style="position: relative;left: 40%; bottom:2em">
+        
+       <form action="{{ route('bookings') }}" method="get">
+    @csrf
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date">
+
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+
+    <button type="submit" >Filter Bookings</button>
+</form>
+      </div>
       <section id="">
                     <div class="row">
                         <div class="col-12">
@@ -28,6 +41,7 @@
                                            <th>Luggage</th>
                                            <th>Distance</th>
                                            <th>Price</th>
+                                           <th>Date and Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +83,7 @@
                                         <td>{{$booking->luggage}}</td>
                                         <td>{{$booking->distance}}</td>
                                         <td>{{$booking->car_price}} P</td>
+                                        <td>{{$booking->created_at}}</td>
                                     </tr>
                                     @endforeach
                                    

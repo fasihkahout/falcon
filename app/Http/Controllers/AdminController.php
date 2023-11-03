@@ -16,6 +16,7 @@ use App\Http\Requests\SearchForm\SearchFormStoreRequest;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\User;
+use App\Models\Baggage;
 use Hash;
 
 class AdminController extends Controller
@@ -45,18 +46,35 @@ class AdminController extends Controller
 }
 
 
-   public function bookings() {
+   public function bookings(Request $request) {
     // Check if the user is logged in
     if(auth()->check()) {
         // If logged in, check if the user has the 'Admin' role
         if (auth()->user()->hasRole('Admin')) {
             // If admin, retrieve all bookings
-            $bookings = SearchForm::with('users','cars')->whereNotNull('users_id')->orderBy('id','DESC')
-    ->get();
+            $bookings = SearchForm::with('users','cars')->whereNotNull('users_id');
+
+            // Filter by date range if provided
+            if ($request->has('start_date') && $request->has('end_date')) {
+                $start_date = $request->input('start_date');
+                $end_date = $request->input('end_date');
+                $bookings->whereBetween('created_at', [$start_date, $end_date]);
+            }
+
+            $bookings = $bookings->orderBy('id', 'DESC')->get();
         } else {
             // If user, retrieve only bookings associated with the user
             $userId = auth()->user()->id;
-            $bookings = SearchForm::with('users','cars')->where('users_id', $userId)->orderBy('id','DESC')->get();
+            $bookings = SearchForm::with('users','cars')->where('users_id', $userId);
+
+            // Filter by date range if provided
+            if ($request->has('start_date') && $request->has('end_date')) {
+                $start_date = $request->input('start_date');
+                $end_date = $request->input('end_date');
+                $bookings->whereBetween('created_at', [$start_date, $end_date]);
+            }
+
+            $bookings = $bookings->orderBy('id', 'DESC')->get();
         }
 
         return view('admin.bookings', compact('bookings'));
@@ -65,6 +83,32 @@ class AdminController extends Controller
         return redirect()->route('login')->with('error', 'Please sign in first.');
     }
 }
+
+public function baggages(Request $request) {
+    // Check if the user is logged in
+    if(auth()->check()) {
+        // If logged in, check if the user has the 'Admin' role
+        if (auth()->user()->hasRole('Admin')) {
+            // If admin, retrieve all bookings
+            $baggages = Baggage::with('users','cars')->whereNotNull('users_id')->get();
+
+            // Filter by date range if provided
+            } else {
+            // If user, retrieve only bookings associated with the user
+            $userId = auth()->user()->id;
+            $baggages = Baggage::with('users','cars')->where('users_id', $userId)->get();
+
+            // Filter by date range if provided
+            
+        }
+
+        return view('admin.baggages', compact('baggages'));
+    } else {
+        // If not logged in, redirect to login page
+        return redirect()->route('login')->with('error', 'Please sign in first.');
+    }
+}
+
 
 
 

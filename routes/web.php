@@ -7,14 +7,18 @@ use Illuminate\Support\Facades\Route;
 
 //View Controller 
 Route::get('/' , [ViewController::class , 'index'])->name('index');
+Route::get('/baggage' , [ViewController::class , 'baggage'])->name('baggage');
 Route::get('/airports' , [ViewController::class , 'airports'])->name('airports');
 Route::get('/blog-grid' , [ViewController::class , 'bloggrid'])->name('bloggrid');
 Route::get('/blog-details' , [ViewController::class , 'blogdetails'])->name('blogdetails');
 Route::get('/blog-classic' , [ViewController::class , 'blogclassic'])->name('blogclassic');
 Route::get('/find' , [ViewController::class , 'find'])->name('find');
+Route::get('/baggagefind' , [ViewController::class , 'baggagefind'])->name('baggagefind');
 Route::get('/book/{car_id}', [ViewController::class, 'book'])->name('book');
+Route::get('/baggagebook/{car_id}', [ViewController::class, 'baggagebook'])->name('baggagebook');
 
 Route::get('/confirmbooking/{car_id}' , [ViewController::class , 'confirmbooking'])->name('confirmbooking');
+Route::get('/baggageconfirmbooking/{car_id}' , [ViewController::class , 'baggageconfirmbooking'])->name('baggageconfirmbooking');
 Route::post('/stripePost', [ViewController::class, 'stripePost'])->name('stripe.post');
 
 
@@ -35,6 +39,7 @@ Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
 Route::get('/profile' , [ProfileController::class , 'profile'])->name('profile');
 Route::get('/users' , [AdminController::class , 'users'])->name('users');
 Route::get('/bookings' , [AdminController::class , 'bookings'])->name('bookings');
+Route::get('/baggages' , [AdminController::class , 'baggages'])->name('baggages');
 Route::get('/addcars', [AdminController::class, 'addcars'])->name('addcars');
 Route::post('/postcars', [AdminController::class, 'postcars'])->name('postcars');
 Route::get('/editcars/{id}', [AdminController::class, 'editcars'])->name('editcars');
@@ -56,6 +61,6 @@ Route::get('/deletecategories/{id}', [AdminController::class, 'deletecategories'
 
 Route::post('searchbooking', [ViewController::class, 'searchBooking'])->name('searchBooking');
 Route::post('searchbookings', [ViewController::class, 'searchbookings'])->name('searchbookings');
-
+Route::post('baggagepost', [ViewController::class, 'baggagepost'])->name('baggagepost');
 
 

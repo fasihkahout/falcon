@@ -105,3 +105,10 @@ i.fa.fa-check.me-2 {
 .dropdown-menu li{
     margin: 0px 15px 0px 4px;
 }
+
+@media (max-width: 767px) {
+    .mobile-center {
+        margin: 0 auto;
+        text-align: center !important;
+    }
+}

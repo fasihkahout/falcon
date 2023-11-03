@@ -48,7 +48,7 @@
                                     <!-- Divider -->
                                     <ul class="nav nav-divider h6 mb-0">
                                         
-                                        <li class="nav-item">{{ $trip }}</li>
+                                        <li class="nav-item">One Way</li>
                                        
                                         <li class="nav-item">&nbsp;{{ $latestDistance }}</li>
                                         <!-- <li class="nav-item">2 Adults</li> -->
@@ -100,7 +100,7 @@
 
                 <!-- Card title and rating -->
                 <div class="col-sm-6 col-md-4 col-xl-6">
-                    <h4 class="card-title mb-2"><a href="{{ route('book', ['car_id' => $car->id]) }}" class="stretched-link">{{$car->name}}</a></h4>
+                    <h4 class="card-title mb-2"><a href="{{ route('baggagebook', ['car_id' => $car->id]) }}" class="stretched-link">{{$car->name}}</a></h4>
                     <!-- Nav divider -->
                     <ul class="nav nav-divider h6 fw-normal mb-2">
                         <li class="nav-item">{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</li>
@@ -135,7 +135,7 @@
             </ul>
         @endif
 @endforeach
-<a href="{{ route('book', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0">Book Now</a>
+<a href="{{ route('baggagebook', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0">Book Now</a>
 </div>
 
    
@@ -200,16 +200,16 @@
         <div class="back-top"></div>
     
         <!-- Bootstrap JS -->
-        <script src="{{(asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     
         <!-- Vendors -->
-        <script src="{{(asset('assets/vendor/sticky-js/sticky.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/flatpickr/js/flatpickr.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/choices/js/choices.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/sticky-js/sticky.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/flatpickr/js/flatpickr.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/choices/js/choices.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
     
         <!-- ThemeFunctions -->
-        <script src="{{(asset('assets/js/functions.js')}}"></script>
+        <script src="{{asset('assets/js/functions.js')}}"></script>
     
     </body>
 

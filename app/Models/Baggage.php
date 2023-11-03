@@ -7,24 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Cars;
 
-class SearchForm extends Model
+class Baggage extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+     protected $fillable = [
         'id',
         'pickup_destination',
         'dropoff_destination',
-        'pickup_date',
-        'pickup_time',
-        'luggage',
-        'passengers',
+        'length',
+        'width',
+        'height',
+        'weight',
         'distance',
-        'return_date',
-        'return_time',
     ];
 
-    protected $table = 'search_form';
+    protected $table = 'baggage';
 
      public function users()
      {

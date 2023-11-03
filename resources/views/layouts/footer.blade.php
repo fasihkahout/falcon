@@ -1,14 +1,13 @@
 <footer class="section footer-classic">
     <div class="footer-classic-main">
         <div class="container">
-            <div class="row row-50 justify-content-lg-between">
-                <div class="col-sm-7 col-lg-3 col-xl-2 text-start"><a class="brand d-flex" href="index.html"><img
-                            class="brand-logo-dark" src="{{asset('assets/img/logodark.png')}}" alt="" width="111" height="33"
-                            loading="lazy" ></a>
-                    <p class="text-start"><span style="max-width: 250px;">We provide the best taxi services for you
-                            all over the USA.</span></p><a
-                        class="button button-sm button-default-outline button-winona">
-                       
+           <div class="row row-50 justify-content-lg-between">
+                <div class="col-sm-7 col-lg-3 col-xl-2 text-start text-center mobile-center">
+                    <a class="brand d-flex" href="index.html">
+                        <img class="brand-logo-dark" src="{{asset('assets/img/logodark.png')}}" alt="" width="111" height="33" loading="lazy">
+                    </a>
+                    <p class="text-start"><span style="max-width: 250px;">We provide the best taxi services for you all over the USA.</span></p>
+                    <a class="button button-sm button-default-outline button-winona mb-3">
                         <div class="content-dubbed">Order Now</div>
                     </a>
                 </div>
@@ -30,20 +29,21 @@
                         <li class="mb-3">FAQ</li>
                     </ul>
                 </div>
-                <div class="col-sm-5 col-lg-9 col-xl-2">
+                <div class="col-sm-5 col-lg-9 col-xl-2 text-center mobile-center">
                     <h5 class="footer-classic-title">Contacts</h5>
                     <div class="row row-20 row-sm-35">
-                        <div class="col-6 col-sm-12 col-lg-8 col-xl-12">
+                        <div class="col-12">
                             <div class="row row-10 text-black">
-                                <div class="col-lg-6 col-xl-12"><a href="mailto:#">info@falcontransport.com</a></div>
-                                <div class="col-lg-6 col-xl-12"><a href="tel:#">+1-800-123-1234</a></div>
+                                <div class="col-12"><a href="mailto:#">info@falcontransport.com</a></div>
+                                <div class="col-12"><a href="tel:#">+1-800-123-1234</a></div>
                             </div>
                         </div>
-                        <div class="col-6 col-sm-12 col-lg-4 col-xl-12 text-end text-sm-start">
-                            <div class="group group-xs"><a class="link link-social-1 mdi mdi-twitter"
-                                    href="#"></a><a class="link link-social-1 mdi mdi-facebook" href="#"></a><a
-                                    class="link link-social-1 mdi mdi-instagram" href="#"></a></div>
-                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-12 col-lg-4 col-xl-12 mobile-center">
+                    <div class="group group-xs"><a class="link link-social-1 mdi mdi-twitter"
+                        href="#"></a><a class="link link-social-1 mdi mdi-facebook" href="#"></a><a
+                        class="link link-social-1 mdi mdi-instagram" href="#"></a>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/newfooter.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/otherstyle.css')}}">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  -->
 
      <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -89,10 +93,10 @@
                 </div>
             </div>
         </div>
-        <div class="nav-menu-wrapper">
+       <div class="nav-menu-wrapper" style="width:118%; margin-left:-13px;">
             <div class="container">
                 <div class="nav-menu-inner">
-                    <div class="site-logo">
+                    <div class="site-logo" style="padding-left: 12px;">
                         <a href="index.html"><img src="{{asset('assets/img/logologht.png')}}" alt="Logo"></a>
                     </div>
                     <div class="header-menu-wrap">
@@ -138,7 +142,7 @@
 </div>
 
                     <div class="mobile-menu-icon">
-                        <div class="burger-menu">
+                       <div class="burger-menu" style="margin-right:30px;">
                             <div class="line-menu line-half first-line"></div>
                             <div class="line-menu"></div>
                             <div class="line-menu line-half last-line"></div>

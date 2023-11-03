@@ -2,37 +2,48 @@
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 @include('admin.navbar')
 
- <div class="col-lg-11 grid-margin stretch-card">
-<div class="card">
+ <div class="content-body">
+            <!-- Validation -->
+            <section class="bs-validation">
+                <div class="row justify-content-center">
+     <div class="col-md-6 col-12">
+    <div class="card" >
+      <div class="card-header">
+ <h1 class="card-title" style="position: relative;right: 0%; color:black;" >Edit User</h1>
+</div>
+    
     <div class="card-body">
-      <h1 class="card-title">Edit User</h1>
 
-<div class="container" style="display:flex;">
-    <form action="{{ route('updateusers', ['id' => $user->id]) }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
+
+    <form action="{{ route('postusers') }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
                 @csrf
-        <div class="row mb-2">
-            <div class="mb-3">
+       
+            <div class="mb-1">
             <label for="exampleFormControlInput1" class="form-label" style="display: block;">Name</label>
-            <input type="text" name="name" class="input_field" value="{{$user->name}}" placeholder="" style="display: block;">
-            </div>
+            <input type="text" name="name" class="signin-input col-md-12" value="{{$user->name}}" placeholder="" >
+            
         </div>
-        <div class="row mb-2">
-            <div class="mb-3">
+       
+            <div class="mb-1">
             <label for="exampleFormControlInput1" class="form-label" style="display: block;">E-mail</label>
-            <input type="text" name="email" class="input_field" value="{{$user->email}}" placeholder="" style="display: block;">
+            <input type="text" name="email" class="signin-input col-md-12" value="{{$user->email}}" placeholder="" >
             </div>
-        </div>
-        <div class="row mb-2">
+       
+        
             <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label" style="display: block;">Password</label>
-            <input type="text" name="password" class="input_field"  placeholder="" style="display: block;">
+            <input type="text" name="password" class="signin-input col-md-12" value="{{ old('password') }}" placeholder="" >
             </div>
-        </div>
+        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
    
+
 </div>
 </div>
 </div>
 </div>
+</section>
+</div>
+</main>

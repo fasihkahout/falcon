@@ -1,31 +1,38 @@
 @include('admin.sidebar')
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     @include('admin.navbar')
-<h1 class="card-title" style="position: relative;right: 0%; color:black;" >Edit Profile</h1>
+<div class="content-body">
+            <!-- Validation -->
+            <section class="bs-validation">
+                <div class="row justify-content-center">
+     <div class="col-md-6 col-12">
     <div class="card" >
+      <div class="card-header">
+ <h1 class="card-title" style="position: relative;right: 0%; color:black;" >Edit Profile</h1>
+</div>
+    
     <div class="card-body">
-       <div class = "container1 d-flex justify-content-center py-3">
         
  
            
             <form action="{{ route('updateProfile', ['id' => $profile->id]) }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
                 @csrf
 
-                <div class="form-wrap">
+                <div class="mb-1">
                   <label class="login-label d-flex flex-md-row justify-content-between" for="name">Name</label>
-                    <input class="signin-input" id="name" type="text" placeholder="..." name="name"  value="{{ $profile->name }}">
+                    <input class="signin-input col-md-12" id="name" type="text" placeholder="..." name="name"  value="{{ $profile->name }}">
                     
                 </div>
 
-                <div class="form-wrap">
+                <div class="mb-1">
                   <label class="login-label d-flex flex-md-row justify-content-between" for="model">E-mail</label>
-                    <input class="signin-input" id="email" type="text" placeholder="..." name="email"  value="{{ $profile->email }}" readonly>
+                    <input class="signin-input col-md-12" id="email" type="text" placeholder="..." name="email"  value="{{ $profile->email }}" readonly>
                     
                 </div>
 
-                <div class="form-wrap">
+                <div class="mb-3">
                   <label class="login-label d-flex flex-md-row justify-content-between" for="type">Password</label>
-                    <input class="signin-input" id="password" type="text" placeholder="..." name="password"  >
+                    <input class="signin-input col-md-12" id="password" type="text" placeholder="..." name="password"  >
                     
                 </div>
 

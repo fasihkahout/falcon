@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\Baggage;
 use App\Models\SearchForm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
+use App\Http\Requests\Baggage\BaggageStoreRequest;
 use Session;
 use Stripe;
 
@@ -19,6 +21,10 @@ class ViewController extends Controller
 {
     public function index(){
         return view('index');
+    }
+
+     public function baggage(){
+        return view('baggage');
     }
 
     public function airports(){
@@ -55,15 +61,43 @@ class ViewController extends Controller
     return view('find', compact('cars', 'carPrices', 'searches', 'latestDistance','trip'));
 }
 
+public function baggagefind()
+{
+    // Assuming Cars is your Eloquent model and has a relationship with categories
+    $cars = Cars::with('categories')->get();
+
+    // Fetch all records from the SearchForm table and get the distance of the latest record
+    $baggages = Baggage::latest()->get();
+    $latestDistance = $baggages->first()->distance;
+    
+
+    // Calculate prices based on the latest distance
+    $carPrices = $this->calculatePrices();
+
+
+
+    return view('baggage_find', compact('cars', 'carPrices', 'baggages', 'latestDistance'));
+}
+
 
    public function book($id){
     $cars = Cars::with('categories')->where('id', $id)->get();
-    $searches = SearchForm::latest()->get();
-    $search = SearchForm::all();
+    $searches = Baggage::latest()->get();
+    $search = Baggage::all();
     $latestDistance = $searches->first()->distance;
     $carPrices = $this->calculatePrices();
 
     return view('book', compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
+}
+
+ public function baggagebook($id){
+    $cars = Cars::with('categories')->where('id', $id)->get();
+    $baggages = Baggage::latest()->get();
+    $baggage = Baggage::all();
+    $latestDistance = $baggages->first()->distance;
+    $carPrices = $this->calculatePrices();
+
+    return view('baggage_book', compact('cars', 'baggages', 'latestDistance', 'carPrices','baggage'));
 }
 
 
@@ -75,6 +109,15 @@ class ViewController extends Controller
     $latestDistance = $searches->first()->distance;
     $carPrices = $this->calculatePrices();
         return view('confirmbooking',compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
+    }
+
+    public function baggageconfirmbooking($id){
+    $cars = Cars::with('categories')->where('id', $id)->get();
+    $baggages = Baggage::latest()->get();
+    $baggage = Baggage::all();
+    $latestDistance = $baggages->first()->distance;
+    $carPrices = $this->calculatePrices();
+        return view('baggage_cnfirmbooking',compact('cars', 'baggages', 'latestDistance', 'carPrices','baggage'));
     }
 
     public function searchBooking(SearchFormStoreRequest $request)
@@ -136,6 +179,30 @@ class ViewController extends Controller
     return redirect()->route('find')->with('success', 'Booking Searched successfully.');
 }
 
+ public function baggagepost(BaggageStoreRequest $request)
+{
+    // Retrieve the user ID of the logged-in user
+    $userId = auth()->id();
+
+    $input = $request->all();
+    $baggage = new Baggage;
+    
+    // Associate the user ID with the search
+    $baggage->users_id = $userId;
+
+    $baggage->pickup_destination = $request->pickup_destination;
+    $baggage->dropoff_destination = $request->dropoff_destination;
+    $baggage->length = $request->length;
+    $baggage->width = $request->width;
+    $baggage->weight = $request->weight;
+    $baggage->height = $request->height;
+    $baggage->distance = $request->distance;
+
+    $baggage->save();
+
+    return redirect()->route('baggagefind')->with('success', 'Booking Searched successfully.');
+}
+
 
 
 
@@ -192,6 +259,15 @@ public function stripePost(Request $request)
 
     // Save the changes
     $searchForm->save();
+
+     $baggage = Baggage::where('users_id', $userId)->latest()->first();
+
+    // Update the existing record with the car price
+    $baggage->car_price = $carPrice;
+    $baggage->car_id = $carId;
+
+    // Save the changes
+    $baggage->save();
 
     // User is logged in, proceed with the payment
     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
