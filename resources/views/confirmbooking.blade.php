@@ -123,19 +123,20 @@
                                 <!-- Form START -->
                                  <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                         @csrf
-                        <div class='form-row row'>
-                           <div class='col-xs-12 col-md-6 form-group required'>
-                              <label class='control-label'>Name on Card</label> 
-                              <input class='form-control' size='4' type='text'>
-                           </div>
-                           <input type="hidden" name="car_id" value="{{ $car->id }}">
-    <input type="hidden" name="car_price" value="{{ $price }}">
-                           <div class='col-xs-12 col-md-6 form-group required'>
-                              <label class='control-label'>Card Number</label> 
-                              <input autocomplete='off' class='form-control card-number' size='20' type='text'>
-                           </div>                           
-                        </div>                        
-                        <div class='form-row row'>
+                       <div class='form-row row'>
+        <div class='col-xs-12 col-md-6 form-group required'>
+            <label class='control-label'>Name on Card</label>
+            <input class='form-control' name='card_name' size='4' type='text'>
+        </div>
+        <input type="hidden" name="car_id" value="{{ $car->id }}">
+        <input type="hidden" name="car_price" value="{{ $price }}">
+        <div class='col-xs-12 col-md-6 form-group required'>
+            <label class='control-label'>Card Number</label>
+            <div id="card-element"></div>
+            <div id="card-errors" role="alert"></div>
+        </div>
+    </div>                       
+                        <!-- <div class='form-row row'>
                            <div class='col-xs-12 col-md-4 form-group cvc required'>
                               <label class='control-label'>CVC</label> 
                               <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
@@ -148,12 +149,12 @@
                               <label class='control-label'>Expiration Year</label> 
                               <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
                            </div>
-                        </div>
-                        <div class='mt-2'>
-                         <div class="col-12 text-start">
-                                        <button class="btn btn-primary mb-0">Pay Now</button>
-                                    </div>
-                                </div>
+                        </div> -->
+                       <div class='mt-2'>
+        <div class="col-12 text-start">
+            <button id="submit-button" class="btn btn-primary mb-0">Pay Now</button>
+        </div>
+    </div>
                      </form>
                                 <!-- Form END -->
                             </div>
@@ -167,6 +168,7 @@
 @endforeach
 @include('layouts.footer')
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
 $(function() {
   var $form = $(".require-validation");
@@ -214,3 +216,58 @@ $(function() {
   }
 });
 </script>
+<script>
+    // Set your Stripe public key
+    var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+    var elements = stripe.elements();
+
+    // Create an instance of the card Element
+    var card = elements.create('card', {
+        hidePostalCode: true // Set hidePostalCode to true to disable the postal code field
+    });
+
+    // Add an instance of the card Element into the 'card-element' div
+    card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element
+    card.addEventListener('change', function (event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+    // Handle form submission
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Disable the submit button to prevent multiple submissions
+        document.getElementById('submit-button').disabled = true;
+
+        // Create a token from the card Element
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                // Inform the user if there was an error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+
+                // Enable the submit button again
+                document.getElementById('submit-button').disabled = false;
+            } else {
+                // Token successfully created, add it to the form and submit
+                var tokenInput = document.createElement('input');
+                tokenInput.type = 'hidden';
+                tokenInput.name = 'stripeToken';
+                tokenInput.value = result.token.id;
+                form.appendChild(tokenInput);
+
+                // Submit the form
+                form.submit();
+            }
+        });
+    });
+</script>
+

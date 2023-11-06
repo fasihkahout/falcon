@@ -172,6 +172,8 @@
     <!-- Cab item END -->
 @endforeach
 
+
+
                          
     
                                 <!-- Pagination -->
@@ -200,16 +202,16 @@
         <div class="back-top"></div>
     
         <!-- Bootstrap JS -->
-        <script src="{{(asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     
         <!-- Vendors -->
-        <script src="{{(asset('assets/vendor/sticky-js/sticky.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/flatpickr/js/flatpickr.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/choices/js/choices.min.js')}}"></script>
-        <script src="{{(asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/sticky-js/sticky.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/flatpickr/js/flatpickr.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/choices/js/choices.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
     
         <!-- ThemeFunctions -->
-        <script src="{{(asset('assets/js/functions.js')}}"></script>
+        <script src="{{asset('assets/js/functions.js')}}"></script>
     
     </body>
 

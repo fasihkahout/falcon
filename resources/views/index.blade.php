@@ -73,31 +73,32 @@
                             </div>
                         </div>
 
+<script src="https://cdn.getaddress.io/scripts/getaddress-autocomplete-1.1.3.min.js">
+</script>
+
  <form class="rd-form rd-mailform form-style-1" action="{{ route('searchBooking') }}" method="POST" novalidate enctype="multipart/form-data" >
                              @csrf
 
                         <div id="onewayform">
-                            <div class="form-wrap ">
-                                <input class="form-input " name="pickup_destination" id="pickup_destination" type="text"
-                                    placeholder="enter pickup location"
-                                    >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Pick-up</label>
+                                                       <div class="form-wrap">
+                                <input class="form-input" name="pickup_destination" id="pickup_destination" type="text"
+                                       placeholder="enter pickup location">
+                                <label class="form-label d-flex flex-md-row justify-content-between"
+                                       for="form-location">Pick-up</label>
                             </div>
 
-                             <div class="form-wrap mt-2">
-                                <input class="form-input " name="latitude" id="latitude" type="hidden"
-                                    placeholder="enter your drop-off" 
-                                    >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Latitude</label>
+                            <div class="form-wrap mt-2">
+                                <input class="form-input" name="latitude" id="latitude" type="hidden"
+                                       placeholder="enter your drop-off">
+                                <label class="form-label d-flex flex-md-row justify-content-between"
+                                       for="form-location">Latitude</label>
                             </div>
-                             <div class="form-wrap mt-2">
-                                <input class="form-input " name="longitude" id="longitude" type="hidden"
-                                    placeholder="enter your drop-off" 
-                                    >
-                                <label class="form-label d-flex flex-md-row justify-content-between "
-                                    for="form-location">Longitude</label>
+
+                            <div class="form-wrap mt-2">
+                                <input class="form-input" name="longitude" id="longitude" type="hidden"
+                                       placeholder="enter your drop-off">
+                                <label class="form-label d-flex flex-md-row justify-content-between"
+                                       for="form-location">Longitude</label>
                             </div>
                             <div class="form-wrap mt-2">
                                 <input class="form-input " name="dropoff_destination" id="dropoff_destination" type="text"
@@ -219,6 +220,12 @@
                         </div>
 
                     </form>
+<script>
+    getAddress.autocomplete('pickup_destination','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude',longitude:'longitude'}});
+</script>
+<script>
+    getAddress.autocomplete('dropoff_destination','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude1',longitude:'longitude1'}});
+</script>
 
                     <form class="rd-form rd-mailform form-style-1 " action="{{ route('searchbookings') }}"  method="POST" novalidate enctype="multipart/form-data" >
                              @csrf
@@ -522,6 +529,9 @@
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
 
+
+
+
 <script>
     $(document).ready(function () {
         $("#latitudeArea").addClass("d-none");
@@ -565,22 +575,64 @@
 
     function initialize() {
         var input = document.getElementById('pickup_destination');
-        var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'GB' } });
 
-        autocomplete.addListener('place_changed', function () {
-            var place = autocomplete.getPlace();
-            $('#latitude').val(place.geometry['location'].lat());
-            $('#longitude').val(place.geometry['location'].lng());
+        input.addEventListener('input', function () {
+            var pickupLocation = input.value.trim();
 
-            $("#latitudeArea").removeClass("d-none");
-            $("#longtitudeArea").removeClass("d-none");
+            if (pickupLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${pickupLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('dropoff_destination');
+
+        input.addEventListener('input', function () {
+            var dropoffLocation = input.value.trim();
+
+            if (dropoffLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${dropoffLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
         });
     }
 </script>
 
 
 
-<script>
+
+
+<!-- <script>
     window.addEventListener('load', initialize1);
 
     function initialize1() {
@@ -596,7 +648,7 @@
             $("#longtitudeArea1").removeClass("d-none");
         });
     }
-</script>
+</script> -->
 
 <script>
     window.addEventListener('load', initialize);
