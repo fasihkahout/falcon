@@ -15,7 +15,7 @@
     <div class="card-body">
 
 
-    <form action="{{ route('postusers') }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
+    <form action="{{  route('updateusers', ['id' => $user->id]) }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
                 @csrf
        
             <div class="mb-1">

@@ -1,4 +1,16 @@
 @include('layouts.header')
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9WFW8R6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH9FEM2M02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CH9FEM2M02');
+</script>
  @foreach($cars as $car)
     <section class="pt-4 pt-md-5">
         <div class="container">

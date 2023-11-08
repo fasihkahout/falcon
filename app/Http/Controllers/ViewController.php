@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\Blog;
 use App\Models\Baggage;
 use App\Models\SearchForm;
 use Illuminate\Support\Facades\Auth;
@@ -32,12 +33,14 @@ class ViewController extends Controller
     }
 
     public function bloggrid(){
-        return view('blog-grid');
+        $blogs = Blog::all();
+        return view('blog-grid', compact('blogs'));
     }
 
-    public function blogdetails(){
-        return view('blog-details');
-    }
+    public function blogdetails($id){
+    $blog = Blog::find($id); // Assuming your Blog model has a 'find' method
+    return view('blog-details', compact('blog'));
+}
 
     public function blogclassic(){
         return view('blog-classic');

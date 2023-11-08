@@ -15,7 +15,10 @@ use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Http\Requests\Blog\BlogStoreRequest;
+use App\Http\Requests\Blog\BlogUpdateRequest;
 use App\Models\User;
+use App\Models\Blog;
 use App\Models\Baggage;
 use Hash;
 
@@ -122,6 +125,11 @@ public function baggages(Request $request) {
         return view('admin.user', compact('users'));
     }
 
+    public function blogs(){
+         $blogs = Blog::all();
+        return view('admin.blogs', compact('blogs'));
+    }
+
     public function addcars(){
         $categories = Category::all();
         return view('admin.add_cars', compact('categories'));
@@ -130,6 +138,11 @@ public function baggages(Request $request) {
      public function addusers(){
        
         return view('admin.add_user');
+    }
+
+    public function addblogs(){
+       
+        return view('admin.add_blogs');
     }
 
      public function postusers(UserStorerequest $request)
@@ -147,6 +160,26 @@ public function baggages(Request $request) {
         $user->save();
         $user=$user->assignRole('User');
         return redirect()->route('users')->with('success', 'User Added successfully.');
+    }
+
+    public function postblogs(BlogStorerequest $request)
+    {
+
+        $input = $request->all();
+        if ($request->has('img'))
+        {
+            // echo 1; exit;
+            $img = $this->uploadImg($request);
+        }
+        $blog = new Blog;
+        $blog->title=$request->title;
+        $blog->category=$request->category;
+        $blog->written_by=$request->written_by;
+        $blog->img=$img;
+        $blog->editor=$request->editor;
+     
+        $blog->save();
+        return redirect()->route('blogs')->with('success', 'Blog Added successfully.');
     }
 
     public function postcars(CarStoreRequest $request)
@@ -199,6 +232,18 @@ public function baggages(Request $request) {
         return view('admin.edit_user', compact('user'));
     }
 
+     public function editblogs($id)
+    {
+
+        $blog = Blog::find($id);
+
+        if (!$blog) {
+            return redirect()->route('blogs')->with('error', 'Blog not found.');
+        }
+
+        return view('admin.edit_blogs', compact('blog'));
+    }
+
      public function updatecars(CarUpdateRequest $request, $id)
     {
         $car = Cars::find($id);
@@ -236,6 +281,37 @@ public function baggages(Request $request) {
             
     }
 
+    public function updateblogs(BlogUpdateRequest $request, $id)
+    {
+        $blog = Blog::find($id);
+         if ($request->has('img'))
+        {
+            // echo 1; exit;
+            $img = $this->uploadImg($request);
+            $blog->img=$img;
+        }
+        $blog->title=$request->title;
+         $blog->category=$request->category;
+         $blog->written_by=$request->written_by;
+      $blog->editor=$request->editor;
+        $blog->save();
+        return redirect()->route('blogs')->with('success', 'Blog updated successfully.');
+            
+    }
+
+
+public function deleteblogs($id)
+    {
+        $blog = Blog::find($id);
+        
+        if (!$blog) {
+            return redirect()->route('blogs')->with('error', 'Blog not found.');
+        }
+
+        $blog->delete();
+
+        return redirect()->route('blogs')->with('success', 'Blog deleted successfully!');
+    }
     
 public function deleteusers($id)
     {

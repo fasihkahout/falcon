@@ -59,96 +59,46 @@
 </div>
 </section>
 
+
 <section class="blog-section blog-page bg-grey padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 sm-padding">
                 <div class="row grid-post">
+                    @foreach($blogs as $blog)
                     <div class="col-md-6 padding-15">
                         <div class="post-card">
                             <div class="post-thumb">
-                                <img src="assets/img/post-1.jpg" alt="post">
-                                <a href="blog-details.html" class="post-category">Business</a>
+                                <img src="{{$blog->img}}" alt="post">
+                                <a href="blog-details.html" class="post-category">{{$blog->category}}</a>
                             </div>
                             <div class="post-content-wrap">
                                 <ul class="post-meta">
-                                    <i class="fa-solid fa-calendar-days fa-2xs"></i>Jan 01 2022</li>
-                                    <li><i  class="fa-solid fa-user fa-2xs"></i>Elliot Alderson</li>
+                                    <i class="fa-solid fa-calendar-days fa-2xs"></i>{{$blog->created_at->format('M d Y')}}
+</li>
+                                    <li><i  class="fa-solid fa-user fa-2xs"></i>{{$blog->written_by}}</li>
                                 </ul>
                                 <div class="post-content">
-                                    <h3><a href="blog-details.html" class="hover">How to Start initiating an startup in few days.</a></h3>
-                                    <p>Financial experts support or help you to to find out which way you can raise your funds more...</p>
-                                    <a href="blog-details.html" class="read-more">Read More</a>
+                                    <h3><a href="blog-details.html" class="hover">{{$blog->title}}</a></h3>
+                                    <p>{!! mb_substr($blog->editor, 0, mb_strlen($blog->editor) / 5) !!}...</p>
+                                   <a href="{{ route('blogdetails', ['blog_id' => $blog->id]) }}" class="read-more">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 padding-15">
-                        <div class="post-card">
-                            <div class="post-thumb">
-                                <img src="assets/img/post-2.jpg" alt="post">
-                                <a href="blog-details.html" class="post-category">Startup</a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <ul class="post-meta">
-                                    <i class="fa-solid fa-calendar-days fa-2xs"></i>Jan 01 2022</li>
-                                    <li><i  class="fa-solid fa-user fa-2xs"></i>Elliot Alderson</li>
-                                </ul>
-                                <div class="post-content">
-                                    <h3><a href="blog-details.html">Financial experts support help you to find out.</a></h3>
-                                    <p>Financial experts support or help you to to find out which way you can raise your funds more...</p>
-                                    <a href="blog-details.html" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 padding-15">
-                        <div class="post-card">
-                            <div class="post-thumb">
-                                <img src="assets/img/post-3.jpg" alt="post">
-                                <a href="blog-details.html" class="post-category">Finance</a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <ul class="post-meta">
-                                    <i class="fa-solid fa-calendar-days fa-2xs"></i>Jan 01 2022</li>
-                                    <li><i class="fa-solid fa-user fa-2xs">
-                                    </i>Elliot Alderson</li>
-                                </ul>
-                                <div class="post-content">
-                                    <h3><a href="blog-details.html">Innovative business all over the world.</a></h3>
-                                    <p>Financial experts support or help you to to find out which way you can raise your funds more...</p>
-                                    <a href="blog-details.html" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 padding-15">
-                        <div class="post-card">
-                            <div class="post-thumb">
-                                <img src="assets/img/post-4.jpg" alt="post">
-                                <a href="blog-details.html" class="post-category">Consulting</a>
-                            </div>
-                            <div class="post-content-wrap">
-                                <ul class="post-meta">
-                                    <i class="fa-solid fa-calendar-days fa-2xs"></i>Jan 01 2022</li>
-                                    <li><i class="fa-solid fa-user fa-2xs"></i>Elliot Alderson</li>
-                                </ul>
-                                <div class="post-content">
-                                    <h3><a href="blog-details.html">Fresh startup ideas for digital business</a></h3>
-                                    <p>Financial experts support or help you to to find out which way you can raise your funds more...</p>
-                                    <a href="blog-details.html" class="read-more">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                   
+                   
                 </div>
-                <ul class="pagination-wrap text-left mt-30">
+                
+                                   
+               <!--  <ul class="pagination-wrap text-left mt-30">
                     <li><a href="#"><i class="fa-solid fa-arrow-left fa-2xs"></i></a></li>
                     <li><a href="#">1</a></li>
                     <li><a href="#" class="active">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#"><i class="fa-solid fa-arrow-right fa-2xs"></i></a></li>
-                </ul>
+                </ul> -->
 
             </div>
 

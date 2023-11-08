@@ -38,7 +38,7 @@ made for taxi service companies.</p>
 <p>Our versatile team is built of designers, developers and <br>digital marketers who all bring unique experience.</p>
 <ul class="post-meta">
 <li><i class="fa-solid fa-user fa-2xs"></i>Elliot Alderson</li>
-<li><i class="fa-solid fa-calendar-days fa-2xs""></i>Jan 01 2022</li>
+<li><i class="fa-solid fa-calendar-days fa-2xs"></i>Jan 01 2022</li>
 <li><i class="las la-comments"></i>Comments 0</li>
 </ul>
 </div>

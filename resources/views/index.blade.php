@@ -11,6 +11,11 @@
     </div>
 @endif
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9WFW8R6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     <div id="popup-search-box">
         <div class="box-inner-wrap d-flex align-items-center">
             <form id="form" action="#" method="get" role="search">
@@ -227,6 +232,9 @@
     getAddress.autocomplete('dropoff_destination','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude1',longitude:'longitude1'}});
 </script>
 
+<script src="https://cdn.getaddress.io/scripts/getaddress-autocomplete-1.1.3.min.js">
+</script>
+
                     <form class="rd-form rd-mailform form-style-1 " action="{{ route('searchbookings') }}"  method="POST" novalidate enctype="multipart/form-data" >
                              @csrf
 
@@ -440,6 +448,19 @@
 
 
                     </form>
+
+<script>
+    getAddress.autocomplete('pickup_destination1','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude2',longitude:'longitude2'}});
+</script>
+<script>
+    getAddress.autocomplete('dropoff_destination1','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude3',longitude:'longitude3'}});
+</script>
+<script>
+    getAddress.autocomplete('pickup_destination2','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude4',longitude:'longitude4'}});
+</script>
+<script>
+    getAddress.autocomplete('dropoff_destination2','PjXdv-b2CUmkF2wMmcavnA40883',{output_fields:{latitude:'latitude5',longitude:'longitude5'}});
+</script>
                 </div>
             </div>
         </div>
@@ -603,7 +624,123 @@
     window.addEventListener('load', initialize);
 
     function initialize() {
+        var input = document.getElementById('pickup_destination1');
+
+        input.addEventListener('input', function () {
+            var pickupLocation = input.value.trim();
+
+            if (pickupLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${pickupLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('pickup_destination2');
+
+        input.addEventListener('input', function () {
+            var pickupLocation = input.value.trim();
+
+            if (pickupLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${pickupLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
         var input = document.getElementById('dropoff_destination');
+
+        input.addEventListener('input', function () {
+            var dropoffLocation = input.value.trim();
+
+            if (dropoffLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${dropoffLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('dropoff_destination1');
+
+        input.addEventListener('input', function () {
+            var dropoffLocation = input.value.trim();
+
+            if (dropoffLocation !== '') {
+                // Get the GetAddress API key from the Laravel environment
+                var apiKey = '{{ env("GETADDRESS_IO_API_KEY") }}';
+
+                // Make the GetAddress API request for autocomplete suggestions
+                fetch(`https://api.getAddress.io/autocomplete/${dropoffLocation}?api-key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Process the autocomplete suggestions and update your UI
+                        console.log('Autocomplete Suggestions:', data);
+                        // Implement your UI update logic here
+                    })
+                    .catch(error => {
+                        console.error('Error fetching autocomplete data from GetAddress API:', error);
+                    });
+            }
+        });
+    }
+</script>
+
+<script>
+    window.addEventListener('load', initialize);
+
+    function initialize() {
+        var input = document.getElementById('dropoff_destination2');
 
         input.addEventListener('input', function () {
             var dropoffLocation = input.value.trim();
@@ -650,7 +787,7 @@
     }
 </script> -->
 
-<script>
+<!-- <script>
     window.addEventListener('load', initialize);
 
     function initialize() {
@@ -722,7 +859,7 @@
             $("#longtitudeArea5").removeClass("d-none");
         });
     }
-</script>
+</script> -->
 
 
 <script>
@@ -966,3 +1103,12 @@
 
             })</script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH9FEM2M02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CH9FEM2M02');
+</script>

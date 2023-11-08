@@ -41,7 +41,7 @@
                                            <th>Luggage</th>
                                            <th>Distance</th>
                                            <th>Price</th>
-                                           <th>Date and Time</th>
+                                           <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,7 +83,7 @@
                                         <td>{{$booking->luggage}}</td>
                                         <td>{{$booking->distance}}</td>
                                         <td>{{$booking->car_price}} P</td>
-                                        <td>{{$booking->created_at}}</td>
+                                        <td>{{$booking->created_at->format('Y-m-d')}}</td>
                                     </tr>
                                     @endforeach
                                    

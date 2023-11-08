@@ -39,7 +39,7 @@
                                             <th>Height</th>
                                             <th>Weight</th>
                                            <th>Price</th>
-                                           <th>Date and Time</th>
+                                           <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,7 +55,7 @@
                                         <td>{{$baggage->weight}}</td>
                                         <td>{{$baggage->distance}}</td>
                                         <td>{{$baggage->car_price}} P</td>
-                                        <td>{{$baggage->created_at}}</td>
+                                        <td>{{$baggage->created_at->format('Y-m-d')}}</td>
                                     </tr>
                                     @endforeach
                                    

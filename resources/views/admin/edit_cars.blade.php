@@ -17,12 +17,12 @@
         
  
            
-            <form action="{{ route('postcars') }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
+            <form action="{{  route('updatecars', ['id' => $car->id]) }}" method="POST" class="register-form" id="car-form" novalidate enctype="multipart/form-data">
                 @csrf
 
                 <div class="img" style="text-align: center;">
      
-                                        <label><img id="blah" src="@if(isset($img)){{asset($img);}}@else {{asset('assets/img/idnex-1-747x597.png')}} @endif" alt="your image" style=" border-radius: 50% ;width: 100px; height: 100px"  value="{{ $car->img }}"/>
+                                        <label><img id="blah" src="@if(isset($car->img)){{asset($car->img);}}@else {{asset('assets/img/idnex-1-747x597.png')}} @endif" alt="your image" style=" border-radius: 50% ;width: 100px; height: 100px"  value="{{ $car->img }}"/>
 
                                                  <input type="file" name="img"
                                                   onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" style="display: none;"></label>
