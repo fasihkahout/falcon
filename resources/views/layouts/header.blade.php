@@ -52,6 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-CH9FEM2M02');
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
 <body>

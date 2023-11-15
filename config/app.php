@@ -172,6 +172,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
          Intervention\Image\ImageServiceProvider::class,
          Spatie\Permission\PermissionServiceProvider::class,
+         Spatie\Analytics\AnalyticsServiceProvider::class,
     ])->toArray(),
 
     /*

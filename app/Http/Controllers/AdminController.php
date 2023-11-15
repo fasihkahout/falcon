@@ -21,32 +21,43 @@ use App\Models\User;
 use App\Models\Blog;
 use App\Models\Baggage;
 use Hash;
+use Spatie\Analytics\Analytics;
+use Spatie\Analytics\Period;
+
 
 class AdminController extends Controller
 {
      use ImageuploadTriat;
 
 
-    public function dashboard(){
+   public function dashboard(){
     // Check if there is an authenticated user
     if(auth()->user()){
         $userId = auth()->user()->id;
         $bookings = SearchForm::where('users_id', $userId)->get();
-        $query  = SearchForm::with('users','cars')->whereNotNull('users_id')->orderBy('id','DESC');
-        $totalbookings=$query->count();
-        $query =  User::role('User');
-        $totalusers=$query->count();
-        $query =  Cars::with('categories');
-        $totalcars=$query->count();
+        $query = SearchForm::with('users','cars')->whereNotNull('users_id')->orderBy('id','DESC');
+        $totalbookings = $query->count();
+        $query = User::role('User');
+        $totalusers = $query->count();
+        $query = Cars::with('categories');
+        $totalcars = $query->count();
         $query = Category::all();
-        $totalcategories=$query->count();
-        return view('admin.dashboard', compact('bookings','totalbookings','totalusers','totalcars','totalcategories'));
+        $totalcategories = $query->count();
+
+        $analytics = app()->make(Analytics::class, ['propertyId' => '414835254']);
+    $analyticsData = $analytics->fetchTotalVisitorsAndPageViews(
+        Period::create(now()->subDays(7), now())
+    );
+
+        return view('admin.dashboard', compact('bookings', 'totalbookings', 'totalusers', 'totalcars', 'totalcategories', 'analyticsData'));
     } else {
         // Handle the case where there is no authenticated user (redirect, show an error, etc.)
         // For example, you might want to redirect the user to the login page:
         return redirect()->route('login');
     }
 }
+
+
 
 
    public function bookings(Request $request) {
