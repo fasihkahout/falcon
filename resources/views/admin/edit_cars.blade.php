@@ -22,7 +22,7 @@
 
                 <div class="img" style="text-align: center;">
      
-                                        <label><img id="blah" src="@if(isset($car->img)){{asset($car->img);}}@else {{asset('assets/img/idnex-1-747x597.png')}} @endif" alt="your image" style=" border-radius: 50% ;width: 100px; height: 100px"  value="{{ $car->img }}"/>
+                                        <label><img id="blah" src="{{ $car->img ? asset($car->img) : asset('assets/img/idnex-1-747x597.png')}}" alt="your image" style=" border-radius: 50% ;width: 100px; height: 100px"  value="{{ $car->img }}"/>
 
                                                  <input type="file" name="img"
                                                   onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" style="display: none;"></label>

@@ -60,7 +60,7 @@ class AdminController extends Controller
 
 
 
-   public function bookings(Request $request) {
+  public function bookings(Request $request) {
     // Check if the user is logged in
     if(auth()->check()) {
         // If logged in, check if the user has the 'Admin' role
@@ -68,11 +68,10 @@ class AdminController extends Controller
             // If admin, retrieve all bookings
             $bookings = SearchForm::with('users','cars')->whereNotNull('users_id');
 
-            // Filter by date range if provided
-            if ($request->has('start_date') && $request->has('end_date')) {
-                $start_date = $request->input('start_date');
-                $end_date = $request->input('end_date');
-                $bookings->whereBetween('created_at', [$start_date, $end_date]);
+            // Filter by Status button
+            if ($request->has('status') && $request->input('status') !== 'All') {
+                $status = $request->input('status');
+                $bookings->where('status', $status);
             }
 
             $bookings = $bookings->orderBy('id', 'DESC')->get();
@@ -81,11 +80,10 @@ class AdminController extends Controller
             $userId = auth()->user()->id;
             $bookings = SearchForm::with('users','cars')->where('users_id', $userId);
 
-            // Filter by date range if provided
-            if ($request->has('start_date') && $request->has('end_date')) {
-                $start_date = $request->input('start_date');
-                $end_date = $request->input('end_date');
-                $bookings->whereBetween('created_at', [$start_date, $end_date]);
+            // Filter by Status button
+            if ($request->has('status') && $request->input('status') !== 'All') {
+                $status = $request->input('status');
+                $bookings->where('status', $status);
             }
 
             $bookings = $bookings->orderBy('id', 'DESC')->get();
@@ -97,6 +95,11 @@ class AdminController extends Controller
         return redirect()->route('login')->with('error', 'Please sign in first.');
     }
 }
+
+
+
+
+
 
 public function baggages(Request $request) {
     // Check if the user is logged in
@@ -197,6 +200,7 @@ public function baggages(Request $request) {
     {
 
         $input = $request->all();
+         $img = '';
         if ($request->has('img'))
         {
             // echo 1; exit;
@@ -211,8 +215,6 @@ public function baggages(Request $request) {
         $car->ac=$request->ac;
         $car->first_mile_price=$request->first_mile_price;
         $car->after_first_mile_price=$request->after_first_mile_price;
-
-       
         
         $car->save();
         return redirect()->route('cars')->with('success', 'Car Added successfully.');
@@ -413,6 +415,15 @@ public function deleteusers($id)
         $categories = Category::all();
         $cars = Cars::with('categories')->get();
         return view('admin.google_map',compact('categories','cars'));
+    }
+
+    public function updatestatus(Request $request, $id)
+    {
+        $booking = SearchForm::find($id);
+        $booking->status = $request->input('status');
+        $booking->save();
+
+        return redirect()->back();
     }
 
      

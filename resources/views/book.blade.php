@@ -209,6 +209,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <!-- Card body END -->
                 <!--        </div>-->
                         <!-- Safety Guidelines END -->
+                       
                     </div>
                 </div>
                 <!-- Main content END -->
@@ -270,7 +271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 @endforeach
     
                                 <!-- Button -->
-                                <a href="{{ route('confirmbooking', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0 mt-2">Pay Now</a>
+                                <a href="{{ route('user', ['car_id' => $car->id]) }}" class="btn btn-dark mb-0 mt-2">Pay Now</a>
                             </div>
                         </div>
                     </div> 

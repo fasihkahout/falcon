@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2023 at 01:21 PM
+-- Generation Time: Nov 20, 2023 at 01:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -227,7 +227,13 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`, `created_at`
 (4, 'App\\Models\\User', 74, '2023-10-25 12:19:14', '2023-10-25 12:19:14'),
 (4, 'App\\Models\\User', 75, '2023-10-25 12:21:25', '2023-10-25 12:21:25'),
 (4, 'App\\Models\\User', 76, '2023-10-25 12:22:56', '2023-10-25 12:22:56'),
-(4, 'App\\Models\\User', 77, '2023-10-26 11:58:55', '2023-10-26 11:58:55');
+(4, 'App\\Models\\User', 77, '2023-10-26 11:58:55', '2023-10-26 11:58:55'),
+(4, 'App\\Models\\User', 82, '2023-11-20 09:52:15', '2023-11-20 09:52:15'),
+(4, 'App\\Models\\User', 85, '2023-11-20 10:23:42', '2023-11-20 10:23:42'),
+(4, 'App\\Models\\User', 87, '2023-11-20 10:25:12', '2023-11-20 10:25:12'),
+(4, 'App\\Models\\User', 88, '2023-11-20 10:26:22', '2023-11-20 10:26:22'),
+(4, 'App\\Models\\User', 90, '2023-11-20 10:48:38', '2023-11-20 10:48:38'),
+(4, 'App\\Models\\User', 91, '2023-11-20 11:02:16', '2023-11-20 11:02:16');
 
 -- --------------------------------------------------------
 
@@ -346,6 +352,7 @@ CREATE TABLE `search_form` (
   `distance` varchar(256) DEFAULT NULL,
   `one_way` varchar(100) DEFAULT NULL,
   `car_price` varchar(256) DEFAULT NULL,
+  `status` varchar(256) NOT NULL DEFAULT 'New Future',
   `car_id` varchar(256) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -355,17 +362,21 @@ CREATE TABLE `search_form` (
 -- Dumping data for table `search_form`
 --
 
-INSERT INTO `search_form` (`id`, `users_id`, `pickup_destination`, `dropoff_destination`, `return_pickup_destination`, `return_dropoff_destination`, `pickup_date`, `pickup_time`, `return_date`, `return_time`, `luggage`, `passengers`, `distance`, `one_way`, `car_price`, `car_id`, `created_at`, `updated_at`) VALUES
-(78, NULL, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-02', '22:24', NULL, NULL, '1', '5', '267 mi', 'One Way', NULL, NULL, '2023-11-02 07:19:27', '2023-11-02 07:19:27'),
-(79, 34, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-02', '20:23', NULL, NULL, '1', '5', '267 mi', 'One Way', '2055.15', '11', '2023-11-02 07:21:03', '2023-11-02 07:21:33'),
-(80, 34, 'Glasgow, UK', 'Hull, UK', 'Hull, UK', 'John o\' Groats, UK', '2023-11-02', '18:23', '2023-11-02', '19:24', '4', '5', '808 mi', 'Two Way', '6210.03', '11', '2023-11-02 07:22:14', '2023-11-02 07:22:58'),
-(81, NULL, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-22', '15:37', NULL, NULL, '4', '4', '267 mi', 'One Way', NULL, NULL, '2023-11-06 00:32:23', '2023-11-06 00:32:23'),
-(82, 34, 'Glasgow, UK', 'Hyde Park, London, UK', NULL, NULL, '2023-11-14', '15:39', NULL, NULL, '4', '4', '410 mi', 'One Way', '3153.39', '11', '2023-11-06 00:34:13', '2023-11-06 00:44:54'),
-(83, 34, '3 Hulland Place', 'Jk Surveyors Ltd', NULL, NULL, '2023-11-22', '18:43', NULL, NULL, '1', '4', '3.3 mi', 'One Way', NULL, NULL, '2023-11-06 06:40:45', '2023-11-06 06:40:45'),
-(84, 34, '26 Cannon Street', 'Hullternative Pest Control', NULL, NULL, '2023-11-07', '19:18', NULL, NULL, '1', '4', '12.1 mi', 'One Way', '97.518', '11', '2023-11-06 07:16:43', '2023-11-06 07:17:33'),
-(85, 34, '11 Cannon Street', 'Hullternative Pest Control', NULL, NULL, '2023-11-22', '21:27', NULL, NULL, '1', '4', '12.0 mi', 'One Way', '96.75', '11', '2023-11-06 07:22:59', '2023-11-06 07:23:52'),
-(86, NULL, '9 Cannon Street', 'James Hull Associates', 'James Hull Associates', 'Golden Glassy', '2023-11-07', '11:52', '2023-11-07', '12:53', '1', '5', '9.5 mi', 'Two Way', NULL, NULL, '2023-11-07 00:51:58', '2023-11-07 00:51:58'),
-(87, NULL, '5 Cannon House', 'James Hull Associates', 'James Hull Associates', 'Jalsagor Restaurant', '2023-11-08', '19:28', '2023-11-08', '22:32', '4', '5', '65 mi', 'Two Way', NULL, NULL, '2023-11-07 07:26:28', '2023-11-07 07:26:28');
+INSERT INTO `search_form` (`id`, `users_id`, `pickup_destination`, `dropoff_destination`, `return_pickup_destination`, `return_dropoff_destination`, `pickup_date`, `pickup_time`, `return_date`, `return_time`, `luggage`, `passengers`, `distance`, `one_way`, `car_price`, `status`, `car_id`, `created_at`, `updated_at`) VALUES
+(78, NULL, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-02', '22:24', NULL, NULL, '1', '5', '267 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-02 07:19:27', '2023-11-02 07:19:27'),
+(79, 34, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-02', '20:23', NULL, NULL, '1', '5', '267 mi', 'One Way', '2055.15', 'Cancelled', '11', '2023-11-02 07:21:03', '2023-11-20 07:10:08'),
+(80, 34, 'Glasgow, UK', 'Hull, UK', 'Hull, UK', 'John o\' Groats, UK', '2023-11-02', '18:23', '2023-11-02', '19:24', '4', '5', '808 mi', 'Two Way', '6210.03', 'Current', '11', '2023-11-02 07:22:14', '2023-11-20 07:08:51'),
+(81, NULL, 'Glasgow, UK', 'Hull, UK', NULL, NULL, '2023-11-22', '15:37', NULL, NULL, '4', '4', '267 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-06 00:32:23', '2023-11-06 00:32:23'),
+(82, 34, 'Glasgow, UK', 'Hyde Park, London, UK', NULL, NULL, '2023-11-14', '15:39', NULL, NULL, '4', '4', '410 mi', 'One Way', '3153.39', 'Cancelled', '11', '2023-11-06 00:34:13', '2023-11-20 07:07:41'),
+(83, 34, '3 Hulland Place', 'Jk Surveyors Ltd', NULL, NULL, '2023-11-22', '18:43', NULL, NULL, '1', '4', '3.3 mi', 'One Way', NULL, 'Past completed', NULL, '2023-11-06 06:40:45', '2023-11-20 07:08:43'),
+(84, 34, '26 Cannon Street', 'Hullternative Pest Control', NULL, NULL, '2023-11-07', '19:18', NULL, NULL, '1', '4', '12.1 mi', 'One Way', '97.518', 'New Future', '11', '2023-11-06 07:16:43', '2023-11-20 07:08:39'),
+(85, 34, '11 Cannon Street', 'Hullternative Pest Control', NULL, NULL, '2023-11-22', '21:27', NULL, NULL, '1', '4', '12.0 mi', 'One Way', '96.75', 'Cancelled', '11', '2023-11-06 07:22:59', '2023-11-20 07:08:47'),
+(86, NULL, '9 Cannon Street', 'James Hull Associates', 'James Hull Associates', 'Golden Glassy', '2023-11-07', '11:52', '2023-11-07', '12:53', '1', '5', '9.5 mi', 'Two Way', NULL, 'New Future', NULL, '2023-11-07 00:51:58', '2023-11-07 00:51:58'),
+(87, NULL, '5 Cannon House', 'James Hull Associates', 'James Hull Associates', 'Jalsagor Restaurant', '2023-11-08', '19:28', '2023-11-08', '22:32', '4', '5', '65 mi', 'Two Way', NULL, 'New Future', NULL, '2023-11-07 07:26:28', '2023-11-07 07:26:28'),
+(88, NULL, '2 Cannon Street', '10 Hereford Street', NULL, NULL, '2023-11-20', '16:25', NULL, NULL, '4', '6', '0.8 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-20 01:20:04', '2023-11-20 01:20:04'),
+(89, NULL, 'James Hull Associates', 'Ghd7m Ltd', NULL, NULL, '2023-11-22', '16:35', NULL, NULL, '1', '4', '0.7 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-20 01:30:35', '2023-11-20 01:30:35'),
+(90, NULL, 'Global Healthcare Sourcing Ltd', 'James Hull Associates', NULL, NULL, '2023-11-28', '17:44', NULL, NULL, '1', '4', '0.7 mi', 'One Way', '9.966', 'New Future', '11', '2023-11-20 02:39:42', '2023-11-20 05:00:29'),
+(91, 91, 'Golden Glassy', 'Ijs Construction Ltd', NULL, NULL, '2023-11-28', '21:08', NULL, NULL, '1', '4', '3.8 mi', 'One Way', NULL, 'Past completed', NULL, '2023-11-20 06:03:15', '2023-11-20 07:07:12');
 
 -- --------------------------------------------------------
 
@@ -387,10 +398,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8Q6WKpqGrQ9xS85YhTMAIysRo8D9PQGlsjHHL4EW', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVXdZR21tRHZyMUpUa0ZUeUZCQXdoaWpHQTZhVnJHcDVFNGVERXBXTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozNDt9', 1700050749),
-('9jqrExSZUrJPPu6kG4wgMBeR70AImRS7JIbUptxZ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoianliM0tDNVJaRlJZS0V2N095eTUwVFFYbjhLUmxwOEF2eGlNWFJvcSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1699341260),
-('fTmOTmCqAbgZPvFs7fPkhmfPDzKzh9VO1iNgD0HM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiM0dyUFlUMjRkVHoySFdCY3Rrd09lQVBSWkM2aUZwMEFUQ3NTOTE0TiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1699360050),
-('ovI4jkPj7xhXnt07Ekfr5ykcTLrlzkSWbWKwv8fh', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS3YwdkZoYkV3Q0toYlZZRXZEbTlyTTFsRko4MFR1WFNSd3c0RzNHYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ibG9nLzUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozNDt9', 1699448279);
+('yfXTPLtEqZkM9njQzm7UZIU2j3WxoYafekwLqqVg', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoia1MzNWo3cnFGc3JoVk9uazk2TmVTUEVoU0sycGdJUTg5am9kd3VjYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29raW5ncyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM0O30=', 1700483544);
 
 -- --------------------------------------------------------
 
@@ -403,7 +411,7 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
@@ -423,7 +431,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 (64, 'Fasih', 'fasih@gmail.com', NULL, '$2y$10$q9gv8AN60zrOAnzhDnT5cu7/NL2dtFai0BNQKLkwKzPWSB.va5UcC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-20 07:15:18', '2023-10-20 07:15:18'),
 (65, 'Tasha Turner', 'religav@mailinator.com', NULL, '$2y$10$6ovA1skQSC6Mq2J7jkm/3u35Vataq9lblD/BUnS1eeAgnaOK.vMNi', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-23 02:07:20', '2023-10-23 02:07:20'),
 (72, 'Talha Sahni', 'talhasahni116@gmail.com', NULL, '$2y$10$MiESGduxShRt2apjlhLZ1evhawuWImJYPmTD.OfbBbvisxmvQZSzO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-25 06:57:23', '2023-11-02 07:27:49'),
-(77, 'Rama Berger', 'fasihahmed34@gmail.com', NULL, '$2y$10$6QbCmZ9BNXLf/DGHK9Yd4ePTtzSeIvyN6BE6dYo.gIbbRKOr.xHou', NULL, NULL, NULL, 'Q3OCzOuNMKsSSjDK8V65j0u01g8TRH76dElNt2y6StltIBulMpZlLIjn2Pco', NULL, NULL, '2023-10-26 06:58:55', '2023-11-08 05:04:23');
+(77, 'Rama Berger', 'fasihahmed34@gmail.com', NULL, '$2y$10$6QbCmZ9BNXLf/DGHK9Yd4ePTtzSeIvyN6BE6dYo.gIbbRKOr.xHou', NULL, NULL, NULL, 'Q3OCzOuNMKsSSjDK8V65j0u01g8TRH76dElNt2y6StltIBulMpZlLIjn2Pco', NULL, NULL, '2023-10-26 06:58:55', '2023-11-08 05:04:23'),
+(91, 'Hello', 'admin@transarabian.com', NULL, '$2y$10$31CWRJ6ADWY7GF/4BVTrruPUn4wTwdDJFQvzIRH7.BlRr423QrX0a', NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-20 06:02:16', '2023-11-20 06:02:16');
 
 --
 -- Indexes for dumped tables
@@ -556,7 +565,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -598,13 +607,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `search_form`
 --
 ALTER TABLE `search_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- Constraints for dumped tables

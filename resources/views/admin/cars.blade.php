@@ -26,7 +26,8 @@
                                     <tbody>
                                         @foreach($cars as $car)
                                     <tr>
-                                      <td><img src="{{ asset( $car->img) }}" alt="Car Image" style=" border-radius: 100% ;width: 50px;"></td>
+                                      <td><img src="{{ $car->img ? asset($car->img) : 'assets/img/idnex-1-747x597.png' }}" alt="{{ $car->img ? 'Car Image' : 'N/A' }}" style="border-radius: 100%; width: 50px;">
+</td>
                                         <td>{{$car->name}}</td>
                                         <td>{{$car->model}}</td>
                                         <td>{{isset($car->categories->car_categories)?$car->categories->car_categories:'N/A'}}</td>

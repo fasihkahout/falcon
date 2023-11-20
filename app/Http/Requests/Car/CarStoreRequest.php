@@ -21,9 +21,9 @@ class CarStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this->all());
         return [
             'name'=>'required',
-            'img'=>'required',
             'model'=>'required',
             'seats'=>'required',
             'ac'=>'required',

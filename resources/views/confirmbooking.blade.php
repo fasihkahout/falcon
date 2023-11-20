@@ -113,6 +113,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Booking summary END -->
                         @endif
 @endforeach
+
+
     
                         <!-- Payment START -->
                         <div class="card shadow">

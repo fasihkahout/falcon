@@ -9,19 +9,19 @@
         <a href="{{route('index')}}"><button id="add-category-btn" class="btn btn-success">Create Bookings</button></a>
       </div>
       @endif
-      <div style="position: relative;left: 40%; bottom:2em">
-        
-       <form action="{{ route('bookings') }}" method="get">
-    @csrf
-    <label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="start_date">
+     <div style="position: relative;left: 55%; bottom:2em">
+    <form action="{{ route('bookings') }}" method="get">
+        @csrf
+        <button type="submit" name="status" value="All">All</button>
+        <button type="submit" name="status" value="Current">Current</button>
+        <button type="submit" name="status" value="Past Completed">Past Completed</button>
+        <button type="submit" name="status" value="Cancelled">Cancelled</button>
+        <button type="submit" name="status" value="New Future">New Future</button>
+    </form>
+</div>
 
-    <label for="end_date">End Date:</label>
-    <input type="date" id="end_date" name="end_date">
 
-    <button type="submit" >Filter Bookings</button>
-</form>
-      </div>
+
       <section id="">
                     <div class="row">
                         <div class="col-12">
@@ -40,6 +40,7 @@
                                             <th>Return Time</th>
                                            <th>Luggage</th>
                                            <th>Distance</th>
+                                           <th>Status</th>
                                            <th>Price</th>
                                            <th>Date</th>
                                         </tr>
@@ -82,6 +83,18 @@
                                         </td>
                                         <td>{{$booking->luggage}}</td>
                                         <td>{{$booking->distance}}</td>
+                                        <td><form style="display: inline;" action="{{ url('updatestatus',['id' => $booking->id]) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <select name="status" onchange="this.form.submit()">
+          <option value="New Future" {{ $booking->status == 'New Future' ? 'selected' : '' }}>New Future</option>
+          <option value="Current" {{ $booking->status == 'Current' ? 'selected' : '' }}>Current</option>
+          <option value="Past completed" {{ $booking->status == 'Past completed' ? 'selected' : '' }}>Past completed</option>
+         <option value="Cancelled" {{ $booking->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+
+        </select>
+       
+      </form></td>
                                         <td>{{$booking->car_price}} P</td>
                                         <td>{{$booking->created_at->format('Y-m-d')}}</td>
                                     </tr>

@@ -68,5 +68,8 @@ Route::get('/deletecategories/{id}', [AdminController::class, 'deletecategories'
 Route::post('searchbooking', [ViewController::class, 'searchBooking'])->name('searchBooking');
 Route::post('searchbookings', [ViewController::class, 'searchbookings'])->name('searchbookings');
 Route::post('baggagepost', [ViewController::class, 'baggagepost'])->name('baggagepost');
+Route::post('/postuser', [ViewController::class, 'postuser'])->name('postuser');
+Route::get('/user/{car_id}', [ViewController::class, 'user'])->name('user');
+Route::post('/updatestatus/{id}', [AdminController::class, 'updatestatus'])->name('updatestatus');
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\User;
 use App\Models\Blog;
 use App\Models\Baggage;
 use App\Models\SearchForm;
@@ -15,6 +16,7 @@ use App\Http\Requests\Car\CarStoreRequest;
 use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
 use App\Http\Requests\Baggage\BaggageStoreRequest;
+use App\Http\Requests\User\UserStoreRequest;
 use Session;
 use Stripe;
 
@@ -85,12 +87,12 @@ public function baggagefind()
 
    public function book($id){
     $cars = Cars::with('categories')->where('id', $id)->get();
-    $searches = Baggage::latest()->get();
-    $search = Baggage::all();
+    $searches = SearchForm::latest()->get();
+    
     $latestDistance = $searches->first()->distance;
     $carPrices = $this->calculatePrices();
 
-    return view('book', compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
+    return view('book', compact('cars', 'searches', 'latestDistance', 'carPrices'));
 }
 
  public function baggagebook($id){
@@ -108,10 +110,10 @@ public function baggagefind()
     public function confirmbooking($id){
     $cars = Cars::with('categories')->where('id', $id)->get();
     $searches = SearchForm::latest()->get();
-    $search = SearchForm::all();
+   
     $latestDistance = $searches->first()->distance;
     $carPrices = $this->calculatePrices();
-        return view('confirmbooking',compact('cars', 'searches', 'latestDistance', 'carPrices','search'));
+        return view('confirmbooking',compact('cars', 'searches', 'latestDistance', 'carPrices'));
     }
 
     public function baggageconfirmbooking($id){
@@ -292,6 +294,32 @@ public function stripePost(Request $request)
 
     return redirect()->route('index');
 }
+
+public function postuser(UserStorerequest $request)
+{
+    $input = $request->all();
+    $user = new User;
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->phone_number = $request->phone_number;
+    $user->billing_address = $request->billing_address;
+    
+    $user->save();
+    $user->assignRole('User');
+
+    // Assuming $cars is defined and not empty
+   
+        // Handle the case when $car is not found
+        return back()->with('message', 'User added successfully.');
+
+}
+
+ public function user($id){
+    $cars = Cars::with('categories')->where('id', $id)->get();
+        return view('billing_address', compact('cars'));
+    }
+
+
 
 
 
