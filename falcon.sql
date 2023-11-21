@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 01:33 PM
+-- Generation Time: Nov 21, 2023 at 01:43 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -52,7 +52,7 @@ INSERT INTO `baggage` (`id`, `users_id`, `car_id`, `pickup_destination`, `dropof
 (4, 34, '11', 'Glasgow, UK', 'Hyde Park, London, UK', '1.53', '2.54', '6.12', '10', '410 mi', '3153.39', '2023-11-03 06:58:39', '2023-11-06 00:44:54'),
 (5, 34, '11', 'Hulberts', '1 Cannon House', '1.53', '2.54', '6.12', '10', '10.5 mi', '97.518', '2023-11-06 06:45:25', '2023-11-06 07:17:33'),
 (6, 34, '11', '16 Cannon Street', '4 Glastonbury Crescent', '1.53', '2.54', '6.12', '10', '2.9 mi', '96.75', '2023-11-06 07:18:37', '2023-11-06 07:23:52'),
-(7, 34, '11', '7 Cannon Street', 'Flat 30', '1.53', '2.54', '6.12', '10', '10.3 mi', '96.75', '2023-11-06 07:24:47', '2023-11-06 07:25:28');
+(7, 34, '11', '7 Cannon Street', 'Flat 30', '1.53', '2.54', '6.12', '10', '10.3 mi', '24.558', '2023-11-06 07:24:47', '2023-11-21 07:40:15');
 
 -- --------------------------------------------------------
 
@@ -139,6 +139,30 @@ INSERT INTO `categories` (`id`, `car_categories`, `bag_capacities`, `created_at`
 (6, 'Basic', '2', '2023-10-12 00:28:55', '2023-11-02 05:04:28'),
 (7, 'Salon', '3', '2023-10-12 07:22:42', '2023-11-02 05:04:34'),
 (8, '6 Seater', '4', '2023-10-12 07:25:10', '2023-11-02 05:04:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
+  `phone_number` varchar(256) DEFAULT NULL,
+  `message` varchar(256) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Hello', 'talhasahni116@gmail.com', '03325725061', 'ddsfsdfsdfsdfsdfsdfsd', '2023-11-21 05:22:16', '2023-11-21 05:22:16'),
+(2, 'Fasih', 'fasihahmed349@gmail.com', '03325725061', 'Hi, How are you ??', '2023-11-21 07:41:00', '2023-11-21 07:41:00');
 
 -- --------------------------------------------------------
 
@@ -376,7 +400,25 @@ INSERT INTO `search_form` (`id`, `users_id`, `pickup_destination`, `dropoff_dest
 (88, NULL, '2 Cannon Street', '10 Hereford Street', NULL, NULL, '2023-11-20', '16:25', NULL, NULL, '4', '6', '0.8 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-20 01:20:04', '2023-11-20 01:20:04'),
 (89, NULL, 'James Hull Associates', 'Ghd7m Ltd', NULL, NULL, '2023-11-22', '16:35', NULL, NULL, '1', '4', '0.7 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-20 01:30:35', '2023-11-20 01:30:35'),
 (90, NULL, 'Global Healthcare Sourcing Ltd', 'James Hull Associates', NULL, NULL, '2023-11-28', '17:44', NULL, NULL, '1', '4', '0.7 mi', 'One Way', '9.966', 'New Future', '11', '2023-11-20 02:39:42', '2023-11-20 05:00:29'),
-(91, 91, 'Golden Glassy', 'Ijs Construction Ltd', NULL, NULL, '2023-11-28', '21:08', NULL, NULL, '1', '4', '3.8 mi', 'One Way', NULL, 'Past completed', NULL, '2023-11-20 06:03:15', '2023-11-20 07:07:12');
+(91, 91, 'Golden Glassy', 'Ijs Construction Ltd', NULL, NULL, '2023-11-28', '21:08', NULL, NULL, '1', '4', '3.8 mi', 'One Way', NULL, 'Past completed', NULL, '2023-11-20 06:03:15', '2023-11-20 07:37:49'),
+(92, 34, '2 Cannon Street', 'E Hulme & Son Ltd', NULL, NULL, '2023-11-29', '22:43', NULL, NULL, '1', '4', '0.3 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-20 07:38:30', '2023-11-20 07:38:30'),
+(93, 34, '4 Cannon Street', 'J D Hull', NULL, NULL, '2023-11-22', '21:54', NULL, NULL, '1', '4', '10.9 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 06:49:24', '2023-11-21 06:49:24'),
+(94, 34, '4 North Street', 'Huxley Print Ltd', NULL, NULL, '2023-11-21', '21:55', NULL, NULL, '1', '4', '0.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 06:50:32', '2023-11-21 06:50:32'),
+(95, 34, 'J D Hull', 'Jla Therapy & Wellbeing Ltd', NULL, NULL, '2023-11-21', '22:06', NULL, NULL, '1', '4', '3.4 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:01:53', '2023-11-21 07:01:53'),
+(96, 34, 'J D Hull', 'Jla Therapy & Wellbeing Ltd', NULL, NULL, '2023-11-21', '22:06', NULL, NULL, '1', '4', '3.4 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:02:22', '2023-11-21 07:02:22'),
+(97, 34, 'J D Hull', 'Jla Therapy & Wellbeing Ltd', NULL, NULL, '2023-11-21', '22:06', NULL, NULL, '1', '4', '3.4 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:04:01', '2023-11-21 07:04:01'),
+(98, 34, 'Tucker Glass', 'James Hull Dental Care', NULL, NULL, '2023-11-30', '21:11', NULL, NULL, '1', '4', '2.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:07:52', '2023-11-21 07:07:52'),
+(99, 34, 'Tucker Glass', 'James Hull Dental Care', NULL, NULL, '2023-11-30', '21:11', NULL, NULL, '1', '4', '2.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:08:25', '2023-11-21 07:08:25'),
+(100, 34, 'Tucker Glass', 'James Hull Dental Care', NULL, NULL, '2023-11-30', '21:11', NULL, NULL, '1', '4', '2.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:10:16', '2023-11-21 07:10:16'),
+(101, 34, 'James Hull Dental Care', 'Jlaser Ltd', NULL, NULL, '2023-11-29', '22:19', NULL, NULL, '1', '4', '160 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:14:20', '2023-11-21 07:14:20'),
+(102, 34, '4 Cannon Street', 'James Capital Ltd', NULL, NULL, '2023-11-29', '22:23', NULL, NULL, '1', '4', '1.3 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:18:17', '2023-11-21 07:18:17'),
+(103, 34, 'J D Hull', 'Jlk Consulting (London) Ltd', NULL, NULL, '2023-11-29', '22:25', NULL, NULL, '1', '4', '8.7 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:20:58', '2023-11-21 07:20:58'),
+(104, 34, 'Gjhis Ltd', 'Kkap Consultancy Ltd', NULL, NULL, '2023-12-06', '23:32', NULL, NULL, '1', '4', '29.0 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:26:36', '2023-11-21 07:26:36'),
+(105, 34, 'Alan Barnes Music Ltd', 'Kiddie Kloud Day Nursery Ltd', NULL, NULL, '2023-11-22', '22:35', NULL, NULL, '1', '4', '4.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:30:52', '2023-11-21 07:30:52'),
+(106, 34, 'Hull Vets4pets Ltd', 'Jhr Solicitors Ltd', NULL, NULL, '2023-11-29', '22:36', NULL, NULL, '1', '4', '0.4 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:31:40', '2023-11-21 07:31:40'),
+(107, 34, '2 The Courtyard', 'Jh Site Management Ltd', NULL, NULL, '2023-11-29', '22:41', NULL, NULL, '1', '4', '3.2 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:36:25', '2023-11-21 07:36:25'),
+(108, 34, 'London & Hertfordshire Respiratory Diagnostics Ltd', 'Jhj Medico Legal Ltd', NULL, NULL, '2023-11-29', '22:43', NULL, NULL, '1', '4', '74.5 mi', 'One Way', NULL, 'New Future', NULL, '2023-11-21 07:38:30', '2023-11-21 07:38:30'),
+(109, 34, 'Hydro Mechanical Services Ltd', 'Jhall It Systems Ltd', NULL, NULL, '2023-11-23', '22:44', NULL, NULL, '1', '4', '2.6 mi', 'One Way', '24.558', 'New Future', '11', '2023-11-21 07:39:41', '2023-11-21 07:40:15');
 
 -- --------------------------------------------------------
 
@@ -398,7 +440,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('yfXTPLtEqZkM9njQzm7UZIU2j3WxoYafekwLqqVg', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoia1MzNWo3cnFGc3JoVk9uazk2TmVTUEVoU0sycGdJUTg5am9kd3VjYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29raW5ncyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM0O30=', 1700483544);
+('EcvETJ5t9MqsBI3BmBWen4OlbFTcLpaSf5ZftQyq', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibHZhU2NlVldhSkFzMThPTmhjMWdYMW9TQnpWWXRkcUU1TWJMMGt6dyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jb250YWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM0O30=', 1700570466);
 
 -- --------------------------------------------------------
 
@@ -460,6 +502,12 @@ ALTER TABLE `cars`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -565,13 +613,19 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -607,7 +661,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `search_form`
 --
 ALTER TABLE `search_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `users`

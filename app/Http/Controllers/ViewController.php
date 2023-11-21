@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
 use App\Models\User;
+use App\Models\Contact;
 use App\Models\Blog;
 use App\Models\Baggage;
 use App\Models\SearchForm;
@@ -17,8 +18,11 @@ use App\Http\Requests\Car\CarUpdateRequest;
 use App\Http\Requests\SearchForm\SearchFormStoreRequest;
 use App\Http\Requests\Baggage\BaggageStoreRequest;
 use App\Http\Requests\User\UserStoreRequest;
+use App\Http\Requests\Contact\ContactStorerequest;
 use Session;
 use Stripe;
+use Spatie\GoogleCalendar\Event;
+use Carbon\Carbon;
 
 class ViewController extends Controller
 {
@@ -28,6 +32,10 @@ class ViewController extends Controller
 
      public function baggage(){
         return view('baggage');
+    }
+
+    public function contact(){
+        return view('contact');
     }
 
     public function airports(){
@@ -125,10 +133,11 @@ public function baggagefind()
         return view('baggage_cnfirmbooking',compact('cars', 'baggages', 'latestDistance', 'carPrices','baggage'));
     }
 
-    public function searchBooking(SearchFormStoreRequest $request)
+   public function searchBooking(SearchFormStoreRequest $request)
 {
-    // Retrieve the user ID of the logged-in user
+    // Retrieve the user ID and name of the logged-in user
     $userId = auth()->id();
+    $userName = auth()->user()->name;
 
     $input = $request->all();
     $search = new SearchForm;
@@ -147,17 +156,26 @@ public function baggagefind()
     $search->distance = $request->distance;
     $search->passengers = $request->passengers;
 
-
-
     $search->save();
+
+    $event = new Event;
+
+    // Include the user's name in the event name
+    $event->name = $userName . ' Booking';
+    $event->startDateTime = Carbon::now();
+    $event->endDateTime = Carbon::now()->addHour();
+
+    $event->save();
 
     return redirect()->route('find')->with('success', 'Booking Searched successfully.');
 }
+
 
  public function searchbookings(SearchFormStoreRequest $request)
 {
     // Retrieve the user ID of the logged-in user
     $userId = auth()->id();
+    $userName = auth()->user()->name;
 
     $input = $request->all();
     $search = new SearchForm;
@@ -181,6 +199,14 @@ public function baggagefind()
 
     $search->save();
 
+    $event = new Event;
+
+$event->name = $userName . ' Booking';
+$event->startDateTime = Carbon::now();
+$event->endDateTime = Carbon::now()->addHour();
+
+$event->save();
+
     return redirect()->route('find')->with('success', 'Booking Searched successfully.');
 }
 
@@ -188,6 +214,7 @@ public function baggagefind()
 {
     // Retrieve the user ID of the logged-in user
     $userId = auth()->id();
+    $userName = auth()->user()->name;
 
     $input = $request->all();
     $baggage = new Baggage;
@@ -204,6 +231,14 @@ public function baggagefind()
     $baggage->distance = $request->distance;
 
     $baggage->save();
+
+    $event = new Event;
+
+$event->name = $userName . ' Booking';
+$event->startDateTime = Carbon::now();
+$event->endDateTime = Carbon::now()->addHour();
+
+$event->save();
 
     return redirect()->route('baggagefind')->with('success', 'Booking Searched successfully.');
 }
@@ -318,6 +353,25 @@ public function postuser(UserStorerequest $request)
     $cars = Cars::with('categories')->where('id', $id)->get();
         return view('billing_address', compact('cars'));
     }
+
+    public function postcontact(ContactStorerequest $request)
+{
+    $input = $request->all();
+    $contact = new Contact;
+    $contact->name = $request->name;
+    $contact->email = $request->email;
+    $contact->phone_number = $request->phone_number;
+    $contact->message = $request->message;
+    
+    $contact->save();
+    
+
+    // Assuming $cars is defined and not empty
+   
+        // Handle the case when $car is not found
+        return redirect()->route('index')->with('message', 'Message Sent successfully.');
+
+}
 
 
 

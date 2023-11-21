@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 //View Controller 
 Route::get('/' , [ViewController::class , 'index'])->name('index');
 Route::get('/baggage' , [ViewController::class , 'baggage'])->name('baggage');
+Route::get('/contact' , [ViewController::class , 'contact'])->name('contact');
 Route::get('/airports' , [ViewController::class , 'airports'])->name('airports');
 Route::get('/blog' , [ViewController::class , 'bloggrid'])->name('bloggrid');
 Route::get('/blog/{blog_id}', [ViewController::class, 'blogdetails'])->name('blogdetails');
@@ -38,6 +39,7 @@ Route::get('/google_map' , [AdminController::class , 'googlemap'])->name('google
 Route::get('/cars' , [AdminController::class , 'cars'])->name('cars');
 Route::get('/profile' , [ProfileController::class , 'profile'])->name('profile');
 Route::get('/users' , [AdminController::class , 'users'])->name('users');
+Route::get('/contacts' , [AdminController::class , 'contacts'])->name('contacts');
 Route::get('/blogs' , [AdminController::class , 'blogs'])->name('blogs');
 Route::get('/bookings' , [AdminController::class , 'bookings'])->name('bookings');
 Route::get('/baggages' , [AdminController::class , 'baggages'])->name('baggages');
@@ -71,5 +73,6 @@ Route::post('baggagepost', [ViewController::class, 'baggagepost'])->name('baggag
 Route::post('/postuser', [ViewController::class, 'postuser'])->name('postuser');
 Route::get('/user/{car_id}', [ViewController::class, 'user'])->name('user');
 Route::post('/updatestatus/{id}', [AdminController::class, 'updatestatus'])->name('updatestatus');
+Route::post('postcontact', [ViewController::class, 'postcontact'])->name('postcontact');
 
 

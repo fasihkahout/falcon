@@ -121,11 +121,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <li class="active dropdown_menu">
                                 <a href="{{ route('index') }}">Home</a>
                             </li>
-                            <li class="dropdown_menu">
+                           <!--  <li class="dropdown_menu">
                                 <a href="{{url('airports')}}">Airports</a>
-                            </li>
+                            </li> -->
                              <li class="dropdown_menu">
                                 <a href="{{url('blog')}}">Blogs</a>
+                            </li>
+                            <li class="dropdown_menu">
+                                <a href="{{url('contact')}}">Contact</a>
                             </li>
                         </ul>
                     </div>

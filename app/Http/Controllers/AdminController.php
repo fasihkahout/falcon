@@ -19,6 +19,7 @@ use App\Http\Requests\Blog\BlogStoreRequest;
 use App\Http\Requests\Blog\BlogUpdateRequest;
 use App\Models\User;
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Baggage;
 use Hash;
 use Spatie\Analytics\Analytics;
@@ -142,6 +143,11 @@ public function baggages(Request $request) {
     public function blogs(){
          $blogs = Blog::all();
         return view('admin.blogs', compact('blogs'));
+    }
+
+    public function contacts(){
+         $contacts = Contact::all();
+        return view('admin.contact_form', compact('contacts'));
     }
 
     public function addcars(){
